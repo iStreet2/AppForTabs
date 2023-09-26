@@ -14,11 +14,24 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                .font(.custom("SofiaSans-Regular",size:50))
             Text("bia slay")
             Text("Bonito passou por aqui!")
         }
         .padding()
     }
+        
+        init() {
+            for familyName in UIFont.familyNames{
+                print(familyName)
+                
+                for fontName in UIFont.fontNames(forFamilyName: familyName) {
+                    print("----\(fontName)")
+                }
+            }
+        }
+        
+    
 }
 
 #Preview {

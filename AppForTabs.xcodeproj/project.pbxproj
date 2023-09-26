@@ -15,6 +15,9 @@
 		3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1ACD992AC1F0D600240FA5 /* ContentView.swift */; };
 		3B1ACD9C2AC1F0D700240FA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1ACD9B2AC1F0D700240FA5 /* Assets.xcassets */; };
 		3B1ACD9F2AC1F0D700240FA5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1ACD9E2AC1F0D700240FA5 /* Preview Assets.xcassets */; };
+		3B81D4AF2AC3549600EE61BC /* SofiaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */; };
+		3BA977B42AC2068E0062ADD3 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA977B32AC2068E0062ADD3 /* TutorialView.swift */; };
+		3BA977B72AC216040062ADD3 /* TablatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA977B62AC216040062ADD3 /* TablatureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,10 @@
 		3B1ACD992AC1F0D600240FA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B1ACD9B2AC1F0D700240FA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B1ACD9E2AC1F0D700240FA5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaSans.ttf; sourceTree = "<group>"; };
+		3BA977B32AC2068E0062ADD3 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		3BA977B62AC216040062ADD3 /* TablatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablatureView.swift; sourceTree = "<group>"; };
+		3BA977BB2AC3530E0062ADD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +66,15 @@
 		3B1ACD962AC1F0D600240FA5 /* AppForTabs */ = {
 			isa = PBXGroup;
 			children = (
+				3BA977BB2AC3530E0062ADD3 /* Info.plist */,
+				3BA977B82AC352840062ADD3 /* Font */,
 				3B1ACD972AC1F0D600240FA5 /* AppForTabsApp.swift */,
 				3B1ACD992AC1F0D600240FA5 /* ContentView.swift */,
 				00FE05002AC215060045EA93 /* HomeView.swift */,
 				00FE05062AC218640045EA93 /* DataService.swift */,
 				00FE05022AC217770045EA93 /* CardsHome.swift */,
 				00FE05042AC217940045EA93 /* ViewModel.swift */,
+				3BA977B52AC215D30062ADD3 /* TutorialView */,
 				3B1ACD9B2AC1F0D700240FA5 /* Assets.xcassets */,
 				3B1ACD9D2AC1F0D700240FA5 /* Preview Content */,
 			);
@@ -77,6 +87,23 @@
 				3B1ACD9E2AC1F0D700240FA5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3BA977B52AC215D30062ADD3 /* TutorialView */ = {
+			isa = PBXGroup;
+			children = (
+				3BA977B32AC2068E0062ADD3 /* TutorialView.swift */,
+				3BA977B62AC216040062ADD3 /* TablatureView.swift */,
+			);
+			path = TutorialView;
+			sourceTree = "<group>";
+		};
+		3BA977B82AC352840062ADD3 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1ACD9F2AC1F0D700240FA5 /* Preview Assets.xcassets in Resources */,
+				3B81D4AF2AC3549600EE61BC /* SofiaSans.ttf in Resources */,
 				3B1ACD9C2AC1F0D700240FA5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +181,8 @@
 				00FE05032AC217770045EA93 /* CardsHome.swift in Sources */,
 				00FE05012AC215060045EA93 /* HomeView.swift in Sources */,
 				00FE05072AC218640045EA93 /* DataService.swift in Sources */,
+				3BA977B42AC2068E0062ADD3 /* TutorialView.swift in Sources */,
+				3BA977B72AC216040062ADD3 /* TablatureView.swift in Sources */,
 				3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */,
 				3B1ACD982AC1F0D600240FA5 /* AppForTabsApp.swift in Sources */,
 			);
@@ -291,6 +321,7 @@
 				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppForTabs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +351,7 @@
 				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppForTabs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
