@@ -5,14 +5,11 @@
 //  Created by Beatriz Andreucci on 25/09/23.
 //
 
-import SwiftUI
+import Foundation
 
-struct DataService: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    DataService()
+class DataService{
+    static var cardsHome: [CardsHome] = [
+        CardsHome(nome: "Cordas e Linhas", descricao: "Contagem e ordem das cordas"),
+        CardsHome(nome: "Casas", descricao: "Contagem e ordem das casas")
+    ]
 }
