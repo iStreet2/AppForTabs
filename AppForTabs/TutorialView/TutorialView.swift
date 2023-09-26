@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct tutorialView: View {
+struct TutorialView: View {
     var body: some View {
         VStack{
             VStack{
@@ -17,7 +17,12 @@ struct tutorialView: View {
                 Text("TABLATURA")
                     .font(.system(size:40))
                     .bold()
-                    .foregroundColor(.orange)
+                    .foregroundColor(.accentColor)
+                TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
+                    .cornerRadius(40)
+                    .shadow(radius: 10, y:10)
+//                    .frame(width:40)
+                    .padding()
             }
             .padding(.top)
             Spacer()
@@ -26,5 +31,5 @@ struct tutorialView: View {
 }
 
 #Preview {
-    tutorialView()
+    TutorialView()
 }

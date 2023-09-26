@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct TablatureView: View {
+    
+    var musicName: String
+    var tablature: String
+    var standardTuning: [String] = ["E","B","G","D","A","E"]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            VStack{
+                Text(musicName)
+                    .bold()
+                Image(tablature)
+                    .scaledToFit()
+            }
+            .padding()
+        }
+        .background(.white)
     }
 }
 
 #Preview {
-    TablatureView()
+    TablatureView(musicName: "Brilha, Brilha Estrelinha",tablature: "Tablature1")
 }
