@@ -69,6 +69,7 @@
 				3B1ACD972AC1F0D600240FA5 /* AppForTabsApp.swift */,
 				3BBAD6732AC367830012B3C8 /* DataServices */,
 				3BBAD6862AC369F20012B3C8 /* Model */,
+				3BBAD6872AC36A0C0012B3C8 /* ViewModel */,
 				3BBAD6852AC369DF0012B3C8 /* Views */,
 				3BA977BB2AC3530E0062ADD3 /* Info.plist */,
 				3B1ACD9B2AC1F0D700240FA5 /* Assets.xcassets */,
@@ -125,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				3BBAD6832AC369870012B3C8 /* CardsHome.swift */,
-				3BBAD6872AC36A0C0012B3C8 /* ViewModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
