@@ -5,14 +5,10 @@
 //  Created by Beatriz Andreucci on 25/09/23.
 //
 
-import SwiftUI
+import Foundation
 
-struct CardsHome: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    CardsHome()
+struct CardsHome: Identifiable, Hashable{
+    public var id = UUID()
+    public var nome: String
+    public var descricao: String
 }

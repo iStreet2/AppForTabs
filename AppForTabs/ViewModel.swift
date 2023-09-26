@@ -5,14 +5,12 @@
 //  Created by Beatriz Andreucci on 25/09/23.
 //
 
-import SwiftUI
+import Foundation
 
-struct ViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class ViewModel: ObservableObject{
+    @Published var cardsHome: [CardsHome]
+    
+    init(){
+        self.cardsHome = DataService.cardsHome
     }
-}
-
-#Preview {
-    ViewModel()
 }
