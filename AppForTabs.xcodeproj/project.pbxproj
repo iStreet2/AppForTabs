@@ -18,6 +18,7 @@
 		3BBAD6802AC3690D0012B3C8 /* TablatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD67F2AC3690D0012B3C8 /* TablatureView.swift */; };
 		3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6812AC3691B0012B3C8 /* TutorialView.swift */; };
 		3BBAD6842AC369870012B3C8 /* CardsHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6832AC369870012B3C8 /* CardsHome.swift */; };
+		3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6882AC37B1C0012B3C8 /* PageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3BBAD67F2AC3690D0012B3C8 /* TablatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablatureView.swift; sourceTree = "<group>"; };
 		3BBAD6812AC3691B0012B3C8 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		3BBAD6832AC369870012B3C8 /* CardsHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsHome.swift; sourceTree = "<group>"; };
+		3BBAD6882AC37B1C0012B3C8 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,9 @@
 		3BBAD67E2AC368E90012B3C8 /* TutorialView */ = {
 			isa = PBXGroup;
 			children = (
-				3BBAD67F2AC3690D0012B3C8 /* TablatureView.swift */,
 				3BBAD6812AC3691B0012B3C8 /* TutorialView.swift */,
+				3BBAD6882AC37B1C0012B3C8 /* PageView.swift */,
+				3BBAD67F2AC3690D0012B3C8 /* TablatureView.swift */,
 			);
 			path = TutorialView;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */,
 				3BBAD6792AC368A90012B3C8 /* HomeView.swift in Sources */,
+				3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */,
 				3BBAD6842AC369870012B3C8 /* CardsHome.swift in Sources */,
 				3B1ACD982AC1F0D600240FA5 /* AppForTabsApp.swift in Sources */,
 				3BBAD67D2AC368E10012B3C8 /* ViewModel.swift in Sources */,
