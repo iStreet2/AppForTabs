@@ -23,15 +23,15 @@ struct TutorialView: View {
                         Button(action: {
                             //ir para a tela HOME que a bia esta desenvolvendo
                         }, label: {
-                            Text("COMEÇAR")
-                                .font(.custom("SofiaSans-Regular", size:20))
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 29.5)
-                                        .stroke(Color("AccentColor"), lineWidth: 1)
-                                        .frame(width: 356, height: 55)
-                                )
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 29.5)
+                                    .stroke(Color("AccentColor"), lineWidth: 1)
+                                    .frame(width: 356, height: 55)
+                                Text("COMEÇAR")
+                                    .font(.custom("SofiaSans-Regular", size:20))
+                            }
                         })
+                        .padding()
                         
                     }
                     else{
