@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isShowing = false
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-                .font(.custom("SofiaSans-Regular",size:50))
-            Text("bia slay")
-            Text("Bonito passou por aqui!")
+        if isShowing{
+            TutorialView()
         }
-        .padding()
+        else{
+            Button(action: {
+                isShowing.toggle()
+            }
+                   , label: {
+                Text("Começar App")
+            })
+        }
     }
+    
 }
 
 #Preview {

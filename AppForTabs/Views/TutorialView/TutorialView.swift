@@ -8,25 +8,70 @@
 import SwiftUI
 
 struct TutorialView: View {
+    @State var pageIndex = 0
+    private let dotAppearance = UIPageControl.appearance()
+    private let page: [Int] = [0,1,2,3,4,5]
+    
     var body: some View {
-        VStack{
-            VStack{
-                Text("ISTO É UMA")
-                    .font(.system(size:20))
-                    .bold()
-                Text("TABLATURA")
-                    .font(.system(size:40))
-                    .bold()
-                    .foregroundColor(.accentColor)
-                TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
-                    .cornerRadius(40)
-                    .shadow(radius: 10, y:10)
-//                    .frame(width:40)
-                    .padding()
+        TabView(selection: $pageIndex){
+            ForEach(page, id: \.self){ page in
+                VStack{
+                    PageView(page: page)
+                        .padding()
+                    if pageIndex == 5{
+                        
+                        Button(action: {
+                            //ir para a tela HOME que a bia esta desenvolvendo
+                        }, label: {
+                            Text("COMEÇAR")
+                                .font(.custom("SofiaSans-Regular", size:20))
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 29.5)
+                                        .stroke(Color("AccentColor"), lineWidth: 1)
+                                        .frame(width: 356, height: 55)
+                                )
+                        })
+                        
+                    }
+                    else{
+                        Button(
+                            action: {
+                                incrementPage()
+                            }
+                            ,label: {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 29.5)
+                                        .stroke(Color("AccentColor"), lineWidth: 1)
+                                        .frame(width: 356, height: 55)
+                                    Text("PRÓXIMO")
+                                        .font(.custom("SofiaSans-Regular", size:20))
+                                }
+                            })
+                        .padding()
+                    }
+                    Spacer()
+                }
             }
-            .padding(.top)
-            Spacer()
         }
+        .animation(.easeInOut, value: pageIndex)
+        .tabViewStyle(.page)
+        .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+        .onAppear{
+            dotAppearance.currentPageIndicatorTintColor = .init(.accentColor)
+            dotAppearance.pageIndicatorTintColor = .gray
+            print("\(pageIndex)")
+        }
+    }
+    
+    func incrementPage() {
+        pageIndex += 1
+    }
+    func decrementPage() {
+        pageIndex -= 1
+    }
+    func goToZero(){
+        pageIndex = 0
     }
 }
 

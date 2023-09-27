@@ -17,7 +17,9 @@ struct TablatureView: View {
         ZStack{
             VStack{
                 Text(musicName)
-                    .bold()
+                    .font(.custom("SofiaSans-Regular", size:18))
+                    .padding()
+                    .padding(.bottom,50)
                 Image(tablature)
                     .scaledToFit()
             }
