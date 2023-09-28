@@ -6,12 +6,28 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TutorialView: View {
+    
+    
     @State var pageIndex = 0
     private let dotAppearance = UIPageControl.appearance()
     private let page: [Int] = [0,1,2,3,4,5]
     @Binding var homeView: Bool
+    var tutorial: Tutorial
+    
+    //Coisas do CoreData
+    
+    @ObservedObject var tutorialController: TutorialController
+    
+    init(homeView: Binding<Bool>, context: NSManagedObjectContext, tutorial: Tutorial) { //E um init igual o da ContentView
+        self.tutorialController = TutorialController(context: context)
+        self.tutorial = tutorial
+        self._homeView = homeView
+    }
+    
+    
     var body: some View {
         TabView(selection: $pageIndex){
             ForEach(page, id: \.self){ page in
@@ -23,6 +39,7 @@ struct TutorialView: View {
                         Button(action: {
                             withAnimation{
                                 homeView.toggle()
+                                tutorialController.disableTutorial(tutorial: tutorial)
                             }
                             
                         }, label: {
@@ -81,6 +98,6 @@ struct TutorialView: View {
     }
 }
 
-#Preview {
-    TutorialView(homeView: .constant(false))
-}
+//#Preview {
+//    TutorialView(homeView: .constant(false))
+//}
