@@ -11,7 +11,7 @@ struct TutorialView: View {
     @State var pageIndex = 0
     private let dotAppearance = UIPageControl.appearance()
     private let page: [Int] = [0,1,2,3,4,5]
-    
+    @Binding var homeView: Bool
     var body: some View {
         TabView(selection: $pageIndex){
             ForEach(page, id: \.self){ page in
@@ -21,7 +21,10 @@ struct TutorialView: View {
                     if pageIndex == 5{
                         
                         Button(action: {
-                            //ir para a tela HOME que a bia esta desenvolvendo
+                            withAnimation{
+                                homeView.toggle()
+                            }
+                            
                         }, label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 29.5)
@@ -61,7 +64,10 @@ struct TutorialView: View {
             dotAppearance.currentPageIndicatorTintColor = .init(.accentColor)
             dotAppearance.pageIndicatorTintColor = .gray
             print("\(pageIndex)")
+            
         }
+        
+        
     }
     
     func incrementPage() {
@@ -76,5 +82,5 @@ struct TutorialView: View {
 }
 
 #Preview {
-    TutorialView()
+    TutorialView(homeView: .constant(false))
 }
