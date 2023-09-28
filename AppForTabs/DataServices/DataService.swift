@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class DataService{
     static var cardsHome: [CardsHome] = [
-        CardsHome(nome: "Cordas e Linhas", descricao: "Contagem e ordem das cordas"),
-        CardsHome(nome: "Casas", descricao: "Contagem e ordem das casas")
+        CardsHome(nome: "CORDAS ", descricao: "Contagem e ordem das cordas", cor: .blue),
+        CardsHome(nome: "CASAS", descricao: "Contagem e ordem das casas", cor: .pink),
+        CardsHome(nome: "AFINAÇÃO", descricao:"afinacao",cor:  .green)
     ]
 }
