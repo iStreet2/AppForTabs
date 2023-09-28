@@ -34,19 +34,89 @@ struct PageView: View, Identifiable {
                 .cornerRadius(100)
             }
             if page == 1{
-                Text("André Faz Legal")
+                VStack{
+                    HStack{
+                        Text("VAMOS")
+                        Text("LER")
+                            .foregroundColor(.accentColor)
+                        Text("JUNTOS?")
+                    }.font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
+                        .padding(.bottom, 5)
+                    
+                    Text("A tablatura é composta\npor alguns elementos")
+                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                        .multilineTextAlignment(.center)
+                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature2")
+                        .cornerRadius(40)
+                        .shadow(radius: 10, y: 10)
+                        .padding()
+                }
+                
+                
             }
             if page == 2{
-                Text("André Faz Legal")
+                VStack{
+                    Text("CORDAS")
+                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                        .foregroundColor(.blue)
+                        .padding(.bottom, 5)
+                    
+                    Text("Linhas que representam as\n cordas do instrumento")
+                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                        .multilineTextAlignment(.center)
+                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature3")
+                        .cornerRadius(40)
+                        .shadow(radius: 10, y: 10)
+                        .padding()
+                }
             }
             if page == 3{
-                Text("André Faz Legal")
+                VStack{
+                    Text("CASAS")
+                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                        .foregroundColor(Color(red: 1, green: 0, blue: 0.31))
+                        .padding(.bottom, 5)
+                    
+                    Text("Números que correspondem às\n casas que devem ser tocadas")
+                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                        .multilineTextAlignment(.center)
+                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature4")
+                        .cornerRadius(40)
+                        .shadow(radius: 10, y: 10)
+                        .padding()
+                }
             }
             if page == 4{
-                Text("André Faz Legal")
+                VStack{
+                    Text("AFINAÇÃO")
+                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                        .foregroundColor(.green)
+                        .padding(.bottom, 5)
+                    
+                    Text("Indica os sons emitidos pelas cordas,\n correspondendo a uma nota")
+                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                        .multilineTextAlignment(.center)
+                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature5")
+                        .cornerRadius(40)
+                        .shadow(radius: 10, y: 10)
+                        .padding()
+                }
             }
             if page == 5{
-                Text("André Faz Legal")
+                VStack{
+                    Text("TEMPO")
+                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                        .foregroundColor(Color(red: 0.45, green: 0.31, blue: 0.96))
+                        .padding(.bottom, 5)
+                    
+                    Text("Aponta quantas batidas ocorrem\n dentro de uma secção de música")
+                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                        .multilineTextAlignment(.center)
+                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature6")
+                        .cornerRadius(40)
+                        .shadow(radius: 10, y: 10)
+                        .padding()
+                }
             }
             
         }
