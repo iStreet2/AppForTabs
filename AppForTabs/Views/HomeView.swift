@@ -60,7 +60,7 @@ struct HomeView: View {
                         ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
                             VStack{
                                 NavigationLink {
-                                    Text("teste")
+                                    StringView()
                                 } label: {
                                     
                                     VStack{
@@ -76,18 +76,12 @@ struct HomeView: View {
                                     .cornerRadius(15)
                                     .padding(.horizontal)
                                     .padding(.bottom, 20)
-                                    
-                                    
                                 }
-                            }
-                            
-                            
+                            }                            
                         }
                         
                     }
                 }
-    
-                //.navigationTitle("Início")
             }
                     
             Spacer()

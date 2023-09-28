@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isShowing = false
+    @State var homeView = false
     var body: some View {
-        if isShowing{
-            TutorialView()
+        if homeView == false{
+            TutorialView(homeView: $homeView)
         }
+        
         else{
-            Button(action: {
-                isShowing.toggle()
-            }
-                   , label: {
-                Text("Começar App")
-            })
+            HomeView()
+                .transition(.push(from: Edge.trailing))
         }
+        
     }
-    
 }
 
 #Preview {
     ContentView()
+        .environmentObject(ViewModel())
 }

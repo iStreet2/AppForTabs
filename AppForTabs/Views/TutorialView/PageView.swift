@@ -29,6 +29,9 @@ struct PageView: View, Identifiable {
                             .padding()
                     }
                 }
+                .padding()
+                .background()
+                .cornerRadius(100)
             }
             if page == 1{
                 Text("André Faz Legal")
