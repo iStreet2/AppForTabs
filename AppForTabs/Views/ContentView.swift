@@ -23,7 +23,6 @@ struct ContentView: View {
     
     var body: some View {
         if homeView == false{
-            
             if tutorial[0].enabled != false {
                 TutorialView(homeView: $homeView, context: context, tutorial: tutorial[0])
             }

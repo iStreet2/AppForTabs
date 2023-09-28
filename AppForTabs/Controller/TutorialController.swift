@@ -13,6 +13,8 @@ class TutorialController: ObservableObject {
     
     init(context: NSManagedObjectContext){
         self.context = context
+        
+        initTutorial()
     }
     
     func saveContext() {
@@ -24,6 +26,13 @@ class TutorialController: ObservableObject {
     }
     
     func initTutorial(){
+        let fetchRequest: NSFetchRequest<Tutorial> = Tutorial.fetchRequest()
+        let amountCoreDataItems = try? context.count(for: fetchRequest)
+        
+        guard amountCoreDataItems == 0 else{
+            //ja foi inicializado pela primeira vez
+            return
+        }
         let tutorial = Tutorial(context: context)
         tutorial.enabled = true
         
