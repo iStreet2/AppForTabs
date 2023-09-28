@@ -46,10 +46,7 @@ struct HomeView: View {
                         .padding(.horizontal)
                         .padding(.bottom)
                         
-                    
-                    
-                    
-                    
+
                     Text("Atividades")
                         .bold()
                         .padding(.horizontal, 20)
