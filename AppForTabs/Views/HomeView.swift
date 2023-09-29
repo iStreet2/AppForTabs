@@ -37,10 +37,10 @@ struct HomeView: View {
                                 .font(.system(size: 32))
                                 .bold()
                             NavigationLink {
-                                TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
+                                 TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
                             } label: {
                                 Text("Rever Tutorial!")
-                            }
+                            }.padding(.leading,100)
 
                             
                         }
@@ -62,6 +62,11 @@ struct HomeView: View {
                                     .font(.custom("SofiaSans-Regular", size:14))
                             }
                             .padding(.top)
+                            NavigationLink {
+                                 TesteView()
+                            } label: {
+                                Text("Teste!")
+                            }
                         }
                         .padding(.trailing, 50)
                         .frame(width: 319 , height: 226)
