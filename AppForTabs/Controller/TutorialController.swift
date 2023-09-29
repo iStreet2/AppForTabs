@@ -44,4 +44,9 @@ class TutorialController: ObservableObject {
         saveContext()
     }
     
+    func enableTutorial(tutorial: Tutorial){
+        tutorial.enabled = true
+        saveContext()
+    }
+    
 }

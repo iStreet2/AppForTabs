@@ -35,7 +35,6 @@ struct TutorialView: View {
                     PageView(page: page)
                         .padding()
                     if pageIndex == 5{
-                        
                         Button(action: {
                             withAnimation{
                                 homeView.toggle()

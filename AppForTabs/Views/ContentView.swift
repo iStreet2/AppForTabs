@@ -27,13 +27,13 @@ struct ContentView: View {
                 TutorialView(homeView: $homeView, context: context, tutorial: tutorial[0])
             }
             else{
-                HomeView()
+                HomeView(homeView: $homeView, context: context, tutorial: tutorial[0])
             }
             
         }
         
         else{
-            HomeView()
+            HomeView(homeView: $homeView, context: context, tutorial: tutorial[0])
                 .transition(.push(from: Edge.trailing))
         }
         
