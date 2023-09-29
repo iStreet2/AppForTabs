@@ -72,18 +72,21 @@ struct HomeView: View {
                         .padding(.top)
                     }
                     .padding(.trailing, 50)
-                    .padding(.leading,25)
-                    .padding(.vertical)
-                    .frame(width: 319 , height: 226)
-                    .background(Color("Laranja"))
-                    .cornerRadius(15)
-                    .padding(.horizontal)
-                    .padding(.bottom)
+                        .frame(width: 319 , height: 226)
+                        .background(Color("Laranja"))
+                        .cornerRadius(15)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                        
+                    
+                    
+                    
                     
                     Text("Atividades")
                         .bold()
                         .padding(.horizontal, 20)
                         .font(.system(size:22))
+                    
                     
                     VStack{
                         ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
@@ -98,18 +101,17 @@ struct HomeView: View {
                                             .foregroundColor(.white)
                                             .font(.custom("SofiaSans-Regular", size:21))
                                             .padding(.trailing, 150)
-                                        
+                                            
                                     }
                                     .frame(width: 321 , height: 115 )
-                                    .padding(.horizontal,80)
-                                    .padding(.vertical,30)
                                     .background(vm.cardsHome[cardHome].cor)
                                     .cornerRadius(15)
-//                                    .padding(.horizontal)
+                                    .padding(.horizontal)
                                     .padding(.bottom, 20)
                                 }
                             }
                         }
+                        
                     }
                 }
             }
