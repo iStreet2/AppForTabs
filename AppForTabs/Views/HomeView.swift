@@ -73,26 +73,27 @@ struct HomeView: View {
                         
                         
                         
-                        
-                        Text("Atividades")
-                            .bold()
-                            .padding(.horizontal, 20)
-                            .font(.system(size:22))
-                        
-                        
-                        VStack{
-                            ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
-                                VStack{
-                                    NavigationLink {
-                                        StringView()
-                                    } label: {
-                                        
-                                        VStack{
-                                            Text(vm.cardsHome[cardHome].nome)
-                                                .bold()
-                                                .foregroundColor(.white)
-                                                .font(.custom("SofiaSans-Regular", size:21))
-                                                .padding(.trailing, 150)
+
+                    Text("Atividades")
+                        .bold()
+                        .padding(.horizontal, 20)
+                        .font(.system(size:22))
+                    
+                    
+                    VStack{
+                        ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
+                            VStack{
+                                NavigationLink {
+                                    StringView()
+                                } label: {
+                                    
+                                    VStack{
+                                        Text(vm.cardsHome[cardHome].nome)
+                                            .bold()
+                                            .foregroundColor(.white)
+                                            .font(.custom("SofiaSans-Regular", size:21))
+                                            .padding(.trailing, 150)
+
                                             
                                         }
                                         .frame(width: 321 , height: 115 )
