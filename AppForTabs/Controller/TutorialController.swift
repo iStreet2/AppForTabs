@@ -26,8 +26,8 @@ class TutorialController: ObservableObject {
     }
     
     func initTutorial(){
-        let fetchRequest: NSFetchRequest<Tutorial> = Tutorial.fetchRequest()
-        let amountCoreDataItems = try? context.count(for: fetchRequest)
+//        let fetchRequest: NSFetchRequest<Tutorial> = Tutorial.fetchRequest()
+        let amountCoreDataItems = try? context.count(for: Tutorial.fetchRequest())
         
         guard amountCoreDataItems == 0 else{
             //ja foi inicializado pela primeira vez
@@ -41,6 +41,11 @@ class TutorialController: ObservableObject {
     
     func disableTutorial(tutorial: Tutorial){
         tutorial.enabled = false
+        saveContext()
+    }
+    
+    func enableTutorial(tutorial: Tutorial){
+        tutorial.enabled = true
         saveContext()
     }
     

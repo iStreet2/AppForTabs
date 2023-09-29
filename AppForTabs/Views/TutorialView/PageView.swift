@@ -10,28 +10,24 @@ import SwiftUI
 struct PageView: View, Identifiable {
     var id = UUID()
     @State var page: Int
-    @State var scale = 0.5
+    @State var scale = 0.1
     var body: some View {
         Group{
             if page == 0{
                 VStack{
-                    VStack{
-                        Text("ISTO É UMA")
-                            .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
-                            .bold()
-                        Text("TABLATURA")
-                            .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
-                            .bold()
-                            .foregroundColor(.accentColor)
-                        TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
-                            .cornerRadius(40)
-                            .shadow(radius: 10, y:10)
-                            .padding()
-                    }
+                    Text("ISTO É UMA")
+                        .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
+                        .bold()
+                    Text("TABLATURA")
+                        .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
+                        .bold()
+                        .foregroundColor(.accentColor)
+                    TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
+                        .cornerRadius(40)
+                        .shadow(color: .gray,radius:7, y:8)
+                        .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
             }
             if page == 1{
                 VStack{
@@ -40,8 +36,9 @@ struct PageView: View, Identifiable {
                         Text("LER")
                             .foregroundColor(.accentColor)
                         Text("JUNTOS?")
-                    }.font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
-                        .padding(.bottom, 5)
+                    }
+                    .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
+                    .padding(.bottom, 5)
                     
                     Text("A tablatura é composta\npor alguns elementos")
                         .font(.custom("SofiaSans-Regular", size:16).weight(.light))
@@ -51,8 +48,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
-                
-                
+                .padding()
             }
             if page == 2{
                 VStack{
@@ -69,6 +65,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .padding()
             }
             if page == 3{
                 VStack{
@@ -85,6 +82,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .padding()
             }
             if page == 4{
                 VStack{
@@ -101,6 +99,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .padding()
             }
             if page == 5{
                 VStack{
@@ -117,13 +116,13 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .padding()
+
             }
             
         }
         .scaleEffect(scale) //Código da amimação
         .onAppear{
-//            _ = Animation.easeInOut(duration: 1)
-            //let repeated = baseAnimation.repeatForever(autoreverses: true)
             withAnimation() {
                 scale = 1
             }
