@@ -15,10 +15,9 @@ struct TutorialView: View {
     private let dotAppearance = UIPageControl.appearance()
     private let page: [Int] = [0,1,2,3,4,5]
     @Binding var homeView: Bool
-    var tutorial: Tutorial
     
     //Coisas do CoreData
-    
+    var tutorial: Tutorial
     @ObservedObject var tutorialController: TutorialController
     
     init(homeView: Binding<Bool>, context: NSManagedObjectContext, tutorial: Tutorial) { //E um init igual o da ContentView
@@ -40,7 +39,6 @@ struct TutorialView: View {
                                 homeView.toggle()
                                 tutorialController.disableTutorial(tutorial: tutorial)
                             }
-                            
                         }, label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 29.5)
@@ -51,7 +49,6 @@ struct TutorialView: View {
                             }
                         })
                         .padding()
-                        
                     }
                     else{
                         Button(
@@ -73,17 +70,14 @@ struct TutorialView: View {
                 }
             }
         }
+        .background(Color("Background"))
         .animation(.easeInOut, value: pageIndex)
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .interactive))
         .onAppear{
             dotAppearance.currentPageIndicatorTintColor = .init(.accentColor)
             dotAppearance.pageIndicatorTintColor = .gray
-            print("\(pageIndex)")
-            
         }
-        
-        
     }
     
     func incrementPage() {
@@ -91,9 +85,6 @@ struct TutorialView: View {
     }
     func decrementPage() {
         pageIndex -= 1
-    }
-    func goToZero(){
-        pageIndex = 0
     }
 }
 

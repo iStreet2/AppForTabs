@@ -24,12 +24,10 @@ struct PageView: View, Identifiable {
                         .foregroundColor(.accentColor)
                     TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
                         .cornerRadius(40)
-                        .shadow(radius: 10, y:10)
+                        .shadow(color: .gray,radius:7, y:8)
                         .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
             }
             if page == 1{
                 VStack{
@@ -51,8 +49,6 @@ struct PageView: View, Identifiable {
                         .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
             }
             if page == 2{
                 VStack{
@@ -70,8 +66,6 @@ struct PageView: View, Identifiable {
                         .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
             }
             if page == 3{
                 VStack{
@@ -89,8 +83,6 @@ struct PageView: View, Identifiable {
                         .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
             }
             if page == 4{
                 VStack{
@@ -108,8 +100,6 @@ struct PageView: View, Identifiable {
                         .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
             }
             if page == 5{
                 VStack{
@@ -127,8 +117,7 @@ struct PageView: View, Identifiable {
                         .padding()
                 }
                 .padding()
-                .background()
-                .cornerRadius(100)
+
             }
             
         }
@@ -142,5 +131,5 @@ struct PageView: View, Identifiable {
 }
 
 #Preview {
-    PageView(page: 4)
+    PageView(page: 0)
 }

@@ -12,132 +12,121 @@ struct HomeView: View {
     
     @EnvironmentObject var vm: ViewModel
     @State var bounceHeight: BounceHeight? = nil
+    @Binding var tutorialViewAgain: Bool
     
     //Coisas do CoreData
     var tutorial: Tutorial
     @ObservedObject var tutorialController: TutorialController
+    @Environment(\.managedObjectContext) var context
     @Binding var homeView: Bool
     
-    init(homeView: Binding <Bool>, context: NSManagedObjectContext, tutorial: Tutorial) {
+    init(homeView: Binding <Bool>, tutorialViewAgain: Binding <Bool>, context: NSManagedObjectContext, tutorial: Tutorial) {
         self.tutorialController = TutorialController(context: context)
         self.tutorial = tutorial
+        self._tutorialViewAgain = tutorialViewAgain
         self._homeView = homeView
     }
     
     var body: some View {
-        NavigationStack{
-            ScrollView(showsIndicators: false){
-                VStack(alignment: .leading){
-                    HStack{
-                        Text("Início")
-                            .padding(.leading, 20)
-                            .font(.system(size: 32))
-                            .bold()
-                        //                        Spacer()
-                        Button(action: {
-                            
-                            tutorialController.enableTutorial(tutorial: tutorial)
-                            bounceAnimation()
-                            
-                        }, label: {
-                            
-                            if tutorial.enabled == false{
-                                
-                                Text("Reativar tutorial!")
-                                    .offset(y: bounceHeight?.associatedOffset ?? 0)
+            NavigationStack{
+                ScrollView(showsIndicators: false){
+                    VStack(alignment: .leading){
+                        HStack(alignment: .center){
+                            Text("Início")
+                                .padding(.leading, 20)
+                                .font(.system(size: 32))
+                                .bold()
+                            NavigationLink {
+                                TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
+                            } label: {
+                                Text("Rever Tutorial!")
                             }
-                            else{
-                                Text("Tutorial Reativado!")
-                                    .offset(y: bounceHeight?.associatedOffset ?? 0)
-                            }
-                        })
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Mas antes, \no que são")
-                            .font(.custom("SofiaSans-Regular", size:20))
-                            .fontWeight(.black)
-                            .foregroundColor(.gray)
-                        Text("TABLATURAS?")
-                            .fontWeight(.black)
-                            .font(.custom("SofiaSans-Regular", size:28))
-                        Button(action: {}) {
-                            Text("Iniciar")
-                                .padding()
-                                .foregroundColor(.white)
-                                .frame(width: 114 , height: 35)
-                                .background(.orange)
-                                .cornerRadius(10)
-                                .font(.custom("SofiaSans-Regular", size:14))
+
+                            
                         }
-                        .padding(.top)
-                    }
-                    .padding(.trailing, 50)
+                        VStack(alignment: .leading) {
+                            Text("Mas antes, \no que são")
+                                .font(.custom("SofiaSans-Regular", size:20))
+                                .fontWeight(.black)
+                                .foregroundColor(.gray)
+                            Text("TABLATURAS?")
+                                .fontWeight(.black)
+                                .font(.custom("SofiaSans-Regular", size:28))
+                            Button(action: {}) {
+                                Text("Iniciar")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .frame(width: 114 , height: 35)
+                                    .background(.orange)
+                                    .cornerRadius(10)
+                                    .font(.custom("SofiaSans-Regular", size:14))
+                            }
+                            .padding(.top)
+                        }
+                        .padding(.trailing, 50)
                         .frame(width: 319 , height: 226)
                         .background(Color("Laranja"))
                         .cornerRadius(15)
                         .padding(.horizontal)
-                        .padding(.bottom)
+                        //                    .padding(.bottom)
                         
-                    
-                    
-                    
-                    
-                    Text("Atividades")
-                        .bold()
-                        .padding(.horizontal, 20)
-                        .font(.system(size:22))
-                    
-                    
-                    VStack{
-                        ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
-                            VStack{
-                                NavigationLink {
-                                    StringView()
-                                } label: {
-                                    
-                                    VStack{
-                                        Text(vm.cardsHome[cardHome].nome)
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .font(.custom("SofiaSans-Regular", size:21))
-                                            .padding(.trailing, 150)
+                        
+                        
+                        
+                        
+                        Text("Atividades")
+                            .bold()
+                            .padding(.horizontal, 20)
+                            .font(.system(size:22))
+                        
+                        
+                        VStack{
+                            ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
+                                VStack{
+                                    NavigationLink {
+                                        StringView()
+                                    } label: {
+                                        
+                                        VStack{
+                                            Text(vm.cardsHome[cardHome].nome)
+                                                .bold()
+                                                .foregroundColor(.white)
+                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                .padding(.trailing, 150)
                                             
+                                        }
+                                        .frame(width: 321 , height: 115 )
+                                        .background(vm.cardsHome[cardHome].cor)
+                                        .cornerRadius(15)
+                                        .padding(.horizontal)
+                                        .padding(.bottom, 20)
                                     }
-                                    .frame(width: 321 , height: 115 )
-                                    .background(vm.cardsHome[cardHome].cor)
-                                    .cornerRadius(15)
-                                    .padding(.horizontal)
-                                    .padding(.bottom, 20)
                                 }
                             }
+                            
                         }
-                        
                     }
                 }
+                Spacer()
             }
-            Spacer()
-        }
-        
-        .onAppear{
-            homeView = true
-        }
+
     }
     func bounceAnimation() {
-//        withAnimation(Animation.easeOut(duration: 0.3).delay(0)) {
-//            bounceHeight = .up100
-//        }
-//        withAnimation(Animation.easeInOut(duration: 0.04).delay(0)) {
-//            bounceHeight = .up100
-//        }
-//        withAnimation(Animation.easeIn(duration: 0.3).delay(0.34)) {
-//            bounceHeight = .base
-//        }
-//        withAnimation(Animation.easeOut(duration: 0.2).delay(0.64)) {
-//            bounceHeight = .up40
-//        }
-//        withAnimation(Animation.easeIn(duration: 0.2).delay(0.84)) {
-//            bounceHeight = .base
-//        }
+        //        withAnimation(Animation.easeOut(duration: 0.3).delay(0)) {
+        //            bounceHeight = .up100
+        //        }
+        //        withAnimation(Animation.easeInOut(duration: 0.04).delay(0)) {
+        //            bounceHeight = .up100
+        //        }
+        //        withAnimation(Animation.easeIn(duration: 0.3).delay(0.34)) {
+        //            bounceHeight = .base
+        //        }
+        //        withAnimation(Animation.easeOut(duration: 0.2).delay(0.64)) {
+        //            bounceHeight = .up40
+        //        }
+        //        withAnimation(Animation.easeIn(duration: 0.2).delay(0.84)) {
+        //            bounceHeight = .base
+        //        }
         withAnimation(Animation.easeOut(duration: 0.1).delay(0)) {
             bounceHeight = .up10
         }
