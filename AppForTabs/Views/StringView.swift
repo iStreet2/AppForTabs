@@ -60,16 +60,13 @@ struct StringView: View {
                                         .frame(width: 214, height: 300)
                                         .background(Color(red: 0.97, green: 0.98, blue: 0.98))
                                         .cornerRadius(9)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 9)
-                                                .stroke(Color(red: 0.93, green: 0.93, blue: 0.93), lineWidth: 1)
-                                        )
+                                       
                                     VStack{
                                         Rectangle()
                                             .stroke(style: StrokeStyle(lineWidth: 5, dash: [5]))
                                             .frame(width: 78, height: 78)
 //                                            .border(.black, width: 4)
-                                            .background(.gray)
+                                            .background(Color(red: 0.85, green: 0.85, blue: 0.85))
                                             .cornerRadius(7)
                                             .foregroundColor(.black)
                                             
@@ -77,16 +74,15 @@ struct StringView: View {
                                         Image("maozinha")
                                             .offset(y:-40)
                                             .offset(y: moving ? 0 : 55)
-                                            .padding(.leading, 50)
-                                            .padding(.bottom,20)
-                                            .animation(.spring(response: 4.5, dampingFraction: 0.0, blendDuration: 0.0).repeatForever(autoreverses: false), value: moving)
+                                            .padding(.leading, 53)
+                                           
+                                            .animation(.spring(response: 4.5, dampingFraction: 0, blendDuration: 0.0).repeatForever(autoreverses: false), value: moving)
                                         
                                     }
                                     
                                     
                                     .onAppear{
                                         moving.toggle()
-                                        
                                         
                                     }
                                     
@@ -98,14 +94,19 @@ struct StringView: View {
                                     Spacer()
                                     ZStack{
                                         Rectangle()
-                                            .foregroundColor(.clear)
+                                            .foregroundColor(.white)
                                             .frame(width: 332, height: 108)
-                                            .background(.white)
                                             .cornerRadius(16)
                                             .shadow(color: Color(red: 0.5, green: 0.5, blue: 0.5).opacity(0.2), radius: 10, x: 0, y: -10)
                                         HStack{
                                             Button(action: {
-                                                pop.toggle()
+                                                withAnimation(){
+                                                    scale = 0
+                                                    
+                                                    pop.toggle()
+                                                }
+                                                
+                                                
                                             }, label: {
                                                 
                                                 Text("NÃO VER \n NOVAMENTE")
@@ -117,6 +118,8 @@ struct StringView: View {
                                                 
                                                 
                                             })
+                                            .scaleEffect(scale)
+                                            
                                             Button(action: {
                                                 pop.toggle()
                                             }, label: {
@@ -128,12 +131,11 @@ struct StringView: View {
                                                     .cornerRadius(32)
                                             })
                                             
-                                        }.font(.custom("SofiaSans-Regular", size:14))
+                                        }
+                                        .font(.custom("SofiaSans-Regular", size:14))
                                     }
                                 }
                             }
-                            
-                            
                             
                         }
                         
@@ -151,6 +153,7 @@ struct StringView: View {
                         scale = 1
                     }
                 }
+                
             }
             
         }
