@@ -9,8 +9,6 @@ import SwiftUI
 import CoreData
 
 struct TutorialView: View {
-    
-    
     @State var pageIndex = 0
     private let dotAppearance = UIPageControl.appearance()
     private let page: [Int] = [0,1,2,3,4,5]
@@ -25,7 +23,6 @@ struct TutorialView: View {
         self.tutorial = tutorial
         self._homeView = homeView
     }
-    
     
     var body: some View {
         TabView(selection: $pageIndex){

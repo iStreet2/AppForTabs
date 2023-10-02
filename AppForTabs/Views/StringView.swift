@@ -6,25 +6,41 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct StringView: View {
     @State var pop = false
     @State var scale = 0.5
     @State var scaleXY = 1.0
-    
-    
     @State private var moving = false
-    
     @EnvironmentObject var vm: ViewModel
+    
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context
+    
+    var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
+    @ObservedObject var seeAgainController: SeeAgainController
+    
+    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
+        self.seeAgainController = SeeAgainController(context: context)
+        self.seeAgain = seeAgain
+    }
     
     var body: some View {
         ZStack{
             VStack{
-                ForEach(0 ..< 10, id: \.self){ i in
+                ForEach(0 ..< 8, id: \.self){ i in
                     Text("BIA SLAY muito")
                         .font(.custom("SofiaSans-Regular", size:60).weight(.heavy))
                 }
                 Spacer()
+                Button(action: {
+                    pop.toggle()
+                    seeAgain.enabled = true
+                }, label: {
+                    Text("ATIVAR POP-UP")
+                        .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
+                })
             }
             if pop{
                 Color.gray
@@ -43,8 +59,6 @@ struct StringView: View {
                             .fontWeight(.black)
                             .font(.custom("SofiaSans-Regular", size:20))
                             .multilineTextAlignment(.center)
-                        
-                        
                         VStack{
                             ZStack{
                                 Group{
@@ -60,35 +74,26 @@ struct StringView: View {
                                         .frame(width: 214, height: 300)
                                         .background(Color(red: 0.97, green: 0.98, blue: 0.98))
                                         .cornerRadius(9)
-                                       
+                                    
                                     VStack{
                                         Rectangle()
                                             .stroke(style: StrokeStyle(lineWidth: 5, dash: [5]))
                                             .frame(width: 78, height: 78)
-//                                            .border(.black, width: 4)
+                                        //                                            .border(.black, width: 4)
                                             .background(Color(red: 0.85, green: 0.85, blue: 0.85))
                                             .cornerRadius(7)
                                             .foregroundColor(.black)
-                                            
-                                        
                                         Image("maozinha")
                                             .offset(y:-40)
                                             .offset(y: moving ? 0 : 55)
                                             .padding(.leading, 53)
-                                           
+                                        
                                             .animation(.spring(response: 4.5, dampingFraction: 0, blendDuration: 0.0).repeatForever(autoreverses: false), value: moving)
                                         
                                     }
-                                    
-                                    
                                     .onAppear{
                                         moving.toggle()
-                                        
                                     }
-                                    
-                                    
-                                    
-                                    
                                 }.padding(.bottom,70)
                                 VStack{
                                     Spacer()
@@ -100,12 +105,13 @@ struct StringView: View {
                                             .shadow(color: Color(red: 0.5, green: 0.5, blue: 0.5).opacity(0.2), radius: 10, x: 0, y: -10)
                                         HStack{
                                             Button(action: {
-                                                withAnimation(){
+                                                withAnimation{
                                                     scale = 0
-                                                    
+                                                }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                                                     pop.toggle()
                                                 }
-                                                
+                                                seeAgain.enabled = false
                                                 
                                             }, label: {
                                                 
@@ -114,23 +120,23 @@ struct StringView: View {
                                                     .frame(width: 144 , height: 54)
                                                     .background(Color(red: 0.97, green: 0.98, blue: 0.98))
                                                     .cornerRadius(32)
-                                                
-                                                
-                                                
+                                                                                                
                                             })
-                                            .scaleEffect(scale)
                                             
                                             Button(action: {
-                                                pop.toggle()
+                                                withAnimation{
+                                                    scale = 0
+                                                }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                                                    pop.toggle()
+                                                }
                                             }, label: {
-                                                
                                                 Text("OK")
                                                     .foregroundColor(.white)
                                                     .frame(width: 144 , height: 54)
                                                     .background(.orange)
                                                     .cornerRadius(32)
                                             })
-                                            
                                         }
                                         .font(.custom("SofiaSans-Regular", size:14))
                                     }
@@ -138,8 +144,6 @@ struct StringView: View {
                             }
                             
                         }
-                        
-                        
                     }
                     .frame(width: 332 , height: 542)
                     .background(Color(red: 0.97, green: 0.98, blue: 0.98))
@@ -158,12 +162,14 @@ struct StringView: View {
             
         }
         .onAppear{
-            pop.toggle()
+            if seeAgain.enabled{
+                pop.toggle()
+            }
         }
     }
 }
 
-#Preview {
-    StringView()
-        .environmentObject(ViewModel())
-}
+//#Preview {
+//    StringView()
+//        .environmentObject(ViewModel())
+//}
