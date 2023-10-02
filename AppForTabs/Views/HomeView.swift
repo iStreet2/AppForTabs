@@ -12,18 +12,23 @@ struct HomeView: View {
     
     @EnvironmentObject var vm: ViewModel
     @State var bounceHeight: BounceHeight? = nil
-    @Binding var tutorialViewAgain: Bool
-    
-    //Coisas do CoreData
-    var tutorial: Tutorial
-    @ObservedObject var tutorialController: TutorialController
-    @Environment(\.managedObjectContext) var context
     @Binding var homeView: Bool
     
-    init(homeView: Binding <Bool>, tutorialViewAgain: Binding <Bool>, context: NSManagedObjectContext, tutorial: Tutorial) {
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context //Data Controller
+    
+    var tutorial: Tutorial
+    var seeAgain: SeeAgain
+    
+    @ObservedObject var tutorialController: TutorialController
+    @ObservedObject var seeAgainController: SeeAgainController
+    
+    
+    init(homeView: Binding <Bool>, context: NSManagedObjectContext, tutorial: Tutorial, seeAgain: SeeAgain) {
         self.tutorialController = TutorialController(context: context)
+        self.seeAgainController = SeeAgainController(context: context)
         self.tutorial = tutorial
-        self._tutorialViewAgain = tutorialViewAgain
+        self.seeAgain = seeAgain
         self._homeView = homeView
     }
     
@@ -40,9 +45,7 @@ struct HomeView: View {
                                 TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
                             } label: {
                                 Text("Rever Tutorial!")
-                            }
-
-                            
+                            }                            
                         }
                         VStack(alignment: .leading) {
                             Text("Mas antes, \no que são")
@@ -68,12 +71,6 @@ struct HomeView: View {
                         .background(Color("Laranja"))
                         .cornerRadius(15)
                         .padding(.horizontal)
-                        //                    .padding(.bottom)
-                        
-                        
-                        
-                        
-
                     Text("Atividades")
                         .bold()
                         .padding(.horizontal, 20)
@@ -84,7 +81,15 @@ struct HomeView: View {
                         ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
                             VStack{
                                 NavigationLink {
-                                    StringView()
+                                    if cardHome == 0{
+                                        StringView(context: context, seeAgain: seeAgain)
+                                    }
+                                    else if cardHome == 1{
+                                        FretView()
+                                    }
+                                    else{
+                                        //Banana
+                                    }
                                 } label: {
                                     
                                     VStack{
@@ -93,8 +98,6 @@ struct HomeView: View {
                                             .foregroundColor(.white)
                                             .font(.custom("SofiaSans-Regular", size:21))
                                             .padding(.trailing, 150)
-
-                                            
                                         }
                                         .frame(width: 321 , height: 115 )
                                         .background(vm.cardsHome[cardHome].cor)
