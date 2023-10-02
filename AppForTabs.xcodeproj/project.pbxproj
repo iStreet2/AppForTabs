@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0082761D2AC7453F0079359B /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082761C2AC7453F0079359B /* TesteView.swift */; };
+		00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */; };
+		00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */; };
 		3B1ACD982AC1F0D600240FA5 /* AppForTabsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1ACD972AC1F0D600240FA5 /* AppForTabsApp.swift */; };
 		3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1ACD992AC1F0D600240FA5 /* ContentView.swift */; };
 		3B1ACD9C2AC1F0D700240FA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1ACD9B2AC1F0D700240FA5 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		0082761C2AC7453F0079359B /* TesteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteView.swift; sourceTree = "<group>"; };
+		00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectanglesModel.swift; sourceTree = "<group>"; };
+		00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableItem.swift; sourceTree = "<group>"; };
 		3B1ACD942AC1F0D600240FA5 /* AppForTabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppForTabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1ACD972AC1F0D600240FA5 /* AppForTabsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppForTabsApp.swift; sourceTree = "<group>"; };
 		3B1ACD992AC1F0D600240FA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				3BBAD6832AC369870012B3C8 /* CardsHome.swift */,
+				00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */,
+				00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,15 +253,16 @@
 				3BCB4B7A2AC7445B006F3C1B /* SeeAgainController.swift in Sources */,
 				3B2115992AC5F112005B796F /* StringView.swift in Sources */,
 				3BBAD6792AC368A90012B3C8 /* HomeView.swift in Sources */,
+				00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */,
 				3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */,
 				3BBAD6842AC369870012B3C8 /* CardsHome.swift in Sources */,
 				3B1ACD982AC1F0D600240FA5 /* AppForTabsApp.swift in Sources */,
 				3BBAD67D2AC368E10012B3C8 /* ViewModel.swift in Sources */,
 				3BBAD6752AC367A10012B3C8 /* DataService.swift in Sources */,
 				3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */,
+				00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */,
 				0082761D2AC7453F0079359B /* TesteView.swift in Sources */,
 				3BE885812AC74BCE008AA004 /* FretView.swift in Sources */,
-
 				3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */,
 				3BBAD6802AC3690D0012B3C8 /* TablatureView.swift in Sources */,
 				3B2115A12AC60550005B796F /* TutorialController.swift in Sources */,

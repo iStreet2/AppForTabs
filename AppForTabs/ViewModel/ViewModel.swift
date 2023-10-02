@@ -9,8 +9,11 @@ import Foundation
 
 class ViewModel: ObservableObject{
     @Published var cardsHome: [CardsHome]
+    @Published var retangulos: [DraggableItem]
     
     init(){
         self.cardsHome = DataService.cardsHome
+        self.retangulos = DataService.retangulos
+        
     }
 }
