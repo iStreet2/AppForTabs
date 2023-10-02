@@ -15,13 +15,15 @@ struct PageView: View, Identifiable {
         Group{
             if page == 0{
                 VStack{
-                    Text("ISTO É UMA")
-                        .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
-                        .bold()
-                    Text("TABLATURA")
-                        .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
-                        .bold()
-                        .foregroundColor(.accentColor)
+                    Group{
+                        Text("ISTO É UMA")
+                            .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
+                            .bold()
+                        Text("TABLATURA")
+                            .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
+                            .bold()
+                            .foregroundColor(.accentColor)
+                    }
                     TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
                         .cornerRadius(40)
                         .shadow(color: .gray,radius:7, y:8)
