@@ -30,6 +30,7 @@
 		3BE885812AC74BCE008AA004 /* FretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885802AC74BCE008AA004 /* FretView.swift */; };
 		3BE885842ACB3EA7008AA004 /* StageFretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885832ACB3EA7008AA004 /* StageFretView.swift */; };
 		3BE885862ACB4A23008AA004 /* CongratulationsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885852ACB4A23008AA004 /* CongratulationsSheetView.swift */; };
+		3BE885892ACB63CF008AA004 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885882ACB63CF008AA004 /* PopUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		3BE885802AC74BCE008AA004 /* FretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretView.swift; sourceTree = "<group>"; };
 		3BE885832ACB3EA7008AA004 /* StageFretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFretView.swift; sourceTree = "<group>"; };
 		3BE885852ACB4A23008AA004 /* CongratulationsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsSheetView.swift; sourceTree = "<group>"; };
+		3BE885882ACB63CF008AA004 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +157,8 @@
 				3B1ACD992AC1F0D600240FA5 /* ContentView.swift */,
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
 				0082761C2AC7453F0079359B /* TesteView.swift */,
-				3B2115982AC5F112005B796F /* StringView.swift */,
+				3BE885882ACB63CF008AA004 /* PopUpView.swift */,
+				3BE885872ACB6222008AA004 /* StringView */,
 				3BE885822ACB3E7B008AA004 /* FretView */,
 				3BBAD67E2AC368E90012B3C8 /* TutorialView */,
 			);
@@ -188,6 +191,14 @@
 				3BE885852ACB4A23008AA004 /* CongratulationsSheetView.swift */,
 			);
 			path = FretView;
+			sourceTree = "<group>";
+		};
+		3BE885872ACB6222008AA004 /* StringView */ = {
+			isa = PBXGroup;
+			children = (
+				3B2115982AC5F112005B796F /* StringView.swift */,
+			);
+			path = StringView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE885892ACB63CF008AA004 /* PopUpView.swift in Sources */,
 				3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */,
 				3B21159F2AC5FDA5005B796F /* DataController.swift in Sources */,
 				3BE885842ACB3EA7008AA004 /* StageFretView.swift in Sources */,
