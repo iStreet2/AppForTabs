@@ -29,6 +29,7 @@ struct PageView: View, Identifiable {
                         .shadow(color: .gray,radius:7, y:8)
                         .padding()
                 }
+                .accessibilityElement(children: .combine)
                 .padding()
             }
             if page == 1{

@@ -13,6 +13,7 @@ struct RectanglesModel: View, Hashable{
     var color: Color
     var numero: String
     var id: Int
+
     
     var body: some View{
         ZStack{
