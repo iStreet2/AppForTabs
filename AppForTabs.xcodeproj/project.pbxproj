@@ -26,6 +26,8 @@
 		3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6882AC37B1C0012B3C8 /* PageView.swift */; };
 		3BCB4B7A2AC7445B006F3C1B /* SeeAgainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB4B792AC7445B006F3C1B /* SeeAgainController.swift */; };
 		3BE885812AC74BCE008AA004 /* FretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885802AC74BCE008AA004 /* FretView.swift */; };
+		3BE885842ACB3EA7008AA004 /* StageFretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885832ACB3EA7008AA004 /* StageFretView.swift */; };
+		3BE885862ACB4A23008AA004 /* CongratulationsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885852ACB4A23008AA004 /* CongratulationsSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		3BBAD6882AC37B1C0012B3C8 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		3BCB4B792AC7445B006F3C1B /* SeeAgainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAgainController.swift; sourceTree = "<group>"; };
 		3BE885802AC74BCE008AA004 /* FretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretView.swift; sourceTree = "<group>"; };
+		3BE885832ACB3EA7008AA004 /* StageFretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFretView.swift; sourceTree = "<group>"; };
+		3BE885852ACB4A23008AA004 /* CongratulationsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +152,7 @@
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
 				0082761C2AC7453F0079359B /* TesteView.swift */,
 				3B2115982AC5F112005B796F /* StringView.swift */,
-				3BE885802AC74BCE008AA004 /* FretView.swift */,
+				3BE885822ACB3E7B008AA004 /* FretView */,
 				3BBAD67E2AC368E90012B3C8 /* TutorialView */,
 			);
 			path = Views;
@@ -168,6 +172,16 @@
 				3BBAD67C2AC368E10012B3C8 /* ViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3BE885822ACB3E7B008AA004 /* FretView */ = {
+			isa = PBXGroup;
+			children = (
+				3BE885802AC74BCE008AA004 /* FretView.swift */,
+				3BE885832ACB3EA7008AA004 /* StageFretView.swift */,
+				3BE885852ACB4A23008AA004 /* CongratulationsSheetView.swift */,
+			);
+			path = FretView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +258,9 @@
 			files = (
 				3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */,
 				3B21159F2AC5FDA5005B796F /* DataController.swift in Sources */,
+				3BE885842ACB3EA7008AA004 /* StageFretView.swift in Sources */,
 				3BCB4B7A2AC7445B006F3C1B /* SeeAgainController.swift in Sources */,
+				3BE885862ACB4A23008AA004 /* CongratulationsSheetView.swift in Sources */,
 				3B2115992AC5F112005B796F /* StringView.swift in Sources */,
 				3BBAD6792AC368A90012B3C8 /* HomeView.swift in Sources */,
 				3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */,
@@ -255,7 +271,6 @@
 				3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */,
 				0082761D2AC7453F0079359B /* TesteView.swift in Sources */,
 				3BE885812AC74BCE008AA004 /* FretView.swift in Sources */,
-
 				3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */,
 				3BBAD6802AC3690D0012B3C8 /* TablatureView.swift in Sources */,
 				3B2115A12AC60550005B796F /* TutorialController.swift in Sources */,
@@ -392,7 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppForTabs/Preview Content\"";
-				DEVELOPMENT_TEAM = 8T6XBC66CF;
+				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppForTabs/Info.plist;
@@ -406,7 +421,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bia.AppForTabs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bonito.AppForTabs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -422,7 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppForTabs/Preview Content\"";
-				DEVELOPMENT_TEAM = 8T6XBC66CF;
+				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppForTabs/Info.plist;
@@ -436,7 +451,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bia.AppForTabs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bonito.AppForTabs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
