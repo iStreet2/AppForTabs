@@ -11,16 +11,23 @@ import CoreData
 struct ContentView: View {
     
     @State var homeView = false
-    @State var tutorialViewAgain = false
     
     //Coisa do CoreData
+    @Environment(\.managedObjectContext) var context //Contexto, DataController
+    
+    //Coisas do TutorialController
     @ObservedObject var tutorialController: TutorialController
-    @Environment(\.managedObjectContext) var context
     @FetchRequest(sortDescriptors: []) var tutorial: FetchedResults<Tutorial>
+    
+    //Coisas do SeeAgainController
+    @ObservedObject var seeAgainController: SeeAgainController
+    @FetchRequest(sortDescriptors: []) var seeAgain: FetchedResults<SeeAgain> //Vetor de todas minhas instâncias
     
     init(context: NSManagedObjectContext) {
         self.tutorialController = TutorialController(context: context)
+        self.seeAgainController = SeeAgainController(context: context)
     }
+    
     
     var body: some View {
         if homeView == false{
@@ -28,11 +35,11 @@ struct ContentView: View {
                 TutorialView(homeView: $homeView, context: context, tutorial: tutorial[0])
             }
             else{
-                HomeView(homeView: $homeView, tutorialViewAgain: $tutorialViewAgain, context: context, tutorial: tutorial[0])
+                HomeView(homeView: $homeView, context: context, tutorial: tutorial[0], seeAgain: seeAgain[0])
             }
         }
         else{
-            HomeView(homeView: $homeView, tutorialViewAgain: $tutorialViewAgain, context: context, tutorial: tutorial[0])
+            HomeView(homeView: $homeView, context: context, tutorial: tutorial[0], seeAgain: seeAgain[0])
                 .transition(.push(from: Edge.trailing))
         }
         

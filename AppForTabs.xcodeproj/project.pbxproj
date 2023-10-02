@@ -24,6 +24,8 @@
 		3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6812AC3691B0012B3C8 /* TutorialView.swift */; };
 		3BBAD6842AC369870012B3C8 /* CardsHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6832AC369870012B3C8 /* CardsHome.swift */; };
 		3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6882AC37B1C0012B3C8 /* PageView.swift */; };
+		3BCB4B7A2AC7445B006F3C1B /* SeeAgainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB4B792AC7445B006F3C1B /* SeeAgainController.swift */; };
+		3BE885812AC74BCE008AA004 /* FretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE885802AC74BCE008AA004 /* FretView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		3BBAD6812AC3691B0012B3C8 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		3BBAD6832AC369870012B3C8 /* CardsHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsHome.swift; sourceTree = "<group>"; };
 		3BBAD6882AC37B1C0012B3C8 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		3BCB4B792AC7445B006F3C1B /* SeeAgainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAgainController.swift; sourceTree = "<group>"; };
+		3BE885802AC74BCE008AA004 /* FretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			children = (
 				3B21159E2AC5FDA5005B796F /* DataController.swift */,
 				3B2115A02AC60550005B796F /* TutorialController.swift */,
+				3BCB4B792AC7445B006F3C1B /* SeeAgainController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
 				0082761C2AC7453F0079359B /* TesteView.swift */,
 				3B2115982AC5F112005B796F /* StringView.swift */,
+				3BE885802AC74BCE008AA004 /* FretView.swift */,
 				3BBAD67E2AC368E90012B3C8 /* TutorialView */,
 			);
 			path = Views;
@@ -201,11 +207,12 @@
 			};
 			buildConfigurationList = 3B1ACD8F2AC1F0D600240FA5 /* Build configuration list for PBXProject "AppForTabs" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 3B1ACD8B2AC1F0D600240FA5;
 			productRefGroup = 3B1ACD952AC1F0D600240FA5 /* Products */;
@@ -237,6 +244,7 @@
 			files = (
 				3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */,
 				3B21159F2AC5FDA5005B796F /* DataController.swift in Sources */,
+				3BCB4B7A2AC7445B006F3C1B /* SeeAgainController.swift in Sources */,
 				3B2115992AC5F112005B796F /* StringView.swift in Sources */,
 				3BBAD6792AC368A90012B3C8 /* HomeView.swift in Sources */,
 				3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */,
@@ -246,6 +254,8 @@
 				3BBAD6752AC367A10012B3C8 /* DataService.swift in Sources */,
 				3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */,
 				0082761D2AC7453F0079359B /* TesteView.swift in Sources */,
+				3BE885812AC74BCE008AA004 /* FretView.swift in Sources */,
+
 				3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */,
 				3BBAD6802AC3690D0012B3C8 /* TablatureView.swift in Sources */,
 				3B2115A12AC60550005B796F /* TutorialController.swift in Sources */,
