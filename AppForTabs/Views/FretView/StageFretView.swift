@@ -13,6 +13,9 @@ struct StageFretView: View, Identifiable {
     @State var pinkHouse = true
     @State var blueHouse = true
     @State var sheetView = false
+    @State private var draggedItem: DraggableItem?
+    @EnvironmentObject var vm: ViewModel
+    
     var body: some View {
         if page == 1{
             VStack{
@@ -100,6 +103,7 @@ struct StageFretView: View, Identifiable {
                 )
                 .multilineTextAlignment(.center)
                 Spacer()
+                
                 ZStack{
                     Image("GuitarArm")
                         .resizable()
@@ -108,6 +112,42 @@ struct StageFretView: View, Identifiable {
                     HStack(spacing: 0){
                         
                     }
+                }
+                VStack{
+//                    VStack{
+//                        ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
+//                            vm.retangulos[i].destination
+//                                .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
+//                        }.padding()
+//                    }
+//                    
+                    HStack{
+                        ForEach(0 ..< vm.retangulos.count/2, id: \.self){ i in
+                            vm.retangulos[i].origin
+                                .onDrag{
+                                    self.draggedItem = vm.retangulos[i]
+                                    return NSItemProvider()
+                                }.padding()
+                            
+                        }
+                    }
+                    .padding(.trailing,30)
+                    
+                    HStack{
+                        ForEach(vm.retangulos.count/2 ..< vm.retangulos.count, id: \.self){ i in
+                            vm.retangulos[i].origin
+                                .onDrag{
+                                    self.draggedItem = vm.retangulos[i]
+                                    return NSItemProvider()
+                                }.padding()
+                                
+                            
+                        }
+                    }
+                    .padding(.leading,30)
+                    
+                    Spacer()
+                                    
                 }
                 Spacer()
             }
