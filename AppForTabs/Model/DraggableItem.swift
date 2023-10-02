@@ -11,4 +11,5 @@ struct DraggableItem: Hashable{
     let uuid = UUID()
     var origin: RectanglesModel
     var destination: RectanglesModel
+    
 }

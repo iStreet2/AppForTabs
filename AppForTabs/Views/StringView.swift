@@ -38,11 +38,13 @@ struct StringView: View {
             VStack{
                 
                 VStack{
+                    
                     ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
-                        vm.retangulos[i].destination
-                            .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
+                        HStack{
+                            vm.retangulos[i].destination
+                                .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
                             
-                        
+                        }
                     }.padding()
                 }
                 
@@ -73,28 +75,23 @@ struct StringView: View {
                 .padding(.leading,30)
                 
                 Spacer()
-                Button(action: {
-                    pop.toggle()
-                    seeAgain.enabled = true
-                }, label: {
-                    Text("ATIVAR POP-UP")
-                        .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
-                })
+
             }
+            
             if pop{
                 Color.gray
                     .ignoresSafeArea()
                     .opacity(0.4)
                 ZStack{
                     VStack() {
-                        HStack{
-                            Text("ARRASTE")
+                        VStack{
+                            Text("SEGURE E ARRASTE")
                                 .foregroundColor(.orange)
                             Text("OS ELEMENTOS")
                         }.padding(.top, 60)
                             .fontWeight(.black)
                             .font(.custom("SofiaSans-Regular", size:20))
-                        Text( "ATÉ O PONTILHADO")
+                        Text( "ATÉ O SOMBREADO")
                             .fontWeight(.black)
                             .font(.custom("SofiaSans-Regular", size:20))
                             .multilineTextAlignment(.center)
@@ -150,7 +147,7 @@ struct StringView: View {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                                                     pop.toggle()
                                                 }
-                                                seeAgain.enabled = false
+                                                seeAgainController.disableSeeAgain(seeAgain:seeAgain)
                                                 
                                             }, label: {
                                                 
@@ -199,12 +196,21 @@ struct StringView: View {
                 
             }
             
+        }.toolbar{
+            Button(action: {
+                pop.toggle()
+                seeAgain.enabled = true
+            }, label: {
+                Image(systemName: "questionmark.circle")
+                  
+            })
         }
         .onAppear{
             if seeAgain.enabled{
                 pop.toggle()
             }
         }
+        
     }
 }
 
@@ -222,6 +228,7 @@ struct DropViewDelegate: DropDelegate{
         if destinationItem.destination == draggedItem?.destination{
             destinationItem.destination.color = draggedItem?.origin.color ?? .black
             destinationItem.destination.numero = draggedItem?.origin.numero ?? " "
+           
             withAnimation(.easeInOut){
                 destinationItem.origin.color = Color("Background")
                 destinationItem.origin.numero = ""

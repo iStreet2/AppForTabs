@@ -13,22 +13,47 @@ struct RectanglesModel: View, Hashable{
     var color: Color
     var numero: String
     var id: Int
+    var linha: Bool
+  
     
     var body: some View{
-        ZStack{
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(width: 54, height: 54)
-                .background(color)
-                .cornerRadius(10)
-            Text(numero)
-                .font(.custom("SofiaSans-Regular", size:30))
-                .bold()
-
+        
+        if linha == true{
+            HStack{
+                ZStack{
+                    Rectangle()
+                        
+                        .foregroundColor(.clear)
+                        .frame(width: 54, height: 54)
+                        .background(color)
+                        .cornerRadius(10)
+                    Text(numero)
+                        .font(.custom("SofiaSans-Regular", size:30))
+                        .bold()
+                    
+                }
+                
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 225, height: 6)
+                    .background(color)
+                    .cornerRadius(10)
+                
+                
+            }
+        }
+            else{
+                ZStack{
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 54, height: 54)
+                        .background(color)
+                        .cornerRadius(10)
+                    Text(numero)
+                        .font(.custom("SofiaSans-Regular", size:30))
+                        .bold()
+            }
         }
     }
 }
 
-#Preview {
-    RectanglesModel(color: .pink, numero: "2", id: 2)
-}
