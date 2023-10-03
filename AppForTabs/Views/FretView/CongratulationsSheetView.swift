@@ -32,8 +32,7 @@ struct CongratulationsSheetView: View {
                     }
                 },label: {
                     Text("Continuar")
-                        .foregroundStyle(Color("Text"))
-                        .colorInvert()
+                        .foregroundStyle(.white)
                         .padding()
                         .frame(width: 336)
                         .background(.accent)

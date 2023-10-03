@@ -33,7 +33,10 @@ struct HomeView: View {
     }
     
     var body: some View {
-            NavigationStack{
+        NavigationStack{
+            ZStack{
+                Color("Background")
+                    .ignoresSafeArea()
                 ScrollView(showsIndicators: false){
                     VStack(alignment: .leading){
                         HStack(alignment: .center){
@@ -41,71 +44,64 @@ struct HomeView: View {
                                 .padding(.leading, 20)
                                 .font(.system(size: 32))
                                 .bold()
-                            NavigationLink {
-                                 TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
-                            } label: {
-                                Text("Rever Tutorial!")
-                            }.padding(.leading,100)
-
                             
-
+                            
+                            
+                            
                         }
                         VStack(alignment: .leading) {
                             Text("Mas antes, \no que são")
-                                .font(.custom("SofiaSans-Regular", size:20))
-                                .fontWeight(.black)
-                                .foregroundColor(.gray)
+                                .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
                             Text("TABLATURAS?")
-                                .fontWeight(.black)
-                                .font(.custom("SofiaSans-Regular", size:28))
+                                .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
+                                .foregroundStyle(Color("StrongOrange"))
                             Button(action: {}) {
                                 Text("Iniciar")
+                                    .bold()
                                     .padding()
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .frame(width: 114 , height: 35)
                                     .background(.orange)
                                     .cornerRadius(10)
                                     .font(.custom("SofiaSans-Regular", size:14))
                             }
                             .padding(.top)
-                            NavigationLink {
-                                 TesteView()
-                            } label: {
-                                Text("Teste!")
-                            }
                         }
-                        .padding(.trailing, 50)
+                        .padding(.trailing, 100)
                         .frame(width: 319 , height: 226)
-                        .background(Color("Laranja"))
+                        .background(Color("OrangeBackground"))
                         .cornerRadius(15)
                         .padding(.horizontal)
-                    Text("Atividades")
-                        .bold()
-                        .padding(.horizontal, 20)
-                        .font(.system(size:22))
-                    
-                    
-                    VStack{
-                        ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
-                            VStack{
-                                NavigationLink {
-                                    if cardHome == 0{
-                                        StringView(context: context, seeAgain: seeAgain)
-                                    }
-                                    else if cardHome == 1{
-                                        FretView()
-                                    }
-                                    else{
-                                        //Banana
-                                    }
-                                } label: {
-                                    
-                                    VStack{
-                                        Text(vm.cardsHome[cardHome].nome)
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .font(.custom("SofiaSans-Regular", size:21))
-                                            .padding(.trailing, 150)
+                        
+                        Text("Atividades")
+                            .padding(.top)
+                            .bold()
+                            .padding(.horizontal, 20)
+                            .font(.system(size:22))
+                        
+                        
+                        VStack{
+                            ForEach(0 ..< vm.cardsHome.count, id: \.self){ cardHome in
+                                VStack{
+                                    NavigationLink {
+                                        if cardHome == 0{
+                                            StringView(context: context, seeAgain: seeAgain)
+                                        }
+                                        else if cardHome == 1{
+                                            FretView()
+                                        }
+                                        else{
+                                            //Banana
+                                        }
+                                    } label: {
+                                        
+                                        VStack{
+                                            Text(vm.cardsHome[cardHome].nome)
+                                                .bold()
+                                                .foregroundColor(.white)
+                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                .padding(.trailing, 150)
                                         }
                                         .frame(width: 321 , height: 115 )
                                         .background(vm.cardsHome[cardHome].cor)
@@ -121,29 +117,13 @@ struct HomeView: View {
                 }
                 Spacer()
             }
-
-    }
-    func bounceAnimation() {
-        //        withAnimation(Animation.easeOut(duration: 0.3).delay(0)) {
-        //            bounceHeight = .up100
-        //        }
-        //        withAnimation(Animation.easeInOut(duration: 0.04).delay(0)) {
-        //            bounceHeight = .up100
-        //        }
-        //        withAnimation(Animation.easeIn(duration: 0.3).delay(0.34)) {
-        //            bounceHeight = .base
-        //        }
-        //        withAnimation(Animation.easeOut(duration: 0.2).delay(0.64)) {
-        //            bounceHeight = .up40
-        //        }
-        //        withAnimation(Animation.easeIn(duration: 0.2).delay(0.84)) {
-        //            bounceHeight = .base
-        //        }
-        withAnimation(Animation.easeOut(duration: 0.1).delay(0)) {
-            bounceHeight = .up10
-        }
-        withAnimation(Animation.easeIn(duration: 0.1).delay(0.14)) {
-            bounceHeight = .none
+            .toolbar{
+                NavigationLink {
+                    TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+            }
         }
     }
 }

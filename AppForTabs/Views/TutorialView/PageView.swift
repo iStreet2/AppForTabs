@@ -26,7 +26,7 @@ struct PageView: View, Identifiable {
                     }
                     TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
                         .cornerRadius(40)
-                        .shadow(color: .gray,radius:7, y:8)
+                        .shadow(radius:7, y:8)
                         .padding()
                 }
                 .accessibilityElement(children: .combine)

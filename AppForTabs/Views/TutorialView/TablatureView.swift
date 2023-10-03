@@ -25,7 +25,7 @@ struct TablatureView: View {
             }
             .padding()
         }
-        .background()
+        .background(.white)
     }
 }
 
