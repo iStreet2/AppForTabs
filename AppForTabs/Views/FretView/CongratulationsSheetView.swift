@@ -44,9 +44,7 @@ struct CongratulationsSheetView: View {
             Spacer()
         }
         .background(Color("OrangeBackground"))
-        
-        
-        
+        .accessibilityElement(children: .combine)
     }
 }
 

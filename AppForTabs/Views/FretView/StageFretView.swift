@@ -84,6 +84,7 @@ struct StageFretView: View, Identifiable {
                 CongratulationsSheetView(text1: "Boa!",text2:"O espaço entre dois trastes é chamado de Casa.", page: $page)
                     .presentationDetents([.fraction(0.286),.large])
                     .interactiveDismissDisabled()
+                    .accessibilityElement(children: .combine)
             }
             .padding()
         }

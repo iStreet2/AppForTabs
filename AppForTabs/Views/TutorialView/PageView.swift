@@ -51,6 +51,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .accessibilityElement(children: .combine)
                 .padding()
             }
             if page == 2{
@@ -68,6 +69,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .accessibilityElement(children: .combine)
                 .padding()
             }
             if page == 3{
@@ -85,6 +87,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .accessibilityElement(children: .combine)
                 .padding()
             }
             if page == 4{
@@ -102,6 +105,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .accessibilityElement(children: .combine)
                 .padding()
             }
             if page == 5{
@@ -119,6 +123,7 @@ struct PageView: View, Identifiable {
                         .shadow(radius: 10, y: 10)
                         .padding()
                 }
+                .accessibilityElement(children: .combine)
                 .padding()
 
             }
