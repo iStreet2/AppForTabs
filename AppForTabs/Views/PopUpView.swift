@@ -30,18 +30,19 @@ struct PopUpView: View {
     var body: some View {
         Color.gray
             .ignoresSafeArea()
-            .opacity(0.4)
+            .opacity(0.6)
         ZStack{
             VStack() {
                 HStack{
                     Text("ARRASTE")
-                        .foregroundColor(.orange)
+                        .foregroundStyle(Color("StrongOrange"))
                     Text("OS ELEMENTOS")
-                }.padding(.top, 60)
-                    .fontWeight(.black)
-                    .font(.custom("SofiaSans-Regular", size:20))
-                Text( "ATÉ O PONTILHADO")
-                    .fontWeight(.black)
+                }
+                .padding(.top, 60)
+                .fontWeight(.heavy)
+                .font(.custom("SofiaSans-Regular", size:20))
+                Text("ATÉ O PONTILHADO")
+                    .fontWeight(.heavy)
                     .font(.custom("SofiaSans-Regular", size:20))
                     .multilineTextAlignment(.center)
                 VStack{
@@ -52,7 +53,7 @@ struct PopUpView: View {
                                 .frame(width: 238, height: 324)
                                 .background(.white)
                                 .cornerRadius(16)
-                                .shadow(color: Color(red: 0.5, green: 0.5, blue: 0.5).opacity(0.25), radius: 10, x: 0, y: 10)
+                                .shadow(radius: 10, x: 0, y: 10)
                             
                             Rectangle()
                                 .foregroundColor(.clear)
@@ -64,7 +65,7 @@ struct PopUpView: View {
                                 Rectangle()
                                     .stroke(style: StrokeStyle(lineWidth: 5, dash: [5]))
                                     .frame(width: 78, height: 78)
-                                    .background(Color(red: 0.85, green: 0.85, blue: 0.85))
+                                    .background(Color("Background3"))
                                     .cornerRadius(7)
                                     .foregroundColor(.black)
                                 Image("maozinha")
@@ -83,10 +84,10 @@ struct PopUpView: View {
                             Spacer()
                             ZStack{
                                 Rectangle()
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(Color("Background2"))
                                     .frame(width: 332, height: 108)
-                                    .cornerRadius(16)
-                                    .shadow(color: Color(red: 0.5, green: 0.5, blue: 0.5).opacity(0.2), radius: 10, x: 0, y: -10)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 10, x: 0, y: -10)
                                 HStack{
                                     Button(action: {
                                         withAnimation{
@@ -100,9 +101,10 @@ struct PopUpView: View {
                                     }, label: {
                                         
                                         Text("NÃO VER \n NOVAMENTE")
-                                            .foregroundColor(.gray)
+                                            .bold()
+                                            .foregroundStyle(Color("Text"))
                                             .frame(width: 144 , height: 54)
-                                            .background(Color(red: 0.97, green: 0.98, blue: 0.98))
+                                            .background(Color("Background"))
                                             .cornerRadius(32)
                                                                                         
                                     })
@@ -116,6 +118,7 @@ struct PopUpView: View {
                                         }
                                     }, label: {
                                         Text("OK")
+                                            .bold()
                                             .foregroundColor(.white)
                                             .frame(width: 144 , height: 54)
                                             .background(.orange)
@@ -130,7 +133,7 @@ struct PopUpView: View {
                 }
             }
             .frame(width: 332 , height: 542)
-            .background(Color(red: 0.97, green: 0.98, blue: 0.98))
+            .background(Color("Background"))
             .cornerRadius(15)
             
             

@@ -13,47 +13,65 @@ struct RectanglesModel: View, Hashable{
     var color: Color
     var numero: String
     var id: Int
+    var x: CGFloat
+    var y: CGFloat
     var linha: Bool
+    var casa: Bool
   
     
     var body: some View{
         
-        if linha == true{
-            HStack{
-                ZStack{
-                    Rectangle()
-                        
-                        .foregroundColor(.clear)
-                        .frame(width: 54, height: 54)
-                        .background(color)
-                        .cornerRadius(10)
-                    Text(numero)
-                        .font(.custom("SofiaSans-Regular", size:30))
-                        .bold()
-                    
-                }
-                
+        if casa{
+            ZStack{
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 225, height: 6)
+                    .frame(width: x, height: y)
                     .background(color)
                     .cornerRadius(10)
-                
-                
+                Text(numero)
+                    .font(.custom("SofiaSans-Regular", size:30))
+                    .bold()
             }
         }
+        else{
+            if linha == true{
+                HStack{
+                    ZStack{
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(width: x, height: y)
+                            .background(color)
+                            .cornerRadius(10)
+                        Text(numero)
+                            .font(.custom("SofiaSans-Regular", size:30))
+                            .bold()
+                        
+                    }
+                    
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 225, height: 6)
+                        .background(color)
+                        .cornerRadius(10)
+                }
+            }
             else{
                 ZStack{
                     Rectangle()
                         .foregroundColor(.clear)
-                        .frame(width: 54, height: 54)
+                        .frame(width: x, height: y)
                         .background(color)
                         .cornerRadius(10)
                     Text(numero)
                         .font(.custom("SofiaSans-Regular", size:30))
                         .bold()
+                }
             }
         }
     }
+}
+
+#Preview {
+    RectanglesModel(color: .red, numero: "1", id: 1, x: 54, y: 54,linha: true, casa: true)
 }
 

@@ -34,6 +34,8 @@ struct StringView: View {
     
     var body: some View {
         ZStack{
+            Color("Background")
+                .ignoresSafeArea()
             VStack{
                 
                 VStack{
