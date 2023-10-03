@@ -11,7 +11,7 @@ struct FretView: View {
     private let dotAppearance = UIPageControl.appearance()
     
     var body: some View {
-        StageFretView(page: 1)
+        StageFretView(page: 2)
     }
 }
 

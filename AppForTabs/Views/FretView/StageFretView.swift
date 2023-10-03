@@ -15,6 +15,7 @@ struct StageFretView: View, Identifiable {
     @State var sheetView = false
     @State private var draggedItem: DraggableItem?
     @EnvironmentObject var vm: ViewModel
+    @State var allTrue = 0
     
     var body: some View {
         ZStack{
@@ -114,19 +115,23 @@ struct StageFretView: View, Identifiable {
                             .frame(width:390)
                         HStack(spacing: 0){
                             ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
-                                vm.retangulosCasas[i].destination
-                                    .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[i]))
+                                vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination
+                                    .padding(.horizontal,4)
+                                    .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
+                                    .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
+                                        allTrue += 1
+                                        if allTrue == vm.retangulosCasas.count{
+                                            sheetView.toggle()
+                                        }
+                                    }
                             }
+                            
                         }
+                        .padding(.trailing,13)
+                        .padding(.bottom,20)
+                        
                     }
                     VStack{
-                        //                        VStack{
-                        //                            ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
-                        //                                vm.retangulosCasas[i].destination
-                        //                                    .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[i]))
-                        //                            }.padding()
-                        //                        }
-                        
                         HStack{
                             ForEach(0 ..< vm.retangulosCasas.count/2, id: \.self){ i in
                                 vm.retangulosCasas[i].origin
@@ -154,6 +159,11 @@ struct StageFretView: View, Identifiable {
                         
                     }
                     Spacer()
+                }
+                .sheet(isPresented: $sheetView) {
+                    CongratulationsSheetView(text1: "Boa!",text2:"O espaço entre dois trastes é chamado de Casa.", page: $page)
+                        .presentationDetents([.fraction(0.286),.large])
+                        .interactiveDismissDisabled()
                 }
                 .padding()
             }

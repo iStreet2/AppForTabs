@@ -118,8 +118,6 @@ struct DropViewDelegate: DropDelegate{
                 destinationItem.origin.numero = ""
             }
             
-        } else{
-            destinationItem.destination.color = .gray
         }
         draggedItem = nil
         return true
