@@ -15,9 +15,9 @@ struct StageFretView: View, Identifiable {
     @State var sheetView = false
     @State var pop = false
     @State private var draggedItem: DraggableItem?
-    @State var allTrue = 0
     @EnvironmentObject var vm: ViewModel
-    @State var frets = [false,false,false,false,false]
+    @Binding var frets: [Bool]
+    @Binding var allTrue: Int
     
     @State var attempts: Int = 0 //Para animação de tremer
 
@@ -28,9 +28,11 @@ struct StageFretView: View, Identifiable {
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(allTrue: Binding<Int>,frets: Binding<[Bool]>,context: NSManagedObjectContext, seeAgain: SeeAgain) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
+        self._frets = frets
+        self._allTrue = allTrue
     }
     
     var body: some View {

@@ -10,19 +10,23 @@ import CoreData
 
 struct FretView: View {
 
+    @Binding var allTrue: Int
+    
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
-    
+    @Binding var frets: [Bool]
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(allTrue: Binding<Int>,frets: Binding<[Bool]>,context: NSManagedObjectContext, seeAgain: SeeAgain) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
+        self._frets = frets
+        self._allTrue = allTrue
     }
     
     var body: some View {
-        StageFretView(context: context, seeAgain: seeAgain)
+        StageFretView(allTrue: $allTrue, frets: $frets,context: context, seeAgain: seeAgain)
             
         }
             

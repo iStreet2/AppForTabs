@@ -13,6 +13,9 @@ struct HomeView: View {
     @EnvironmentObject var vm: ViewModel
     @State var bounceHeight: BounceHeight? = nil
     @Binding var homeView: Bool
+    @State var frets = [false,false,false,false,false]
+    @State var allTrue = 0
+
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context //Data Controller
@@ -68,13 +71,18 @@ struct HomeView: View {
                                     .cornerRadius(10)
                                     .font(.custom("SofiaSans-Regular", size:14))
                             }
+                            .padding(.top)
                             Button(action: {
-//                                seeAgainController.deacreseOneActivitie(seeAgain: seeAgain)
-                                seeAgainController.resetStages(seeAgain: seeAgain)
+                                seeAgainController.resetStagesFret(seeAgain: seeAgain)
                             }, label: {
                                 Text("Resetar Fase Casas")
                             })
-                            .padding(.top)
+                            Button(action: {
+                                seeAgainController.resetStagesString(seeAgain: seeAgain)
+                            }, label: {
+                                Text("Resetar Fase Cordas")
+                            })
+                            
                         }
                         .padding(.trailing, 100)
                         .frame(width: 319 , height: 226)
@@ -94,11 +102,11 @@ struct HomeView: View {
                                 VStack{
                                     NavigationLink {
                                         if cardHome == 0{
-                                            StringView(context: context, seeAgain: seeAgain)
+                                            StringView(allTrue: $allTrue,context: context, seeAgain: seeAgain)
                                         }
                                         else if cardHome == 1{
                                             if seeAgain.activitieDone >= 1{
-                                                FretView(context: context, seeAgain: seeAgain)
+                                                FretView(allTrue: $allTrue, frets: $frets, context: context, seeAgain: seeAgain)
                                                 
                                             }
                                             
