@@ -69,9 +69,10 @@ struct HomeView: View {
                                     .font(.custom("SofiaSans-Regular", size:14))
                             }
                             Button(action: {
-                                seeAgainController.deacreseOneActivitie(seeAgain: seeAgain)
+//                                seeAgainController.deacreseOneActivitie(seeAgain: seeAgain)
+                                seeAgainController.resetStages(seeAgain: seeAgain)
                             }, label: {
-                                Text("Teste")
+                                Text("Resetar Fase Casas")
                             })
                             .padding(.top)
                         }
@@ -98,6 +99,7 @@ struct HomeView: View {
                                         else if cardHome == 1{
                                             if seeAgain.activitieDone >= 1{
                                                 FretView(context: context, seeAgain: seeAgain)
+                                                
                                             }
                                             
                                         }

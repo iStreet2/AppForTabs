@@ -6,12 +6,26 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CongratulationsSheetView: View {
     var text1: String
     var text2: String
-    @Binding var page: Int
     @Environment(\.dismiss) var dismiss
+    
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context
+    
+    var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
+    @ObservedObject var seeAgainController: SeeAgainController
+    
+    init(text1: String, text2: String, context: NSManagedObjectContext, seeAgain: SeeAgain) {
+        self.seeAgainController = SeeAgainController(context: context)
+        self.seeAgain = seeAgain
+        self.text1 = text1
+        self.text2 = text2
+    }
+    
     var body: some View {
         
         VStack(alignment:.leading){
@@ -25,17 +39,17 @@ struct CongratulationsSheetView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    if page > 2 && page < 7{
+                    if seeAgain.fretActivitie > 2 && seeAgain.fretActivitie < 7{
                         dismiss()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                            page+=1
+                            seeAgain.fretActivitie+=1
                         }
                         
                     }
                     else{
                         withAnimation(.easeInOut){
                             dismiss()
-                                page+=1
+                            seeAgain.fretActivitie+=1
                         }
                     }
                 },label: {
@@ -57,6 +71,6 @@ struct CongratulationsSheetView: View {
     }
 }
 
-#Preview {
-    CongratulationsSheetView(text1: "Boa!", text2: "O espaço entre dois trastes é chamado de Casa.", page: .constant(1))
-}
+//#Preview {
+//    CongratulationsSheetView(text1: "Boa!", text2: "O espaço entre dois trastes é chamado de Casa.", page: .constant(1))
+//}
