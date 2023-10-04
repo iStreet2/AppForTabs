@@ -35,6 +35,10 @@ class SeeAgainController: ObservableObject {
         let seeAgain = SeeAgain(context: context)
         seeAgain.enabled = true
         
+        seeAgain.activitieDone = 0
+        seeAgain.fretActivitie = 1
+        
+        
         saveContext()
     }
     
@@ -61,7 +65,7 @@ class SeeAgainController: ObservableObject {
         saveContext()
     }
     func resetStages(seeAgain: SeeAgain){
-        seeAgain.fretActivitie = 0
+        seeAgain.fretActivitie = 1
         saveContext()
     }
 }

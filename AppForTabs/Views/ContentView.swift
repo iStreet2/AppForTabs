@@ -58,6 +58,35 @@ struct Shake: GeometryEffect {
     }
 }
 
+struct DropViewDelegate: DropDelegate{
+    
+    @Binding var draggedItem: DraggableItem?
+    @Binding var destinationItem: DraggableItem
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: .move)
+        
+    }
+    
+    func performDrop(info: DropInfo) -> Bool {
+        
+        if destinationItem.destination == draggedItem?.destination{
+            destinationItem.destination.color = draggedItem?.origin.color ?? .black
+            destinationItem.destination.numero = draggedItem?.origin.numero ?? " "
+            withAnimation(.easeInOut){
+                destinationItem.origin.color = Color("Background")
+                destinationItem.origin.numero = ""
+            }
+            
+            
+        }
+        draggedItem = nil
+        return true
+    }
+    
+     
+}
+
 
 //#Preview {
 //    ContentView()
