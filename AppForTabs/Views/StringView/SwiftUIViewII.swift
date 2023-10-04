@@ -35,6 +35,7 @@ struct StringViewII: View {
     var body: some View {
         
         ZStack{
+            
     
             VStack{
                 HStack{
@@ -48,22 +49,34 @@ struct StringViewII: View {
                         .frame(width: 394, height: 108)
                         .padding()
                     VStack{
-                        
-                        ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
+            
+                        ForEach(0 ..< vm.retangulosII.count-1, id: \.self){ i in
                             Rectangle()
                                 .frame(width: 390, height: 4)
-                                .foregroundColor(vm.retangulos[vm.retangulos.count-1-i].destination.color)
+                                .foregroundColor(vm.retangulosII[vm.retangulosII.count-1-i].destination.color)
                                 .padding(.bottom, 4)
                             
                                 
                         }
+                        Rectangle()
+                            .frame(width: 390, height: 4)
+                            .foregroundColor(vm.retangulosII[0].origin.color)
+                            .padding(.bottom, 4)
                     }.padding(.bottom, 3)
                 }
                 
                 VStack{
-                    ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
-                        vm.retangulos[i].destination
-                            .onDrop(of: [.text], delegate: DropViewDelegateII(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
+                    vm.retangulos[0].destination
+                    ForEach(1 ..< vm.retangulosII.count, id: \.self){ i in
+                        vm.retangulosII[i].destination
+                            .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosII[i]))
+//                            .onChange(of:vm.retangulosII[i].destination.color){
+//                                allTrue += 1
+//                                print("+1")
+//                                if allTrue == vm.retangulosII.count{
+//                                    sheetView.toggle()
+//                                }
+//                            }
                         
                         
                     }.padding(1)
@@ -71,10 +84,10 @@ struct StringViewII: View {
                 
                 
                 HStack{
-                    ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
-                        vm.retangulos[i].origin
+                    ForEach(1 ..< vm.retangulosII.count, id: \.self){ i in
+                        vm.retangulosII[i].origin
                             .onDrag{
-                                self.draggedItem = vm.retangulos[i]
+                                self.draggedItem = vm.retangulosII[i]
                                 return NSItemProvider()
                             }
                     }.padding( 1)
@@ -98,11 +111,6 @@ struct StringViewII: View {
             }, label: {
                 Image(systemName: "questionmark.circle")
             })
-        }
-        .onAppear{
-            if seeAgain.enabled{
-                pop.toggle()
-            }
         }
         
     }

@@ -48,15 +48,16 @@ struct TesteView: View {
                     Image("CordasTabs")
                     VStack(spacing: 0){
                         
-                        ForEach (0 ..< vm.retangulos.count, id: \.self){ i in
+                        
+                        ForEach (0 ..< vm.retangulosIII.count, id: \.self){ i in
                             HStack{
-                                Text(vm.retangulos[i].destination.numero)
+                                Text(vm.retangulosIII[i].destination.numero)
                                     .padding(.top, -20)
-                                    .foregroundColor(vm.retangulos[i].destination.color)
+                                    .foregroundColor(vm.retangulosIII[i].destination.color)
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 245, height: 4)
-                                    .background(Color(vm.retangulos[i].destination.color))
+                                    .background(Color(vm.retangulosIII[i].destination.color))
                                     .padding(.bottom, 21)
                                     .padding(.trailing, 3)
                             }.padding(.trailing, 15)
@@ -69,22 +70,29 @@ struct TesteView: View {
                             .frame(width: 417, height: 318)
                         
                         VStack(spacing: 0){
-
-                            ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(vm.retangulosIII[5].origin.color)
+                                    .frame(width: 399, height: 12)
+                                vm.retangulosIII[5].origin
+                                    .padding(.bottom, 3)
+                                    .padding(.leading, 60)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                                
+                                
+                            ForEach(1 ..< vm.retangulosIII.count, id: \.self){ i in
                                 ZStack{
                                     Rectangle()
-                                        .foregroundColor(vm.retangulos[vm.retangulos.count-1-i].destination.color)
+                                        .foregroundColor(vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color)
                                         .frame(width: 399, height: 12)
-                                    vm.retangulos[vm.retangulos.count-1-i].destination
+                                    vm.retangulosIII[vm.retangulosIII.count-1-i].destination
                                         .padding(.bottom, 3)
                                         .padding(.leading, 60)
                                         
-                                        .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[vm.retangulos.count-1-i]))
+                                        .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        
-                                        
-                                    
-                                    
+   
                                 }
                                 
                             }
@@ -95,12 +103,12 @@ struct TesteView: View {
                     
                     
                     HStack{
-                        ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
-                            vm.retangulos[i].origin
+                        ForEach(0 ..< vm.retangulosIII.count-1, id: \.self){ i in
+                            vm.retangulosIII[i].origin
                                 
                                 .onDrag{
                                    
-                                        self.draggedItem = vm.retangulos[i]
+                                        self.draggedItem = vm.retangulosIII[i]
                                      
                                     return NSItemProvider()
                                    
