@@ -12,7 +12,7 @@ struct FretView: View {
 
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
-    @State var page = 1
+    
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
@@ -22,8 +22,11 @@ struct FretView: View {
     }
     
     var body: some View {
-        StageFretView(page: $page, context: context, seeAgain: seeAgain)
-    }
+        StageFretView(context: context, seeAgain: seeAgain)
+            
+        }
+            
+    
 }
 
 //#Preview {

@@ -90,7 +90,8 @@ struct StageStringView: View {
                     
                     Spacer()
                 }.sheet(isPresented: $sheetView){
-                    CongratulationsSheetView(text1: "Você conseguiu!!",text2:"Uma tablatura possui 6 linhas, que representam as 6 cordas do violão.", page: $page)
+                    CongratulationsSheetView(text1: "Você conseguiu!!",text2:"Uma tablatura possui 6 linhas, que representam as 6 cordas do violão.", context: context, seeAgain: seeAgain
+                    )
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
                 }
@@ -126,30 +127,7 @@ struct StageStringView: View {
     }
 }
 
-struct DropViewDelegate: DropDelegate{
-    
-    @Binding var draggedItem: DraggableItem?
-    @Binding var destinationItem: DraggableItem
-    
-    func dropUpdated(info: DropInfo) -> DropProposal? {
-        return DropProposal(operation: .move)
-    }
-    
-    func performDrop(info: DropInfo) -> Bool {
-        
-        if destinationItem.destination == draggedItem?.destination{
-            destinationItem.destination.color = draggedItem?.origin.color ?? .black
-            destinationItem.destination.numero = draggedItem?.origin.numero ?? " "
-            withAnimation(.easeInOut){
-                destinationItem.origin.color = Color("Background")
-                destinationItem.origin.numero = ""
-            }
-            
-        }
-        draggedItem = nil
-        return true
-    }
-}
+
 
 //#Preview {
 //    StringView()

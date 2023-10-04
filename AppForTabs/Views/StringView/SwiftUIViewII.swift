@@ -63,7 +63,7 @@ struct StringViewII: View {
                 VStack{
                     ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
                         vm.retangulos[i].destination
-                            .onDrop(of: [.text], delegate: DropViewDelegateII(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
+                            .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
                         
                         
                     }.padding(1)
@@ -106,35 +106,6 @@ struct StringViewII: View {
         }
         
     }
-}
-
-struct DropViewDelegateII: DropDelegate{
-    
-    @Binding var draggedItem: DraggableItem?
-    @Binding var destinationItem: DraggableItem
-    
-    func dropUpdated(info: DropInfo) -> DropProposal? {
-        return DropProposal(operation: .move)
-        
-    }
-    
-    func performDrop(info: DropInfo) -> Bool {
-        
-        if destinationItem.destination == draggedItem?.destination{
-            destinationItem.destination.color = draggedItem?.origin.color ?? .black
-            destinationItem.destination.numero = draggedItem?.origin.numero ?? " "
-            withAnimation(.easeInOut){
-                destinationItem.origin.color = Color("Background")
-                destinationItem.origin.numero = ""
-            }
-            
-            
-        }
-        draggedItem = nil
-        return true
-    }
-    
-     
 }
 
 //#Preview {
