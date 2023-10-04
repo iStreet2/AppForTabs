@@ -17,6 +17,7 @@ struct RectanglesModel: View, Hashable{
     var y: CGFloat
     var linha: Bool
     var casa: Bool
+   
   
     
     var body: some View{
@@ -43,6 +44,7 @@ struct RectanglesModel: View, Hashable{
                             .background(color)
                             .cornerRadius(10)
                         Text(numero)
+                            .foregroundColor(.white)
                             .font(.custom("SofiaSans-Regular", size:30))
                             .bold()
                         
@@ -63,8 +65,10 @@ struct RectanglesModel: View, Hashable{
                         .background(color)
                         .cornerRadius(10)
                     Text(numero)
+                        .foregroundColor(.white)
                         .font(.custom("SofiaSans-Regular", size:30))
                         .bold()
+                        
                 }
             }
         }
@@ -72,6 +76,6 @@ struct RectanglesModel: View, Hashable{
 }
 
 #Preview {
-    RectanglesModel(color: .red, numero: "1", id: 1, x: 54, y: 54,linha: true, casa: true)
+    RectanglesModel(color:Color(red: 1, green: 0.28, blue: 0.5) , numero: "1", id: 1, x: 54, y: 54,linha: true, casa: false)
 }
 

@@ -33,15 +33,15 @@ struct PopUpView: View {
             .opacity(0.6)
         ZStack{
             VStack() {
-                HStack{
-                    Text("ARRASTE")
+                VStack{
+                    Text("SEGURE E ARRASTE")
                         .foregroundStyle(Color("StrongOrange"))
                     Text("OS ELEMENTOS")
                 }
                 .padding(.top, 60)
                 .fontWeight(.heavy)
                 .font(.custom("SofiaSans-Regular", size:20))
-                Text("ATÉ O PONTILHADO")
+                Text("ATÉ O SOMBREADO")
                     .fontWeight(.heavy)
                     .font(.custom("SofiaSans-Regular", size:20))
                     .multilineTextAlignment(.center)
