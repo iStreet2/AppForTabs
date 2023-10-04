@@ -103,6 +103,7 @@ struct DropViewDelegate: DropDelegate{
     
     @Binding var draggedItem: DraggableItem?
     @Binding var destinationItem: DraggableItem
+    @EnvironmentObject var vm: ViewModel
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
         return DropProposal(operation: .move)
@@ -118,12 +119,16 @@ struct DropViewDelegate: DropDelegate{
                 destinationItem.origin.numero = ""
             }
             
-        } else{
-            destinationItem.destination.color = .gray
         }
         draggedItem = nil
         return true
     }
+    
+//    func resetRectangles(){
+//        ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
+//            vm.retangulosCasas[i].origin.color = Color("Rectangle1")
+//        }
+//    }
 }
 
 //#Preview {

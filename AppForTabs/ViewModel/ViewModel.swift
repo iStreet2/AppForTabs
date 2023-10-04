@@ -18,4 +18,5 @@ class ViewModel: ObservableObject{
         self.retangulosCasas = DataService.retangulosCasas
         
     }
+    
 }
