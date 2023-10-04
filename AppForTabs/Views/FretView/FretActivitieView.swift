@@ -46,6 +46,7 @@ struct FretActivitieView: View {
                             else{
                                 withAnimation(.default){
                                     self.attempts += 1
+                                    simpleSuccess()
                                 }
                             }
                         } label: {
@@ -79,6 +80,11 @@ struct FretActivitieView: View {
             Spacer()
         }
     }
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+
 }
 
 //#Preview {

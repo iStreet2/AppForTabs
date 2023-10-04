@@ -41,17 +41,20 @@ struct CongratulationsSheetView: View {
                 Button(action: {
                     if seeAgain.fretActivitie > 2 && seeAgain.fretActivitie < 7{
                         dismiss()
+                        seeAgainController.saveStageString(seeAgain: seeAgain)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                            seeAgain.fretActivitie+=1
+                            seeAgainController.saveStageFret(seeAgain: seeAgain)
                         }
                         
                     }
                     else{
                         withAnimation(.easeInOut){
+                            seeAgainController.saveStageString(seeAgain: seeAgain)
+                            seeAgainController.saveStageFret(seeAgain: seeAgain)
                             dismiss()
-                            seeAgain.fretActivitie+=1
                         }
                     }
+                    
                 },label: {
                     Text("Continuar")
                         .foregroundStyle(.white)

@@ -60,12 +60,20 @@ class SeeAgainController: ObservableObject {
         seeAgain.activitieDone -= 1
         saveContext()
     }
-    func saveStage(seeAgain: SeeAgain){
+    func saveStageFret(seeAgain: SeeAgain){
         seeAgain.fretActivitie += 1
         saveContext()
     }
-    func resetStages(seeAgain: SeeAgain){
+    func resetStagesFret(seeAgain: SeeAgain){
         seeAgain.fretActivitie = 1
+        saveContext()
+    }
+    func saveStageString(seeAgain: SeeAgain){
+        seeAgain.stringActivitie += 1
+        saveContext()
+    }
+    func resetStagesString(seeAgain: SeeAgain){
+        seeAgain.stringActivitie = 1
         saveContext()
     }
 }

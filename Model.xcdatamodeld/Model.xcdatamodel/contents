@@ -4,6 +4,7 @@
         <attribute name="activitieDone" optional="YES" attributeType="Float" usesScalarValueType="YES"/>
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="fretActivitie" optional="YES" attributeType="Float" usesScalarValueType="YES"/>
+        <attribute name="stringActivitie" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Tutorial" representedClassName="Tutorial" syncable="YES" codeGenerationType="class">
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
