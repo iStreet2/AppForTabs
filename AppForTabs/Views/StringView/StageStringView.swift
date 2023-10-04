@@ -54,7 +54,7 @@ struct StageStringView: View {
                     VStack{
                         HStack{
                             Text("Numere as")
-                            Text("CASAS")
+                            Text("LINHAS")
                                 .foregroundStyle(.accent)
                         }
                         .font(
