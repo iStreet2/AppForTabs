@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="SeeAgain" representedClassName="SeeAgain" syncable="YES" codeGenerationType="class">
+        <attribute name="activitieDone" optional="YES" attributeType="Float" usesScalarValueType="YES"/>
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="fretActivitie" optional="YES" attributeType="Float" usesScalarValueType="YES"/>
     </entity>
     <entity name="Tutorial" representedClassName="Tutorial" syncable="YES" codeGenerationType="class">
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>

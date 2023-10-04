@@ -48,4 +48,20 @@ class SeeAgainController: ObservableObject {
         saveContext()
     }
     
+    func increaseOneActivitie(seeAgain: SeeAgain){
+        seeAgain.activitieDone += 1
+        saveContext()
+    }
+    func deacreseOneActivitie(seeAgain: SeeAgain){
+        seeAgain.activitieDone -= 1
+        saveContext()
+    }
+    func saveStage(seeAgain: SeeAgain){
+        seeAgain.fretActivitie += 1
+        saveContext()
+    }
+    func resetStages(seeAgain: SeeAgain){
+        seeAgain.fretActivitie = 0
+        saveContext()
+    }
 }

@@ -6,15 +6,26 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct FretView: View {
-    private let dotAppearance = UIPageControl.appearance()
+
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context
+    @State var page = 1
+    var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
+    @ObservedObject var seeAgainController: SeeAgainController
+    
+    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
+        self.seeAgainController = SeeAgainController(context: context)
+        self.seeAgain = seeAgain
+    }
     
     var body: some View {
-        StageFretView(page: 2)
+        StageFretView(page: $page, context: context, seeAgain: seeAgain)
     }
 }
 
-#Preview {
-    FretView()
-}
+//#Preview {
+//    FretView()
+//}

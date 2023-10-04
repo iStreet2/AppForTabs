@@ -56,7 +56,9 @@ struct HomeView: View {
                             Text("TABLATURAS?")
                                 .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
                                 .foregroundStyle(Color("StrongOrange"))
-                            Button(action: {}) {
+                            Button(action: {
+                                seeAgainController.increaseOneActivitie(seeAgain: seeAgain) //Adiciona 1 no valor de activitieDone para saber se o usuario concluir as cordas
+                            }) {
                                 Text("Iniciar")
                                     .bold()
                                     .padding()
@@ -66,6 +68,11 @@ struct HomeView: View {
                                     .cornerRadius(10)
                                     .font(.custom("SofiaSans-Regular", size:14))
                             }
+                            Button(action: {
+                                seeAgainController.deacreseOneActivitie(seeAgain: seeAgain)
+                            }, label: {
+                                Text("Teste")
+                            })
                             .padding(.top)
                         }
                         .padding(.trailing, 100)
@@ -89,25 +96,60 @@ struct HomeView: View {
                                             StringView(context: context, seeAgain: seeAgain)
                                         }
                                         else if cardHome == 1{
-                                            FretView()
+                                            if seeAgain.activitieDone >= 1{
+                                                FretView(context: context, seeAgain: seeAgain)
+                                            }
+                                            
                                         }
                                         else{
                                             //Banana
                                         }
                                     } label: {
                                         
-                                        VStack{
-                                            Text(vm.cardsHome[cardHome].nome)
-                                                .bold()
-                                                .foregroundColor(.white)
-                                                .font(.custom("SofiaSans-Regular", size:21))
-                                                .padding(.trailing, 150)
+                                        if cardHome == 1{
+                                            if seeAgain.activitieDone < 1{
+                                                VStack{
+                                                    Text("\(vm.cardsHome[cardHome].nome) (Faça Cordas antes!)")
+                                                        .bold()
+                                                        .foregroundStyle(.white)
+                                                        .font(.custom("SofiaSans-Regular", size:21))
+                                                        .padding(.trailing, 150)
+                                                }
+                                                .frame(width: 321 , height: 115 )
+                                                .background(.gray)
+                                                .cornerRadius(15)
+                                                .padding(.horizontal)
+                                                .padding(.bottom, 20)
+                                            }
+                                            else{
+                                                VStack{
+                                                    Text(vm.cardsHome[cardHome].nome)
+                                                        .bold()
+                                                        .foregroundColor(.white)
+                                                        .font(.custom("SofiaSans-Regular", size:21))
+                                                        .padding(.trailing, 150)
+                                                }
+                                                .frame(width: 321 , height: 115 )
+                                                .background(vm.cardsHome[cardHome].cor)
+                                                .cornerRadius(15)
+                                                .padding(.horizontal)
+                                                .padding(.bottom, 20)
+                                            }
                                         }
-                                        .frame(width: 321 , height: 115 )
-                                        .background(vm.cardsHome[cardHome].cor)
-                                        .cornerRadius(15)
-                                        .padding(.horizontal)
-                                        .padding(.bottom, 20)
+                                        else{
+                                            VStack{
+                                                Text(vm.cardsHome[cardHome].nome)
+                                                    .bold()
+                                                    .foregroundColor(.white)
+                                                    .font(.custom("SofiaSans-Regular", size:21))
+                                                    .padding(.trailing, 150)
+                                            }
+                                            .frame(width: 321 , height: 115 )
+                                            .background(vm.cardsHome[cardHome].cor)
+                                            .cornerRadius(15)
+                                            .padding(.horizontal)
+                                            .padding(.bottom, 20)
+                                        }
                                     }
                                 }
                             }
