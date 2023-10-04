@@ -23,6 +23,12 @@ struct StringView: View {
     var body: some View {
         StageStringView( page: $page , context: context, seeAgain: seeAgain)
     }
+    
+//    func resetRectangles(){
+//        ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
+//            vm.retangulosCasas[i].origin.color = Color("Rectangle1")
+//        }
+//    }
 }
 
 //#Preview {

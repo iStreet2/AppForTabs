@@ -25,10 +25,18 @@ struct CongratulationsSheetView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    withAnimation(.easeInOut){
+                    if page > 2 && page < 7{
                         dismiss()
-                        page+=1
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                            page+=1
+                        }
                         
+                    }
+                    else{
+                        withAnimation(.easeInOut){
+                            dismiss()
+                                page+=1
+                        }
                     }
                 },label: {
                     Text("Continuar")
