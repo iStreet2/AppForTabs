@@ -17,18 +17,113 @@ struct PageExplanationView: View {
         VStack{
             
             if page == 0{
-                Text("ANDRE")
+                VStack(alignment: .leading){
+                    Text("O que são?")
+                        .font(.system(size: 32))
+                        .frame(width: 300, height: 54, alignment: .topLeading)
+                        .bold()
+                    
+                    
+                    HStack {
+                        Text("Tablaturas indicam")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                        Text("QUANDO")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color(.accent))
+                        Text("e")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                    }
+                    HStack{
+                        Text("ONDE")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color(.accent))
+                        Text("colocar os dedos para")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                    }
+                    Text("gerar uma nota no instrumento.")
+                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                        .foregroundStyle(Color("WeekOrange"))
+                }
                 
             }else if page == 1{
-                Text("DA")
+                VStack(alignment: .leading){
+                    Text("Instrumentos")
+                        .font(.system(size: 32))
+                        .frame(width: 300, height: 54, alignment: .topLeading)
+                        .bold()
+                    
+                    
+                    HStack {
+                        Text("Geralmente são tocados")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                        
+                        
+                    }
+                    Text("INSTRUMENTOS DE CORDAS")
+                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                        .foregroundStyle(Color(.accent))
+                    HStack{
+                        Text("TRASTEADOS,")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color(.accent))
+                        Text("como o violão e a")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                    }
+                    Text("guitarra elétrica.")
+                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                        .foregroundStyle(Color("WeekOrange"))
+                }
+                
             }else if page == 2{
-                Text("O CU")
+                VStack(alignment: .leading){
+                    Text("Variações")
+                        .font(.system(size: 32))
+                        .frame(width: 300, height: 54, alignment: .topLeading)
+                        .bold()
+                
+                    HStack {
+                        Text("Dependendo do instrumento")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                        
+                    }
+                    HStack {
+                        Text("sendo tocado, o")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                        .foregroundStyle(Color("WeekOrange"))
+                        Text("NÚMERO DE")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                        .foregroundStyle(Color(.accent))
+                    }
+                    HStack{
+                        Text("LINHAS")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color(.accent))
+                        Text("ou")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                        Text("CORDAS")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color(.accent))
+                        Text("da tablatura")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                            .foregroundStyle(Color("WeekOrange"))
+                    }
+                    Text("pode variar.")
+                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                        .foregroundStyle(Color("WeekOrange"))
+                }
             }
             Spacer()
         }
     }
 }
 
-//#Preview {
-//    PageExplanationView()
-//}
+#Preview {
+    PageExplanationView(page: 2)
+}

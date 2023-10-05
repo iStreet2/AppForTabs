@@ -36,8 +36,8 @@ struct ExplanationView: View {
                                 dismiss()
                             }
                         }, label: {
-                            Text("TERMINAR >")
-                                .font(.custom("SofiaSans-Regular", size:20))
+                            Image("Casinha")
+                            
                         })
                         .padding(.leading,200)
                     }
@@ -47,8 +47,8 @@ struct ExplanationView: View {
                                 incrementPage()
                             }
                             ,label: {
-                                    Text("PRÓXIMO >")
-                                        .font(.custom("SofiaSans-Regular", size:20))
+                                Image(systemName: "arrow.right.circle")
+                                    .font(.system(size: 73))
                                 
                             })
                         .padding(.leading,200)
@@ -74,6 +74,6 @@ struct ExplanationView: View {
     
 }
 
-//#Preview {
-//    ExplanationView()
-//}
+#Preview {
+    ExplanationView(homeView: .constant(false))
+}

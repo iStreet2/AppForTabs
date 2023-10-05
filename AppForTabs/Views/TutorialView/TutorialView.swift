@@ -87,4 +87,7 @@ struct TutorialView: View {
 
 //#Preview {
 //    TutorialView(homeView: .constant(false))
+//    TutorialView(homeView: .constant(false),
+//                 context: <#T##NSManagedObjectContext#>,
+//                 tutorial: Tutorial())
 //}
