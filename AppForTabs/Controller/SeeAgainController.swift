@@ -36,6 +36,7 @@ class SeeAgainController: ObservableObject {
         seeAgain.enabled = true
         
         seeAgain.activitieDone = 0
+        seeAgain.stringActivitie = 1
         seeAgain.fretActivitie = 1
         
         

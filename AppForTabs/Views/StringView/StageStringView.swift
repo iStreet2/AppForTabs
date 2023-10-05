@@ -44,7 +44,7 @@ struct StageStringView: View {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 358, height: 448)
-                        .background(Color("GrayBackground"))
+                        .background(Color("BackgroundGray"))
                         .cornerRadius(29)
                         .padding(.bottom,195)
 
@@ -104,7 +104,7 @@ struct StageStringView: View {
                         Spacer()
                     }
                     .sheet(isPresented: $sheetView){
-                        CongratulationsSheetView(text1: "Você conseguiu!!",text2:"Uma tablatura possui 6 linhas, que representam as 6 cordas do violão.", context: context, seeAgain: seeAgain
+                        CongratulationsSheetView(text1: "Você conseguiu!!",text2:"Uma tablatura possui 6 linhas, que representam as 6 cordas do violão.", type: "String", context: context, seeAgain: seeAgain
                         )
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
@@ -150,7 +150,7 @@ struct StageStringView: View {
                         }
                         
                         VStack{
-                            vm.retangulos[0].destination
+                            vm.retangulosII[0].destination
                                 .padding(1)
                             ForEach(1 ..< vm.retangulosII.count, id: \.self){ i in
                                 vm.retangulosII[i].destination
@@ -189,16 +189,9 @@ struct StageStringView: View {
                         PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
                     }
                     
-                }
-                .toolbar{
-                    Button(action: {
-                        pop.toggle()
-                        seeAgainController.enableSeeAgain(seeAgain: seeAgain)
-                    }, label: {
-                        Image(systemName: "questionmark.circle")
-                    })
+                
                 }.sheet(isPresented: $sheetView){
-                    CongratulationsSheetView(text1: "Você reparou?",text2:"A primeira linha na tablatura é a última corda no violão! ", context: context, seeAgain: seeAgain)
+                    CongratulationsSheetView(text1: "Você reparou?",text2:"A primeira linha na tablatura é a última corda no violão! ", type: "String", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
                 }
@@ -277,7 +270,6 @@ struct StageStringView: View {
                                                 if vm.allTrueString == 5{
                                                     sheetView.toggle()
                                                     vm.allTrueString = 0
-                                                    vm.resetRetangulos()
                                                 }
                                             }
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -321,11 +313,17 @@ struct StageStringView: View {
                     }
                     
                 }.sheet(isPresented: $sheetView){
-                    CongratulationsSheetView(text1: "Boa!",text2:"No instrumento, as cordas são contadas de baixo para cima. ", context: context, seeAgain: seeAgain)
+                    CongratulationsSheetView(text1: "Boa!",text2:"No instrumento, as cordas são contadas de baixo para cima. ",type: "String", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
                 }
                 
+            }
+            else if seeAgain.stringActivitie == 4{
+                Text("CABO!")
+                    .onAppear{
+                        seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
+                    }
             }
             if pop{
                 PopUpView(pop:$pop,context:context,seeAgain:seeAgain)

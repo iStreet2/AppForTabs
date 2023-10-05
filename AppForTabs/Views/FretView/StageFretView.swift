@@ -18,6 +18,7 @@ struct StageFretView: View, Identifiable {
     @EnvironmentObject var vm: ViewModel
     @Binding var frets: [Bool]
     
+    
     @State var attempts: Int = 0 //Para animação de tremer
 
     
@@ -104,7 +105,7 @@ struct StageFretView: View, Identifiable {
                     Spacer()
                 }
                 .sheet(isPresented: $sheetView) {
-                    CongratulationsSheetView(text1: "Boa!",text2:"O espaço entre dois trastes é chamado de Casa.", context: context, seeAgain: seeAgain)
+                    CongratulationsSheetView(text1: "Boa!",text2:"O espaço entre dois trastes é chamado de Casa.",type: "Fret", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
                 }
@@ -187,7 +188,7 @@ struct StageFretView: View, Identifiable {
                         
                     }
                     .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.", context: context, seeAgain: seeAgain)
+                        CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
                     }
@@ -219,7 +220,7 @@ struct StageFretView: View, Identifiable {
                 FretActivitieView(frets: $frets, fret: 3, sheetView: $sheetView, attempts: $attempts)
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                     .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Muito bem!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.", context: context, seeAgain: seeAgain)
+                        CongratulationsSheetView(text1: "Muito bem!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
                     }
@@ -230,7 +231,7 @@ struct StageFretView: View, Identifiable {
                 FretActivitieView(frets: $frets, fret: 1, sheetView: $sheetView, attempts: $attempts)
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                     .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Perfeito!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.", context: context, seeAgain: seeAgain)
+                        CongratulationsSheetView(text1: "Perfeito!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
                     }
@@ -239,7 +240,7 @@ struct StageFretView: View, Identifiable {
                 FretActivitieView(frets: $frets, fret: 5, sheetView: $sheetView, attempts: $attempts)
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                     .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Continue assim!",text2:"Você está quase acabando, falta pouco. Mantenha o foco.", context: context, seeAgain: seeAgain)
+                        CongratulationsSheetView(text1: "Continue assim!",text2:"Você está quase acabando, falta pouco. Mantenha o foco.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
                     }
@@ -248,7 +249,7 @@ struct StageFretView: View, Identifiable {
                 FretActivitieView(frets: $frets, fret: 2, sheetView: $sheetView, attempts: $attempts)
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                     .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Excelente!",text2:"Falta só mais uma casa.", context: context, seeAgain: seeAgain)
+                        CongratulationsSheetView(text1: "Excelente!",text2:"Falta só mais uma casa.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
                     }
@@ -257,7 +258,7 @@ struct StageFretView: View, Identifiable {
                 FretActivitieView(frets: $frets, fret: 4, sheetView: $sheetView, attempts: $attempts)
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                     .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Você conseguiu!",text2:"Parabéns, você concluiu a tarefa com sucesso.", context: context, seeAgain: seeAgain)
+                        CongratulationsSheetView(text1: "Você conseguiu!",text2:"Parabéns, você concluiu a tarefa com sucesso.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
                     }
@@ -281,6 +282,9 @@ struct StageFretView: View, Identifiable {
                         )
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Color("StrongOrange"))
+                }
+                .onAppear{
+                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
                 }
             }
             
