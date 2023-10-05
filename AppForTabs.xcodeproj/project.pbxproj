@@ -18,6 +18,7 @@
 		3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B21159A2AC5FC04005B796F /* Model.xcdatamodeld */; };
 		3B21159F2AC5FDA5005B796F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B21159E2AC5FDA5005B796F /* DataController.swift */; };
 		3B2115A12AC60550005B796F /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2115A02AC60550005B796F /* TutorialController.swift */; };
+		3B2C40D82ACF2C52006F2428 /* ExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C40D72ACF2C52006F2428 /* ExplanationView.swift */; };
 		3B46F0A02ACDDBC500744A70 /* FretActivitieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46F09F2ACDDBC500744A70 /* FretActivitieView.swift */; };
 		3B81D4AF2AC3549600EE61BC /* SofiaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */; };
 		3BBAD6752AC367A10012B3C8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAD6742AC367A10012B3C8 /* DataService.swift */; };
@@ -47,6 +48,7 @@
 		3B21159B2AC5FC04005B796F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3B21159E2AC5FDA5005B796F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		3B2115A02AC60550005B796F /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
+		3B2C40D72ACF2C52006F2428 /* ExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationView.swift; sourceTree = "<group>"; };
 		3B46F09F2ACDDBC500744A70 /* FretActivitieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretActivitieView.swift; sourceTree = "<group>"; };
 		3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaSans.ttf; sourceTree = "<group>"; };
 		3BA977BB2AC3530E0062ADD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				3B1ACD992AC1F0D600240FA5 /* ContentView.swift */,
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
 				3BE885882ACB63CF008AA004 /* PopUpView.swift */,
+				3B2C40D72ACF2C52006F2428 /* ExplanationView.swift */,
 				3BE885872ACB6222008AA004 /* StringView */,
 				3BE885822ACB3E7B008AA004 /* FretView */,
 				3BBAD67E2AC368E90012B3C8 /* TutorialView */,
@@ -284,6 +287,7 @@
 				3BE885862ACB4A23008AA004 /* CongratulationsSheetView.swift in Sources */,
 				3B2115992AC5F112005B796F /* StringView.swift in Sources */,
 				3BBAD6792AC368A90012B3C8 /* HomeView.swift in Sources */,
+				3B2C40D82ACF2C52006F2428 /* ExplanationView.swift in Sources */,
 				00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */,
 				3BBAD6892AC37B1C0012B3C8 /* PageView.swift in Sources */,
 				009862FE2ACCBAAC0065696C /* StageStringView.swift in Sources */,
