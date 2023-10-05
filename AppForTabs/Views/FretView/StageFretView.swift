@@ -217,53 +217,50 @@ struct StageFretView: View, Identifiable {
                 
                 //PAGINA 3 COM 3 ATIVIDADE
             }else if seeAgain.fretActivitie == 3{
-                FretActivitieView(frets: $frets, fret: 3, sheetView: $sheetView, attempts: $attempts)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                    .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Muito bem!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.",type: "Fret", context: context, seeAgain: seeAgain)
-                            .presentationDetents([.fraction(0.286),.large])
-                            .interactiveDismissDisabled()
-                    }
                 
+                if vm.page3 == 1{
+                    FretActivitieView(frets: $frets, fret: 3, sheetView: $sheetView, attempts: $attempts)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
+                        .sheet(isPresented: $sheetView) {
+                            CongratulationsSheetView(text1: "Muito bem!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.",type: "Fret", context: context, seeAgain: seeAgain)
+                                .presentationDetents([.fraction(0.286),.large])
+                                .interactiveDismissDisabled()
+                        }
+                }else if vm.page3 == 2{
+                    FretActivitieView(frets: $frets, fret: 1, sheetView: $sheetView, attempts: $attempts)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
+                        .sheet(isPresented: $sheetView) {
+                            CongratulationsSheetView(text1: "Perfeito!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.",type: "Fret", context: context, seeAgain: seeAgain)
+                                .presentationDetents([.fraction(0.286),.large])
+                                .interactiveDismissDisabled()
+                        }
+                }else if vm.page3 == 3{
+                    FretActivitieView(frets: $frets, fret: 5, sheetView: $sheetView, attempts: $attempts)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
+                        .sheet(isPresented: $sheetView) {
+                            CongratulationsSheetView(text1: "Continue assim!",text2:"Você está quase acabando, falta pouco. Mantenha o foco.",type: "Fret", context: context, seeAgain: seeAgain)
+                                .presentationDetents([.fraction(0.286),.large])
+                                .interactiveDismissDisabled()
+                        }
+                }else if vm.page3 == 4{
+                    FretActivitieView(frets: $frets, fret: 2, sheetView: $sheetView, attempts: $attempts)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
+                        .sheet(isPresented: $sheetView) {
+                            CongratulationsSheetView(text1: "Excelente!",text2:"Falta só mais uma casa.",type: "Fret", context: context, seeAgain: seeAgain)
+                                .presentationDetents([.fraction(0.286),.large])
+                                .interactiveDismissDisabled()
+                        }
+                }else if vm.page3 == 5{
+                    FretActivitieView(frets: $frets, fret: 4, sheetView: $sheetView, attempts: $attempts)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
+                        .sheet(isPresented: $sheetView) {
+                            CongratulationsSheetView(text1: "Você conseguiu!",text2:"Parabéns, você concluiu a tarefa com sucesso.",type: "Fret", context: context, seeAgain: seeAgain)
+                                .presentationDetents([.fraction(0.286),.large])
+                                .interactiveDismissDisabled()
+                        }
+                }
             }
-            //PAGINA 4 COM A CONTINUAÇÃO DA ATIVIDADE
             else if seeAgain.fretActivitie == 4{
-                FretActivitieView(frets: $frets, fret: 1, sheetView: $sheetView, attempts: $attempts)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                    .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Perfeito!",text2:"Você acertou a ordem dessa casa, agora vamos para a próxima.",type: "Fret", context: context, seeAgain: seeAgain)
-                            .presentationDetents([.fraction(0.286),.large])
-                            .interactiveDismissDisabled()
-                    }
-            }
-            else if seeAgain.fretActivitie == 5{
-                FretActivitieView(frets: $frets, fret: 5, sheetView: $sheetView, attempts: $attempts)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                    .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Continue assim!",text2:"Você está quase acabando, falta pouco. Mantenha o foco.",type: "Fret", context: context, seeAgain: seeAgain)
-                            .presentationDetents([.fraction(0.286),.large])
-                            .interactiveDismissDisabled()
-                    }
-            }
-            else if seeAgain.fretActivitie == 6{
-                FretActivitieView(frets: $frets, fret: 2, sheetView: $sheetView, attempts: $attempts)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                    .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Excelente!",text2:"Falta só mais uma casa.",type: "Fret", context: context, seeAgain: seeAgain)
-                            .presentationDetents([.fraction(0.286),.large])
-                            .interactiveDismissDisabled()
-                    }
-            }
-            else if seeAgain.fretActivitie == 7{
-                FretActivitieView(frets: $frets, fret: 4, sheetView: $sheetView, attempts: $attempts)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                    .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Você conseguiu!",text2:"Parabéns, você concluiu a tarefa com sucesso.",type: "Fret", context: context, seeAgain: seeAgain)
-                            .presentationDetents([.fraction(0.286),.large])
-                            .interactiveDismissDisabled()
-                    }
-            }
-            else if seeAgain.fretActivitie == 8{
                 ZStack{
                     Color.gray
                         .ignoresSafeArea()

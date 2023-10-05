@@ -16,6 +16,7 @@ class ViewModel: ObservableObject{
     @Published var retangulosCasas: [DraggableItem]
     @Published var allTrueString: Int
     @Published var allTrueFret: Int
+    @Published var page3: Int
     
     init(){
         self.cardsHome = DataService.cardsHome
@@ -25,6 +26,7 @@ class ViewModel: ObservableObject{
         self.retangulosCasas = DataService.retangulosCasas
         self.allTrueString = 0
         self.allTrueFret = 0
+        self.page3 = 1
         
     }
     func resetRetangulos(){

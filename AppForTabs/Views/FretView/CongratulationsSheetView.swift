@@ -13,6 +13,7 @@ struct CongratulationsSheetView: View {
     var text2: String
     var type: String
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var vm: ViewModel
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
@@ -45,7 +46,11 @@ struct CongratulationsSheetView: View {
                         if type == "String"{
                             seeAgainController.saveStageString(seeAgain: seeAgain)
                         }else{
-                            seeAgainController.saveStageFret(seeAgain: seeAgain)
+                            if seeAgain.fretActivitie == 3{
+                                vm.page3+=1
+                            }else{
+                                seeAgainController.saveStageFret(seeAgain: seeAgain)
+                            }
                         }
                         dismiss()
                     }
