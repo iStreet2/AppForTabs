@@ -261,29 +261,31 @@ struct StageFretView: View, Identifiable {
                 }
             }
             else if seeAgain.fretActivitie == 4{
-                ZStack{
-                    Color.gray
-                        .ignoresSafeArea()
-                        .opacity(0.6)
-                    
-                    Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: 323, height: 294)
-                    .background(Color("WeekOrange"))
-                    .cornerRadius(30)
-                    
-                    Text("Agora vamos\n revisar o conteúdo e ver\n como isso se aplica com a\n tablatura ?")
-                        .font(
-                        Font.custom("SofiaSans-Regular", size: 24)
-                        .weight(.heavy)
-                        )
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Color("StrongOrange"))
-                }
-                .onAppear{
-                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
-                }
+                CongratulationsView(context: context, seeAgain: seeAgain)
+//                ZStack{
+//                    Color.gray
+//                        .ignoresSafeArea()
+//                        .opacity(0.6)
+//                    
+//                    Rectangle()
+//                    .foregroundColor(.clear)
+//                    .frame(width: 323, height: 294)
+//                    .background(Color("WeekOrange"))
+//                    .cornerRadius(30)
+//                    
+//                    Text("Agora vamos\n revisar o conteúdo e ver\n como isso se aplica com a\n tablatura ?")
+//                        .font(
+//                        Font.custom("SofiaSans-Regular", size: 24)
+//                        .weight(.heavy)
+//                        )
+//                        .multilineTextAlignment(.center)
+//                        .foregroundStyle(Color("StrongOrange"))
+//                }
+//                .onAppear{
+//                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
+//                }
             }
+            
             
         }
     }
