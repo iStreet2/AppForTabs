@@ -24,8 +24,9 @@ class DataService{
         DraggableItem(origin: RectanglesModel(color: Color("Rectangle6"), numero: "6", id: 6, x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: .gray, numero: "", id: 6, x:54,y:54, linha: true, casa: false))
    
     ]
+    
     static var retangulosII: [DraggableItem] = [
-        DraggableItem(origin: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1,x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: .gray, numero: "", id: 1, x:54,y:54, linha: true, casa: false)),
+        DraggableItem(origin: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1,x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1, x:54,y:54, linha: true, casa: false)),
         DraggableItem(origin: RectanglesModel(color: Color("Rectangle2"), numero: "2", id: 2, x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: .gray, numero: "", id: 2, x:54,y:54, linha: true, casa: false)),
         DraggableItem(origin: RectanglesModel(color: Color("Rectangle3"), numero: "3", id: 3, x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: .gray, numero: "", id: 3, x:54,y:54, linha: true, casa: false)),
         DraggableItem(origin: RectanglesModel(color: Color("Rectangle4"), numero: "4", id: 4, x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: .gray, numero: "", id: 4, x:54,y:54, linha: true, casa: false)),

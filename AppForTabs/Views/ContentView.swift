@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State var homeView = false
     
+    
     //Coisa do CoreData
     @Environment(\.managedObjectContext) var context //Contexto, DataController
     

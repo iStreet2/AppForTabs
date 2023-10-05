@@ -10,7 +10,6 @@ import CoreData
 
 struct StringView: View {
     
-    @Binding var allTrue: Int
     
     //CoreData
     @Environment(\.managedObjectContext) var context //Data Controller
@@ -18,14 +17,13 @@ struct StringView: View {
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(allTrue: Binding<Int>,context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
-        self._allTrue = allTrue
     }
     
     var body: some View {
-        StageStringView(allTrue:$allTrue,context: context, seeAgain: seeAgain)
+        StageStringView(context: context, seeAgain: seeAgain)
     }
     
 

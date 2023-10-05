@@ -11,7 +11,9 @@ import CoreData
 struct CongratulationsSheetView: View {
     var text1: String
     var text2: String
+    var type: String
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var vm: ViewModel
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
@@ -19,11 +21,12 @@ struct CongratulationsSheetView: View {
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(text1: String, text2: String, context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(text1: String, text2: String,type: String, context: NSManagedObjectContext, seeAgain: SeeAgain) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
         self.text1 = text1
         self.text2 = text2
+        self.type = type
     }
     
     var body: some View {
@@ -39,21 +42,19 @@ struct CongratulationsSheetView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    if seeAgain.fretActivitie > 2 && seeAgain.fretActivitie < 7{
-                        dismiss()
-                        seeAgainController.saveStageString(seeAgain: seeAgain)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                            seeAgainController.saveStageFret(seeAgain: seeAgain)
-                        }
-                        
-                    }
-                    else{
-                        withAnimation(.easeInOut){
+                    withAnimation(.easeInOut){
+                        if type == "String"{
                             seeAgainController.saveStageString(seeAgain: seeAgain)
-                            seeAgainController.saveStageFret(seeAgain: seeAgain)
-                            dismiss()
+                        }else{
+                            if seeAgain.fretActivitie == 3{
+                                vm.page3+=1
+                            }else{
+                                seeAgainController.saveStageFret(seeAgain: seeAgain)
+                            }
                         }
+                        dismiss()
                     }
+                    
                     
                 },label: {
                     Text("Continuar")
