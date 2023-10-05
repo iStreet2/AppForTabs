@@ -60,7 +60,7 @@ struct HomeView: View {
                                 .foregroundStyle(Color("StrongOrange"))
                             
                             NavigationLink(destination: {
-                                ExplanationView()
+                                ExplanationView(homeView: $homeView)
                             }, label: {
                                 Text("Iniciar")
                                     .bold()
@@ -208,9 +208,6 @@ struct HomeView: View {
                     Image(systemName: "questionmark.circle")
                 }
             }
-        }
-        .onAppear{
-            print("\(seeAgain.stringActivitie)")
         }
     }
 }
