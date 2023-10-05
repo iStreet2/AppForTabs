@@ -17,7 +17,6 @@ struct StageFretView: View, Identifiable {
     @State private var draggedItem: DraggableItem?
     @EnvironmentObject var vm: ViewModel
     @Binding var frets: [Bool]
-    @Binding var allTrue: Int
     
     @State var attempts: Int = 0 //Para animação de tremer
 
@@ -28,11 +27,10 @@ struct StageFretView: View, Identifiable {
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(allTrue: Binding<Int>,frets: Binding<[Bool]>,context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(frets: Binding<[Bool]>,context: NSManagedObjectContext, seeAgain: SeeAgain) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
         self._frets = frets
-        self._allTrue = allTrue
     }
     
     var body: some View {
@@ -145,8 +143,8 @@ struct StageFretView: View, Identifiable {
                                         .padding(.horizontal,4)
                                         .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
                                         .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
-                                            allTrue += 1
-                                            if allTrue == vm.retangulosCasas.count{
+                                            vm.allTrueFret += 1
+                                            if vm.allTrueFret == vm.retangulosCasas.count{
                                                 sheetView.toggle()
                                             }
                                         }

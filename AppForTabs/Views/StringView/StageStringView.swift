@@ -19,9 +19,7 @@ struct StageStringView: View {
     @State private var draggedItem: DraggableItem?
     
     @EnvironmentObject var vm: ViewModel
-    
-    @Binding var allTrue: Int
-    
+        
     
     
     //Coisas do CoreData
@@ -30,10 +28,9 @@ struct StageStringView: View {
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(allTrue: Binding<Int>,context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
-        self._allTrue = allTrue
     }
     
     var body: some View {
@@ -47,7 +44,7 @@ struct StageStringView: View {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 358, height: 448)
-                        .background(Color("Gray"))
+                        .background(Color("GrayBackground"))
                         .cornerRadius(29)
                         .padding(.bottom,195)
 
@@ -68,10 +65,10 @@ struct StageStringView: View {
                                 vm.retangulos[i].destination
                                     .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
                                     .onChange(of:vm.retangulos[i].destination.color){
-                                        allTrue += 1
-                                        if allTrue == vm.retangulos.count{
+                                        vm.allTrueString += 1
+                                        if vm.allTrueString == vm.retangulos.count{
                                             sheetView.toggle()
-                                            allTrue = 0
+                                            vm.allTrueString = 0
                                         }
                                         
                                     }
@@ -159,11 +156,11 @@ struct StageStringView: View {
                                 vm.retangulosII[i].destination
                                     .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosII[i]))
                                     .onChange(of:vm.retangulosII[i].destination.color){
-                                        allTrue += 1
+                                        vm.allTrueString += 1
                                         print("+1")
-                                        if allTrue == 5{
+                                        if vm.allTrueString == 5{
                                             sheetView.toggle()
-                                            allTrue = 0
+                                            vm.allTrueString = 0
                                         }
                                     }
                                 
@@ -275,11 +272,12 @@ struct StageStringView: View {
                                         
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                             .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
-                                                allTrue += 1
+                                                vm.allTrueString += 1
                                                 print("+1")
-                                                if allTrue == 5{
+                                                if vm.allTrueString == 5{
                                                     sheetView.toggle()
-                                                    allTrue = 0
+                                                    vm.allTrueString = 0
+                                                    vm.resetRetangulos()
                                                 }
                                             }
                                             .frame(maxWidth: .infinity, alignment: .leading)

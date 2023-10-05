@@ -14,7 +14,6 @@ struct HomeView: View {
     @State var bounceHeight: BounceHeight? = nil
     @Binding var homeView: Bool
     @State var frets = [false,false,false,false,false]
-    @State var allTrue = 0
 
     
     //Coisas do CoreData
@@ -72,13 +71,16 @@ struct HomeView: View {
                                     .font(.custom("SofiaSans-Regular", size:14))
                             }
                             .padding(.top)
+                            
                             Button(action: {
                                 seeAgainController.resetStagesFret(seeAgain: seeAgain)
+                                vm.resetRetangulosCasas()
                             }, label: {
                                 Text("Resetar Fase Casas")
                             })
                             Button(action: {
                                 seeAgainController.resetStagesString(seeAgain: seeAgain)
+                                vm.resetRetangulos()
                             }, label: {
                                 Text("Resetar Fase Cordas")
                             })
@@ -102,11 +104,11 @@ struct HomeView: View {
                                 VStack{
                                     NavigationLink {
                                         if cardHome == 0{
-                                            StringView(allTrue: $allTrue,context: context, seeAgain: seeAgain)
+                                            StringView(context: context, seeAgain: seeAgain)
                                         }
                                         else if cardHome == 1{
                                             if seeAgain.activitieDone >= 1{
-                                                FretView(allTrue: $allTrue, frets: $frets, context: context, seeAgain: seeAgain)
+                                                FretView(frets: $frets, context: context, seeAgain: seeAgain)
                                                 
                                             }
                                             
