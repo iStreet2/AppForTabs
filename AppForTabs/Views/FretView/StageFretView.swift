@@ -145,7 +145,7 @@ struct StageFretView: View, Identifiable {
                                         .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
                                         .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
                                             vm.allTrueFret += 1
-                                            if vm.allTrueFret == vm.retangulosCasas.count{
+                                            if vm.allTrueFret == 4{
                                                 sheetView.toggle()
                                             }
                                         }
