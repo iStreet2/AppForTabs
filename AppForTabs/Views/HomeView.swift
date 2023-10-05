@@ -49,6 +49,7 @@ struct HomeView: View {
                             HStack(alignment: .center){
                                 Text("Olá, sou o Tabsy!")
                                     .font(.system(size: 32))
+                                    .foregroundStyle(.black)
                                     .bold()
                                     .padding(.bottom)
                                     .padding(.leading)
@@ -63,7 +64,7 @@ struct HomeView: View {
                                 
                                 HStack{
                                     NavigationLink(destination: {
-                                        ExplanationView()
+                                        ExplanationView(homeView: $homeView)
                                     }, label: {
                                         Text("Iniciar")
                                             .bold()
