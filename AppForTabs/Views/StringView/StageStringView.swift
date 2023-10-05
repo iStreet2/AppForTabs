@@ -266,7 +266,6 @@ struct StageStringView: View {
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                             .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
                                                 vm.allTrueString += 1
-                                                print("+1")
                                                 if vm.allTrueString == 5{
                                                     sheetView.toggle()
                                                     vm.allTrueString = 0
@@ -330,7 +329,6 @@ struct StageStringView: View {
             }
             
         }
-        //        .modifier(Shake(animatableData: CGFloat(attempts)))
         .toolbar{
             Button(action: {
                 pop.toggle()

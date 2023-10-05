@@ -18,6 +18,7 @@ struct TablatureView: View {
             VStack{
                 Text(musicName)
                     .font(.custom("SofiaSans-Regular", size:18))
+                    .foregroundStyle(.black)
                     .padding()
                     .padding(.bottom,50)
                 Image(tablature)

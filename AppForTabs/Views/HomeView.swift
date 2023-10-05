@@ -132,12 +132,12 @@ struct HomeView: View {
                                                             .foregroundStyle(.white)
                                                             .font(.custom("SofiaSans-Regular", size:21))
                                                             .padding(.trailing, 150)
-                                                            .border(.red)
                                                     }
                                                     .frame(width: 321 , height: 115 )
                                                     .background(.gray)
                                                     .cornerRadius(15)
                                                     .padding(.horizontal)
+                                                    .padding(.bottom, 20)
                                                 }
                                                 else{
                                                     VStack{
