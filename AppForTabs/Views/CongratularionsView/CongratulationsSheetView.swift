@@ -42,19 +42,22 @@ struct CongratulationsSheetView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    withAnimation(.easeInOut){
+                    withAnimation(.easeOut(duration: 0.5)){
                         if type == "String"{
                             seeAgainController.saveStageString(seeAgain: seeAgain)
                         }else{
                             if seeAgain.fretActivitie == 3{
                                 vm.page3+=1
+                                if vm.page3 == 6{
+                                    seeAgainController.saveStageFret(seeAgain: seeAgain)
+                                }
                             }else{
                                 seeAgainController.saveStageFret(seeAgain: seeAgain)
                             }
                         }
                         dismiss()
+                        
                     }
-                    
                     
                 },label: {
                     Text("Continuar")

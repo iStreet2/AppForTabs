@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import CoreData
+import AVFoundation
 
 struct StageStringView: View {
     var id = UUID()
@@ -20,6 +21,7 @@ struct StageStringView: View {
     
     @EnvironmentObject var vm: ViewModel
         
+    @State var player: AVAudioPlayer?
     
     
     //Coisas do CoreData
@@ -66,6 +68,7 @@ struct StageStringView: View {
                                     .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
                                     .onChange(of:vm.retangulos[i].destination.color){
                                         vm.allTrueString += 1
+                                        playSound(sound: "\(i)")
                                         if vm.allTrueString == vm.retangulos.count{
                                             sheetView.toggle()
                                             vm.allTrueString = 0
@@ -156,8 +159,8 @@ struct StageStringView: View {
                                 vm.retangulosII[i].destination
                                     .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosII[i]))
                                     .onChange(of:vm.retangulosII[i].destination.color){
+                                        playSound(sound: "\(i)")
                                         vm.allTrueString += 1
-                                        print("+1")
                                         if vm.allTrueString == 5{
                                             sheetView.toggle()
                                             vm.allTrueString = 0
@@ -266,6 +269,7 @@ struct StageStringView: View {
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                             .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
                                                 vm.allTrueString += 1
+                                                playSound(sound: "\(i)")
                                                 if vm.allTrueString == 5{
                                                     sheetView.toggle()
                                                     vm.allTrueString = 0
@@ -319,9 +323,9 @@ struct StageStringView: View {
                 
             }
             else if seeAgain.stringActivitie == 4{
-                Text("CABO!")
+                CongratulationsView(context:context,seeAgain: seeAgain)
                     .onAppear{
-                        seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
+                        seeAgainController.increaseOneActivitie(seeAgain: seeAgain) //Liberar a atividade das casas
                     }
             }
             if pop{
@@ -343,6 +347,17 @@ struct StageStringView: View {
             }
         }
     }
+    
+    func playSound(sound: String) {
+        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch {
+            print("Erro ao tocar o som.")
+        }
+    }
+    
 }
 
 
