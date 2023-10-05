@@ -104,20 +104,6 @@ struct HomeView: View {
                                 .bold()
                                 .padding(.horizontal, 20)
                                 .font(.system(size:22))
-                          
-                            NavigationLink(destination: {
-                                ExplanationView(homeView: $homeView)
-                            }, label: {
-                                Text("Iniciar")
-                                    .bold()
-                                    .padding()
-                                    .foregroundStyle(.white)
-                                    .frame(width: 114 , height: 35)
-                                    .background(.orange)
-                                    .cornerRadius(10)
-                                    .font(.custom("SofiaSans-Regular", size:14))
-                            })
-                            .padding(.top)
                             
                             
                             VStack{
