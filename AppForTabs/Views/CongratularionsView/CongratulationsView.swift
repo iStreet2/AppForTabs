@@ -12,6 +12,7 @@ struct CongratulationsView: View {
     @Environment(\.dismiss) var dismiss
     @State var sheetView = true
     @EnvironmentObject var vm: ViewModel
+    var type: String
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
@@ -19,9 +20,10 @@ struct CongratulationsView: View {
     var seeAgain: SeeAgain //Só recebendo 1, e nao o vetor como no FetchRequest
     @ObservedObject var seeAgainController: SeeAgainController
     
-    init(context: NSManagedObjectContext, seeAgain: SeeAgain) {
+    init(context: NSManagedObjectContext, seeAgain: SeeAgain, type: String) {
         self.seeAgainController = SeeAgainController(context: context)
         self.seeAgain = seeAgain
+        self.type = type
     }
     
     
@@ -53,8 +55,13 @@ struct CongratulationsView: View {
         .sheet(isPresented: $sheetView, content: {
             VStack{
                 Button(action: {
-                    seeAgainController.resetStagesFret(seeAgain: seeAgain) //Resetar a fase
-                    vm.resetRetangulosCasas()
+                    if type == "String"{
+                        seeAgainController.resetStagesString(seeAgain: seeAgain) //Resetar a fase das cordas
+                        vm.resetRetangulos()
+                    }else{
+                        seeAgainController.resetStagesFret(seeAgain: seeAgain) //Resetar a fase das casas
+                        vm.resetRetangulosCasas()
+                    }
                     dismiss()
                 }, label: {
                     VStack{

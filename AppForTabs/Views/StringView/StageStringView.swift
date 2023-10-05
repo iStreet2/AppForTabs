@@ -323,7 +323,7 @@ struct StageStringView: View {
                 
             }
             else if seeAgain.stringActivitie == 4{
-                CongratulationsView(context:context,seeAgain: seeAgain)
+                CongratulationsView(context:context,seeAgain: seeAgain, type: "String")
                     .onAppear{
                         seeAgainController.increaseOneActivitie(seeAgain: seeAgain) //Liberar a atividade das casas
                     }

@@ -261,7 +261,7 @@ struct StageFretView: View, Identifiable {
                 }
             }
             else if seeAgain.fretActivitie == 4{
-                CongratulationsView(context: context, seeAgain: seeAgain)
+                CongratulationsView(context: context, seeAgain: seeAgain, type: "Fret")
 //                ZStack{
 //                    Color.gray
 //                        .ignoresSafeArea()

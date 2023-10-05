@@ -42,14 +42,13 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false){
                     ZStack{
                         Circle()
-                            .fill(Color("OrangeBackground"))
+                            .fill(Color("CircleHome"))
                             .offset(x:-100, y: -380)
                             .frame(width: 491, height: 491)
                         VStack(alignment: .leading){
                             HStack(alignment: .center){
                                 Text("Olá, sou o Tabsy!")
                                     .font(.system(size: 32))
-                                    .foregroundStyle(.black)
                                     .bold()
                                     .padding(.bottom)
                                     .padding(.leading)
@@ -60,7 +59,7 @@ struct HomeView: View {
                                     .foregroundStyle(Color("MediumOrange"))
                                 Text("TABLATURAS?")
                                     .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
-                                    .foregroundStyle(Color("StrongOrange"))
+                                    .foregroundStyle(Color("MediumOrange"))
                                 
                                 HStack{
                                     NavigationLink(destination: {
@@ -69,9 +68,9 @@ struct HomeView: View {
                                         Text("Iniciar")
                                             .bold()
                                             .padding()
-                                            .foregroundStyle(.white)
+                                            .foregroundStyle(Color("IniciarButton"))
                                             .frame(width: 114 , height: 35)
-                                            .background(Color("StrongOrange"))
+                                            .background(Color("MediumOrange"))
                                             .cornerRadius(10)
                                             .font(.custom("SofiaSans-Regular", size:14))
                                     })
