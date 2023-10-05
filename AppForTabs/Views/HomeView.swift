@@ -14,7 +14,7 @@ struct HomeView: View {
     @State var bounceHeight: BounceHeight? = nil
     @Binding var homeView: Bool
     @State var frets = [false,false,false,false,false]
-
+    
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context //Data Controller
@@ -58,9 +58,10 @@ struct HomeView: View {
                             Text("TABLATURAS?")
                                 .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
                                 .foregroundStyle(Color("StrongOrange"))
-                            Button(action: {
-                                seeAgainController.increaseOneActivitie(seeAgain: seeAgain) //Adiciona 1 no valor de activitieDone para saber se o usuario concluir as cordas
-                            }) {
+                            
+                            NavigationLink(destination: {
+                                ExplanationView()
+                            }, label: {
                                 Text("Iniciar")
                                     .bold()
                                     .padding()
@@ -69,7 +70,7 @@ struct HomeView: View {
                                     .background(.orange)
                                     .cornerRadius(10)
                                     .font(.custom("SofiaSans-Regular", size:14))
-                            }
+                            })
                             .padding(.top)
                             
                             Button(action: {
@@ -104,7 +105,7 @@ struct HomeView: View {
                                 VStack{
                                     if cardHome == 0{
                                         NavigationLink{
-                                                StringView(context: context, seeAgain: seeAgain)
+                                            StringView(context: context, seeAgain: seeAgain)
                                             
                                         }label: {
                                             VStack{
@@ -125,41 +126,41 @@ struct HomeView: View {
                                         NavigationLink{
                                             FretView(frets: $frets, context: context, seeAgain: seeAgain)
                                         }label: {
-                                                if seeAgain.activitieDone < 1{
-                                                    VStack{
-                                                        Text("\(vm.cardsHome[cardHome].nome) (Faça Cordas antes!)")
-                                                            .bold()
-                                                            .foregroundStyle(.white)
-                                                            .font(.custom("SofiaSans-Regular", size:21))
-                                                            .padding(.trailing, 150)
-                                                    }
-                                                    .frame(width: 321 , height: 115 )
-                                                    .background(.gray)
-                                                    .cornerRadius(15)
-                                                    .padding(.horizontal)
-                                                    .padding(.bottom, 20)
+                                            if seeAgain.activitieDone < 1{
+                                                VStack{
+                                                    Text("\(vm.cardsHome[cardHome].nome) (Faça Cordas antes!)")
+                                                        .bold()
+                                                        .foregroundStyle(.white)
+                                                        .font(.custom("SofiaSans-Regular", size:21))
+                                                        .padding(.trailing, 150)
                                                 }
-                                                else{
-                                                    VStack{
-                                                        Text(vm.cardsHome[cardHome].nome)
-                                                            .bold()
-                                                            .foregroundColor(.white)
-                                                            .font(.custom("SofiaSans-Regular", size:21))
-                                                            .padding(.trailing, 150)
-                                                    }
-                                                    .frame(width: 321 , height: 115 )
-                                                    .background(vm.cardsHome[cardHome].cor)
-                                                    .cornerRadius(15)
-                                                    .padding(.horizontal)
-                                                    .padding(.bottom, 20)
+                                                .frame(width: 321 , height: 115 )
+                                                .background(.gray)
+                                                .cornerRadius(15)
+                                                .padding(.horizontal)
+                                                .padding(.bottom, 20)
+                                            }
+                                            else{
+                                                VStack{
+                                                    Text(vm.cardsHome[cardHome].nome)
+                                                        .bold()
+                                                        .foregroundColor(.white)
+                                                        .font(.custom("SofiaSans-Regular", size:21))
+                                                        .padding(.trailing, 150)
                                                 }
+                                                .frame(width: 321 , height: 115 )
+                                                .background(vm.cardsHome[cardHome].cor)
+                                                .cornerRadius(15)
+                                                .padding(.horizontal)
+                                                .padding(.bottom, 20)
+                                            }
                                         }
                                         .disabled(seeAgain.activitieDone < 1)
                                     }
                                     
                                     else if cardHome == 2{
                                         NavigationLink{
-                                                //Banana
+                                            //Banana
                                         }label: {
                                             if seeAgain.activitieDone < 2{
                                                 VStack{
