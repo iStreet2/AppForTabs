@@ -323,9 +323,9 @@ struct StageStringView: View {
                 
             }
             else if seeAgain.stringActivitie == 4{
-                Text("CABO!")
+                CongratulationsView(context:context,seeAgain: seeAgain)
                     .onAppear{
-                        seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
+                        seeAgainController.increaseOneActivitie(seeAgain: seeAgain) //Liberar a atividade das casas
                     }
             }
             if pop{
