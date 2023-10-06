@@ -95,6 +95,7 @@ struct CongratulationsView: View {
             .presentationBackgroundInteraction(
                 .enabled(upThrough: .fraction(0.45)))
         })
+        .background(Color("Background"))
         
     }
 }

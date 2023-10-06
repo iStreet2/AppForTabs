@@ -113,18 +113,23 @@ struct HomeView: View {
                                                 StringView(context: context, seeAgain: seeAgain)
                                                 
                                             }label: {
-                                                VStack{
-                                                    Text(vm.cardsHome[cardHome].nome)
-                                                        .bold()
-                                                        .foregroundColor(.white)
-                                                        .font(.custom("SofiaSans-Regular", size:21))
-                                                        .padding(.trailing, 150)
+                                                ZStack{
+                                                    Rectangle()
+                                                        .fill(vm.cardsHome[cardHome].cor)
+                                                        .cornerRadius(18)
+                                                    HStack{
+                                                        Text("\(vm.cardsHome[cardHome].nome)")
+                                                            .bold()
+                                                            .foregroundStyle(.white)
+                                                            .font(.custom("SofiaSans-Regular", size:21))
+                                                        Spacer()
+                                                    }
+                                                    .padding()
+                                                    .padding(.horizontal,30)
                                                 }
-                                                .frame(width: 321 , height: 115 )
-                                                .background(vm.cardsHome[cardHome].cor)
-                                                .cornerRadius(15)
-                                                .padding(.horizontal)
-                                                .padding(.bottom, 20)
+                                                .frame(width: 321, height: 115)
+                                                .padding(.leading)
+                                                .padding(.top,5)
                                             }
                                         }
                                         else if cardHome == 1{
@@ -132,32 +137,44 @@ struct HomeView: View {
                                                 FretView(frets: $frets, context: context, seeAgain: seeAgain)
                                             }label: {
                                                 if seeAgain.activitieDone < 1{
-                                                    VStack{
-                                                        Text("\(vm.cardsHome[cardHome].nome) (Faça Cordas antes!)")
-                                                            .bold()
-                                                            .foregroundStyle(.white)
-                                                            .font(.custom("SofiaSans-Regular", size:21))
-                                                            .padding(.trailing, 150)
+                                                    ZStack{
+                                                        Rectangle()
+                                                        .fill(Color("BlockedRectangle"))
+                                                        .cornerRadius(18)
+                                                        HStack{
+                                                            Text("\(vm.cardsHome[cardHome].nome)")
+                                                                .bold()
+                                                                .foregroundStyle(.white)
+                                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                            Spacer()
+                                                            Image(systemName: "lock.fill")
+                                                                .font(.system(size:40))
+                                                        }
+                                                        .padding()
+                                                        .padding(.horizontal,30)
                                                     }
-                                                    .frame(width: 321 , height: 115 )
-                                                    .background(.gray)
-                                                    .cornerRadius(15)
-                                                    .padding(.horizontal)
-                                                    .padding(.bottom, 20)
+                                                    .frame(width: 321, height: 115)
+                                                    .padding(.leading)
+                                                    .padding(.top,5)
                                                 }
                                                 else{
-                                                    VStack{
-                                                        Text(vm.cardsHome[cardHome].nome)
-                                                            .bold()
-                                                            .foregroundColor(.white)
-                                                            .font(.custom("SofiaSans-Regular", size:21))
-                                                            .padding(.trailing, 150)
+                                                    ZStack{
+                                                        Rectangle()
+                                                            .fill(vm.cardsHome[cardHome].cor)
+                                                            .cornerRadius(18)
+                                                        HStack{
+                                                            Text("\(vm.cardsHome[cardHome].nome)")
+                                                                .bold()
+                                                                .foregroundStyle(.white)
+                                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                            Spacer()
+                                                        }
+                                                        .padding()
+                                                        .padding(.horizontal,30)
                                                     }
-                                                    .frame(width: 321 , height: 115 )
-                                                    .background(vm.cardsHome[cardHome].cor)
-                                                    .cornerRadius(15)
-                                                    .padding(.horizontal)
-                                                    .padding(.bottom, 20)
+                                                    .frame(width: 321, height: 115)
+                                                    .padding(.leading)
+                                                    .padding(.top,5)
                                                 }
                                             }
                                             .disabled(seeAgain.activitieDone < 1)
@@ -168,35 +185,52 @@ struct HomeView: View {
                                                 //Banana
                                             }label: {
                                                 if seeAgain.activitieDone < 2{
-                                                    VStack{
-                                                        Text("\(vm.cardsHome[cardHome].nome) (Faça CASAS antes!)")
-                                                            .bold()
-                                                            .foregroundStyle(.white)
-                                                            .font(.custom("SofiaSans-Regular", size:21))
-                                                            .padding(.trailing, 150)
+                                                    ZStack{
+                                                        Rectangle()
+                                                        .fill(Color("BlockedRectangle"))
+                                                        .cornerRadius(18)
+                                                        HStack{
+                                                            Text("\(vm.cardsHome[cardHome].nome)")
+                                                                .bold()
+                                                                .foregroundStyle(.white)
+                                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                            Spacer()
+                                                            Image(systemName: "lock.fill")
+                                                                .font(.system(size:40))
+                                                        }
+                                                        .padding()
+                                                        .padding(.horizontal,30)
                                                     }
-                                                    .frame(width: 321 , height: 115 )
-                                                    .background(.gray)
-                                                    .cornerRadius(15)
-                                                    .padding(.horizontal)
-                                                    .padding(.bottom, 20)
+                                                    .frame(width: 321, height: 115)
+                                                    .padding(.leading)
+                                                    .padding(.top,5)
                                                 }
                                                 else{
-                                                    VStack{
-                                                        Text(vm.cardsHome[cardHome].nome)
-                                                            .bold()
-                                                            .foregroundColor(.white)
-                                                            .font(.custom("SofiaSans-Regular", size:21))
-                                                            .padding(.trailing, 150)
+                                                    ZStack{
+                                                        Rectangle()
+                                                        .fill(Color("BlockedRectangle"))
+                                                        .cornerRadius(18)
+                                                        HStack{
+                                                            Text("\(vm.cardsHome[cardHome].nome)")
+                                                                .bold()
+                                                                .foregroundStyle(.white)
+                                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                            Spacer()
+                                                            Text("Em breve!")
+                                                                .bold()
+                                                                .foregroundStyle(.white)
+                                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                        }
+                                                        .padding()
+                                                        .padding(.horizontal,30)
                                                     }
-                                                    .frame(width: 321 , height: 115 )
-                                                    .background(vm.cardsHome[cardHome].cor)
-                                                    .cornerRadius(15)
-                                                    .padding(.horizontal)
-                                                    .padding(.bottom, 20)
+                                                    .frame(width: 321, height: 115)
+                                                    .padding(.leading)
+                                                    .padding(.top,5)
+                                                    
                                                 }
                                             }
-                                            .disabled(seeAgain.activitieDone < 2)
+                                            .disabled(true)
                                         }
                                     }
                                 }
