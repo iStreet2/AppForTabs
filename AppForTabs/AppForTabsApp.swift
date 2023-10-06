@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct AppForTabsApp: App {
+    @StateObject var vm = ViewModel()
+    @StateObject var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(context: dataController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(vm)
         }
     }
 }
