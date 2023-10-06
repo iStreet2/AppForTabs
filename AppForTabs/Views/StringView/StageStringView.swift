@@ -115,6 +115,11 @@ struct StageStringView: View {
                     
                 }
                 .padding(.top)
+                .onAppear{
+                    if seeAgain.enabled{
+                        pop.toggle()
+                    }
+                }
                 
             }
             
@@ -188,9 +193,9 @@ struct StageStringView: View {
                         
                         
                     }
-                    if pop{
-                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                    }
+//                    if pop{
+//                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
+//                    }
                     
                 
                 }.sheet(isPresented: $sheetView){
@@ -198,12 +203,15 @@ struct StageStringView: View {
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
                 }
+                .onAppear{
+                    if seeAgain.enabled{
+                        pop.toggle()
+                    }
+                }
                 
             }
             else if seeAgain.stringActivitie == 3{
-                
                 ZStack{
-                    
                     VStack{
                         HStack{
                             Text("Numere as ")
@@ -215,7 +223,6 @@ struct StageStringView: View {
                         ZStack{
                             Image("CordasTabs")
                             VStack(spacing: 0){
-                                
                                 ForEach (0 ..< vm.retangulosIII.count-1, id: \.self){ i in
                                     HStack{
                                         Text(vm.retangulosIII[i].destination.numero)
@@ -242,7 +249,6 @@ struct StageStringView: View {
                                 }.padding(.trailing, 15)
                             }.padding(.top, 21.5)
                         }
-                        
                         ZStack{
                             Image("PedacoCorda")
                                 .frame(width: 417, height: 318)
@@ -269,56 +275,47 @@ struct StageStringView: View {
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                             .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
                                                 vm.allTrueString += 1
-                                                playSound(sound: "\(i)")
+                                                playSound(sound: "\(vm.retangulosIII.count-1-i)")
                                                 if vm.allTrueString == 5{
                                                     sheetView.toggle()
                                                     vm.allTrueString = 0
                                                 }
                                             }
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                        
-                                        
-                                        
-                                        
                                     }
                                     
                                 }
-                            }.padding(.top, 8)
-                                .padding(.bottom, 4)
-                        }.padding()
-                        
-                        
+                            }
+                            .padding(.top, 8)
+                            .padding(.bottom, 4)
+                        }
+                        .padding()
                         
                         HStack{
                             ForEach(0 ..< vm.retangulosIII.count-1, id: \.self){ i in
                                 vm.retangulosIII[i].origin
-                                
                                     .onDrag{
-                                        
                                         self.draggedItem = vm.retangulosIII[i]
-                                        
                                         return NSItemProvider()
-                                        
                                     }
-                                
-                                
                             }.padding( 1)
                         }
-                        
-                        
                         Spacer()
-                        
-                        
-                        
                     }
-                    if pop{
-                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                    }
+//                    if pop{
+//                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
+//                    }
                     
-                }.sheet(isPresented: $sheetView){
+                }
+                .sheet(isPresented: $sheetView){
                     CongratulationsSheetView(text1: "Boa!",text2:"No instrumento, as cordas são contadas de baixo para cima. ",type: "String", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
+                }
+                .onAppear{
+                    if seeAgain.enabled{
+                        pop.toggle()
+                    }
                 }
                 
             }
@@ -341,11 +338,7 @@ struct StageStringView: View {
                 Image(systemName: "questionmark.circle")
             })
         }
-        .onAppear{
-            if seeAgain.enabled{
-                pop.toggle()
-            }
-        }
+        
     }
     
     func playSound(sound: String) {
