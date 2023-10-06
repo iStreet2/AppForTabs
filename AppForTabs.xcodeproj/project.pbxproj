@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0060065E2AD07CD500EF8858 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060065D2AD07CD500EF8858 /* ProgressBar.swift */; };
 		009862FE2ACCBAAC0065696C /* StageStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009862FD2ACCBAAC0065696C /* StageStringView.swift */; };
-		009863022ACF2E430065696C /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009863012ACF2E430065696C /* TesteView.swift */; };
+		009863062AD079750065696C /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009863052AD079750065696C /* TesteView.swift */; };
 		00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */; };
 		00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */; };
 		3B1ACD982AC1F0D600240FA5 /* AppForTabsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1ACD972AC1F0D600240FA5 /* AppForTabsApp.swift */; };
@@ -45,8 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0060065D2AD07CD500EF8858 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		009862FD2ACCBAAC0065696C /* StageStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStringView.swift; sourceTree = "<group>"; };
-		009863012ACF2E430065696C /* TesteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteView.swift; sourceTree = "<group>"; };
+		009863052AD079750065696C /* TesteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteView.swift; sourceTree = "<group>"; };
 		00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectanglesModel.swift; sourceTree = "<group>"; };
 		00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableItem.swift; sourceTree = "<group>"; };
 		3B1ACD942AC1F0D600240FA5 /* AppForTabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppForTabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,9 +210,9 @@
 		3BBAD6852AC369DF0012B3C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0060065D2AD07CD500EF8858 /* ProgressBar.swift */,
 				3B1ACD992AC1F0D600240FA5 /* ContentView.swift */,
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
-				009863012ACF2E430065696C /* TesteView.swift */,
 				3BE885882ACB63CF008AA004 /* PopUpView.swift */,
 				3B84B1322ACF452500072DF5 /* CongratularionsView */,
 				3B2C40D92ACF2E9F006F2428 /* ExaplanationView */,
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				3B2115982AC5F112005B796F /* StringView.swift */,
+				009863052AD079750065696C /* TesteView.swift */,
 				009862FD2ACCBAAC0065696C /* StageStringView.swift */,
 			);
 			path = StringView;
@@ -338,7 +341,6 @@
 			files = (
 				3BE885892ACB63CF008AA004 /* PopUpView.swift in Sources */,
 				3B1ACD9A2AC1F0D600240FA5 /* ContentView.swift in Sources */,
-				009863022ACF2E430065696C /* TesteView.swift in Sources */,
 				3B21159F2AC5FDA5005B796F /* DataController.swift in Sources */,
 				3BE885842ACB3EA7008AA004 /* StageFretView.swift in Sources */,
 				3BCB4B7A2AC7445B006F3C1B /* SeeAgainController.swift in Sources */,
@@ -359,9 +361,11 @@
 				00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */,
 				3BE885812AC74BCE008AA004 /* FretView.swift in Sources */,
 				3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */,
+				0060065E2AD07CD500EF8858 /* ProgressBar.swift in Sources */,
 				3BBAD6802AC3690D0012B3C8 /* TablatureView.swift in Sources */,
 				3B2115A12AC60550005B796F /* TutorialController.swift in Sources */,
 				3B2C40DB2ACF2EB8006F2428 /* PageExplanationView.swift in Sources */,
+				009863062AD079750065696C /* TesteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,11 +17,15 @@ struct StageStringView: View {
     @State var scale = 0.5
     @State private var moving = false
     
+    @State var linha = false
+    @State var attempts2:CGFloat = 0
+    
     @State private var draggedItem: DraggableItem?
     
     @EnvironmentObject var vm: ViewModel
         
     @State var player: AVAudioPlayer?
+//    @State var progressBarValue: Float = 0.0
     
     
     //Coisas do CoreData
@@ -51,6 +55,7 @@ struct StageStringView: View {
                         .padding(.bottom,195)
 
                     VStack{
+//                        ProgressBar(value: $progressBarValue)
                         HStack{
                             Text("Numere as")
                             Text("LINHAS")
@@ -72,6 +77,7 @@ struct StageStringView: View {
                                         if vm.allTrueString == vm.retangulos.count{
                                             sheetView.toggle()
                                             vm.allTrueString = 0
+//                                            progressBarValue += 0.25
                                         }
                                         
                                     }
@@ -111,6 +117,7 @@ struct StageStringView: View {
                         )
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
+                        .presentationDragIndicator(.hidden)
                     }
                     
                 }
@@ -130,6 +137,7 @@ struct StageStringView: View {
                     
                     
                     VStack{
+//                        ProgressBar(value: $progressBarValue, maxValue: 1)
                         HStack{
                             Text("Numere as ")
                             Text("LINHAS")
@@ -202,6 +210,7 @@ struct StageStringView: View {
                     CongratulationsSheetView(text1: "Você reparou?",text2:"A primeira linha na tablatura é a última corda no violão! ", type: "String", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
+                        .presentationDragIndicator(.hidden)
                 }
                 .onAppear{
                     if seeAgain.enabled{
@@ -216,7 +225,7 @@ struct StageStringView: View {
                         HStack{
                             Text("Numere as ")
                             Text("CORDAS")
-                                .foregroundColor(.orange)
+                                .foregroundStyle(.accent)
                         }.font(.custom("SofiaSans-Regular", size:24))
                             .bold()
                             .padding()
@@ -311,6 +320,7 @@ struct StageStringView: View {
                     CongratulationsSheetView(text1: "Boa!",text2:"No instrumento, as cordas são contadas de baixo para cima. ",type: "String", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
+                        .presentationDragIndicator(.hidden)
                 }
                 .onAppear{
                     if seeAgain.enabled{
@@ -320,6 +330,74 @@ struct StageStringView: View {
                 
             }
             else if seeAgain.stringActivitie == 4{
+                VStack{
+                    VStack{
+                        HStack{
+                            Text("Toque na")
+                            Text("CORDA DO VIOLÃO")
+                                .foregroundStyle(.accent)
+                        }
+                        Text(" indicada na tablatura")
+                    }
+                    .font(.custom("SofiaSans-Regular", size:24))
+                    .bold()
+                    .padding(25)
+                    
+                    
+                    ZStack{
+                        Image("ViolaoBraco")
+                        VStack{
+                            ForEach(0 ..< 6, id: \.self){ i in
+                                    Button {
+                                        if i == 4{
+                                            linha = true
+                                            sheetView.toggle()
+                                        }
+                                        else{
+                                            withAnimation(.default){
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                            }
+                                        }
+                                    } label: {
+                                        if linha == false && i == 4{
+                                            Rectangle()
+                                                .frame(width: 400, height: 5)
+                                                .padding(.bottom, 10)
+                                                .foregroundStyle(.clear)
+                                            
+                                        }else if i == 4{
+                                            Rectangle()
+                                                .frame(width: 400, height: 5)
+                                                .padding(.bottom, 10)
+                                                .foregroundStyle(.accent)
+                                        }
+                                        else{
+                                            Rectangle()
+                                                .frame(width: 400, height: 5)
+                                                .padding(.bottom, 10)
+                                                .foregroundStyle(.clear)
+                                        }
+                                    }
+                                
+                            }
+                        }
+                    }
+                    Image("TabLaranja")
+                    
+                }.sheet(isPresented: $sheetView){
+                    CongratulationsSheetView(text1: "Isso aí!!!",text2:"Parece que agora você já está dominando o assunto.", type: "String", context: context, seeAgain: seeAgain
+                    )
+                    .presentationDetents([.fraction(0.286),.large])
+                    .interactiveDismissDisabled()
+                    .presentationDragIndicator(.hidden)
+                }
+                
+                .modifier(Shake(animatableData: CGFloat(attempts2)))
+                Spacer()
+            }
+            
+            else if seeAgain.stringActivitie == 5{
                 CongratulationsView(context:context,seeAgain: seeAgain, type: "String")
                     .onAppear{
                         seeAgainController.increaseOneActivitie(seeAgain: seeAgain) //Liberar a atividade das casas
@@ -339,6 +417,11 @@ struct StageStringView: View {
             })
         }
         
+    }
+    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
     
     func playSound(sound: String) {
