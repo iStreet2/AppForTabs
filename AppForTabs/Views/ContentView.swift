@@ -12,7 +12,6 @@ struct ContentView: View {
     
     @State var homeView = false
     
-    
     //Coisa do CoreData
     @Environment(\.managedObjectContext) var context //Contexto, DataController
     
@@ -43,6 +42,8 @@ struct ContentView: View {
             HomeView(homeView: $homeView, context: context, tutorial: tutorial[0], seeAgain: seeAgain[0])
                 .transition(.push(from: Edge.trailing))
         }
+
+            
         
     }
 }
