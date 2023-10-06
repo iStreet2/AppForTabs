@@ -80,19 +80,6 @@ struct HomeView: View {
                                     
                                 }
                                 
-//                                Button(action: {
-//                                    seeAgainController.resetStagesFret(seeAgain: seeAgain)
-//                                    vm.resetRetangulosCasas()
-//                                }, label: {
-//                                    Text("Resetar Fase Casas")
-//                                })
-//                                Button(action: {
-//                                    seeAgainController.resetStagesString(seeAgain: seeAgain)
-//                                    vm.resetRetangulos()
-//                                }, label: {
-//                                    Text("Resetar Fase Cordas")
-//                                })
-                                
                             }
                             .padding(.horizontal)
                             
@@ -190,13 +177,16 @@ struct HomeView: View {
                                                         .fill(Color("BlockedRectangle"))
                                                         .cornerRadius(18)
                                                         HStack{
-                                                            Text("\(vm.cardsHome[cardHome].nome)")
+                                                            Text("\(vm.cardsHome[cardHome].nome) (Em Breve!)")
                                                                 .bold()
                                                                 .foregroundStyle(.white)
                                                                 .font(.custom("SofiaSans-Regular", size:21))
                                                             Spacer()
-                                                            Image(systemName: "lock.fill")
-                                                                .font(.system(size:40))
+                                                            
+                                                                Image(systemName: "lock.fill")
+                                                                    .font(.system(size:40))
+                                                                
+                                                            
                                                         }
                                                         .padding()
                                                         .padding(.horizontal,30)
@@ -211,15 +201,14 @@ struct HomeView: View {
                                                         .fill(Color("BlockedRectangle"))
                                                         .cornerRadius(18)
                                                         HStack{
-                                                            Text("\(vm.cardsHome[cardHome].nome)")
+                                                            Text("\(vm.cardsHome[cardHome].nome) (Em Breve!)")
                                                                 .bold()
                                                                 .foregroundStyle(.white)
                                                                 .font(.custom("SofiaSans-Regular", size:21))
                                                             Spacer()
-                                                            Text("Em breve!")
-                                                                .bold()
-                                                                .foregroundStyle(.white)
-                                                                .font(.custom("SofiaSans-Regular", size:21))
+                                                                Image(systemName: "lock.fill")
+                                                                    .font(.system(size:40))
+                                     
                                                         }
                                                         .padding()
                                                         .padding(.horizontal,30)
