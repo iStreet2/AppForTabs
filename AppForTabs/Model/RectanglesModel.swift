@@ -30,6 +30,7 @@ struct RectanglesModel: View, Hashable{
                     .background(color)
                     .cornerRadius(10)
                 Text(numero)
+                    .foregroundStyle(.white)
                     .font(.custom("SofiaSans-Regular", size:30))
                     .bold()
             }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0060065E2AD07CD500EF8858 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060065D2AD07CD500EF8858 /* ProgressBar.swift */; };
 		009862FE2ACCBAAC0065696C /* StageStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009862FD2ACCBAAC0065696C /* StageStringView.swift */; };
-		009863062AD079750065696C /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009863052AD079750065696C /* TesteView.swift */; };
 		00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */; };
 		00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */; };
 		3B1ACD982AC1F0D600240FA5 /* AppForTabsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1ACD972AC1F0D600240FA5 /* AppForTabsApp.swift */; };
@@ -48,7 +47,6 @@
 /* Begin PBXFileReference section */
 		0060065D2AD07CD500EF8858 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		009862FD2ACCBAAC0065696C /* StageStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStringView.swift; sourceTree = "<group>"; };
-		009863052AD079750065696C /* TesteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteView.swift; sourceTree = "<group>"; };
 		00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectanglesModel.swift; sourceTree = "<group>"; };
 		00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableItem.swift; sourceTree = "<group>"; };
 		3B1ACD942AC1F0D600240FA5 /* AppForTabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppForTabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
