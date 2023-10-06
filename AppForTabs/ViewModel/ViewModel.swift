@@ -41,9 +41,10 @@ class ViewModel: ObservableObject{
     }
     
     func resetRetangulosCasas(){
-        for i in 0..<self.retangulosCasas.count{
+        for i in 1..<self.retangulosCasas.count{
             self.retangulosCasas[i] = DraggableItem(origin: RectanglesModel(color: Color("Rectangle\(i+1)"), numero: "\(i+1)", id: i+1, x:59,y:100, linha: false, casa: true), destination: RectanglesModel(color: .gray, numero: "", id: i+1, x:59,y:100 , linha: true,casa: true))
         }
+        self.retangulosCasas[0] = DraggableItem(origin: RectanglesModel(color: Color("Background"), numero: "", id: 1, x:59,y:100, linha: false, casa: true), destination: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1, x:59,y:100 , linha: true,casa: true))
     }
     
 }
