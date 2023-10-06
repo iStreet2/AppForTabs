@@ -17,10 +17,11 @@ struct StageFretView: View, Identifiable {
     @State private var draggedItem: DraggableItem?
     @EnvironmentObject var vm: ViewModel
     @Binding var frets: [Bool]
+    @State var fretOnTablature = false
     
     
     @State var attempts: Int = 0 //Para animação de tremer
-
+    
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
@@ -108,6 +109,7 @@ struct StageFretView: View, Identifiable {
                     CongratulationsSheetView(text1: "Boa!",text2:"O espaço entre dois trastes é chamado de Casa.",type: "Fret", context: context, seeAgain: seeAgain)
                         .presentationDetents([.fraction(0.286),.large])
                         .interactiveDismissDisabled()
+                        .presentationDragIndicator(.hidden)
                 }
                 .padding()
             }
@@ -191,6 +193,7 @@ struct StageFretView: View, Identifiable {
                         CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
                             .presentationDetents([.fraction(0.286),.large])
                             .interactiveDismissDisabled()
+                            .presentationDragIndicator(.hidden)
                     }
                     .padding()
                     .onAppear{
@@ -259,35 +262,108 @@ struct StageFretView: View, Identifiable {
                                 .interactiveDismissDisabled()
                         }
                 }
+            }else if seeAgain.fretActivitie == 4{
+                VStack{
+                    Group{
+                        HStack{
+                            Text("Toque no violão a")
+                            Text("CASA")
+                                .foregroundStyle(.accent)
+                            
+                        }
+                        Text("indicada na tablatura")
+                    }
+                    .font(
+                        Font.custom("Sofia Sans", size: 24)
+                            .weight(.heavy)
+                    )
+                    .multilineTextAlignment(.center)
+                    Spacer()
+                    ZStack{
+                        Image("GuitarArm2")
+                        HStack{
+                            ForEach(0 ..< 3, id: \.self) { i in
+                                Button(action: {
+                                    if i == 2{
+                                        withAnimation(.easeIn){
+                                            fretOnTablature = true
+                                            sheetView.toggle()
+                                        }
+                                    }else{
+                                        withAnimation(.default){
+                                            self.attempts+=1
+                                            simpleSuccess()
+                                        }
+                                    }
+                                }, label: {
+                                    if fretOnTablature && i == 2{
+                                        ZStack{
+                                            Rectangle()
+                                                .foregroundColor(.clear)
+                                                .frame(width: 95, height: 109)
+                                                .background(.pink)
+                                                .cornerRadius(10)
+                                            Text("1")
+                                                .foregroundStyle(.white)
+                                                .font(.custom("SofiaSans-Regular", size:30))
+                                                .bold()
+                                        }
+                                        
+                                    }else{
+                                        Image("Pontilhado")
+                                    }
+                                    
+                                })
+                            }
+                            .padding(.top)
+                        }
+                        .padding(.trailing,60)
+                    }
+                    Image("TablatureActivity")
+                        .padding(.bottom,100)
+                    
+                }
+                .sheet(isPresented: $sheetView) {
+                    CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
+                        .presentationDetents([.fraction(0.286),.large])
+                        .interactiveDismissDisabled()
+                        .presentationDragIndicator(.hidden)
+                }
+                .modifier(Shake(animatableData: CGFloat(attempts)))
             }
-            else if seeAgain.fretActivitie == 4{
+            else if seeAgain.fretActivitie == 5{
                 CongratulationsView(context: context, seeAgain: seeAgain, type: "Fret")
-//                ZStack{
-//                    Color.gray
-//                        .ignoresSafeArea()
-//                        .opacity(0.6)
-//                    
-//                    Rectangle()
-//                    .foregroundColor(.clear)
-//                    .frame(width: 323, height: 294)
-//                    .background(Color("WeekOrange"))
-//                    .cornerRadius(30)
-//                    
-//                    Text("Agora vamos\n revisar o conteúdo e ver\n como isso se aplica com a\n tablatura ?")
-//                        .font(
-//                        Font.custom("SofiaSans-Regular", size: 24)
-//                        .weight(.heavy)
-//                        )
-//                        .multilineTextAlignment(.center)
-//                        .foregroundStyle(Color("StrongOrange"))
-//                }
-//                .onAppear{
-//                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
-//                }
+                //                ZStack{
+                //                    Color.gray
+                //                        .ignoresSafeArea()
+                //                        .opacity(0.6)
+                //
+                //                    Rectangle()
+                //                    .foregroundColor(.clear)
+                //                    .frame(width: 323, height: 294)
+                //                    .background(Color("WeekOrange"))
+                //                    .cornerRadius(30)
+                //
+                //                    Text("Agora vamos\n revisar o conteúdo e ver\n como isso se aplica com a\n tablatura ?")
+                //                        .font(
+                //                        Font.custom("SofiaSans-Regular", size: 24)
+                //                        .weight(.heavy)
+                //                        )
+                //                        .multilineTextAlignment(.center)
+                //                        .foregroundStyle(Color("StrongOrange"))
+                //                }
+                //                .onAppear{
+                //                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
+                //                }
             }
             
             
         }
+    }
+    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
 }
 
