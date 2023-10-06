@@ -22,8 +22,15 @@ struct ExplanationView: View {
                         
                         Color("OrangeBackground")
                             .ignoresSafeArea()
-                        
-                        //DESENHOS AQUI!!!!!!!!!
+                        if page == 0{
+                            Image("Desenho\(page)")
+                                .resizable()
+                                .ignoresSafeArea()
+                        }else{
+                            Image("Desenho\(page)")
+                                .resizable()
+                                .ignoresSafeArea()
+                        }
                         
                     }
                     
@@ -36,10 +43,16 @@ struct ExplanationView: View {
                                 dismiss()
                             }
                         }, label: {
-                            Image("Casinha")
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 29.5)
+                                    .stroke(Color("AccentColor"), lineWidth: 1)
+                                    .frame(width: 356, height: 55)
+                                Text("TERMINAR")
+                                    .font(.custom("SofiaSans-Regular", size:20))
+                            }
                             
                         })
-                        .padding(.leading,200)
+                        .padding(.bottom)
                     }
                     else{
                         Button(
@@ -47,25 +60,31 @@ struct ExplanationView: View {
                                 incrementPage()
                             }
                             ,label: {
-                                Image(systemName: "arrow.right.circle")
-                                    .font(.system(size: 73))
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 29.5)
+                                        .stroke(Color("AccentColor"), lineWidth: 1)
+                                        .frame(width: 356, height: 55)
+                                    Text("PRÓXIMO")
+                                        .font(.custom("SofiaSans-Regular", size:20))
+                                }
                                 
                             })
-                        .padding(.leading,200)
+                            .padding(.bottom)
                     }
                     Spacer()
                 }
             }
             
         }
+        .padding(.bottom)
         .ignoresSafeArea()
         .background(Color("Background"))
         .animation(.easeInOut, value: pageIndex)
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .interactive))
         .onAppear{
-            dotAppearance.currentPageIndicatorTintColor = .init(Color("Background"))
-            dotAppearance.pageIndicatorTintColor = .init(Color("Background"))
+            dotAppearance.currentPageIndicatorTintColor = .init(.accentColor)
+            dotAppearance.pageIndicatorTintColor = .gray
         }
     }
     func incrementPage() {
