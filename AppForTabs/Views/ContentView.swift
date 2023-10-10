@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Aptabase
 
 struct ContentView: View {
     
@@ -26,6 +27,7 @@ struct ContentView: View {
     init(context: NSManagedObjectContext) {
         self.tutorialController = TutorialController(context: context)
         self.seeAgainController = SeeAgainController(context: context)
+        Aptabase.shared.trackEvent("app_started")
     }
     
     

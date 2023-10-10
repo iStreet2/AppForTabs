@@ -23,8 +23,10 @@ struct TablatureView: View {
                     .padding(.bottom,50)
                 Image(tablature)
                     .scaledToFit()
+                    .accessibilityLabel("")
             }
             .padding()
+            .accessibilityElement(children: .combine)
         }
         .background(.white)
     }

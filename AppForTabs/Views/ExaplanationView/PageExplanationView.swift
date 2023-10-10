@@ -47,6 +47,7 @@ struct PageExplanationView: View {
                         .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                         .foregroundStyle(Color("WeekOrange"))
                 }
+                .accessibilityElement(children: .combine)
                 
             }else if page == 1{
                 VStack(alignment: .leading){
@@ -78,6 +79,7 @@ struct PageExplanationView: View {
                         .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                         .foregroundStyle(Color("WeekOrange"))
                 }
+                .accessibilityElement(children: .combine)
                 
             }else if page == 2{
                 VStack(alignment: .leading){
@@ -118,6 +120,7 @@ struct PageExplanationView: View {
                         .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                         .foregroundStyle(Color("WeekOrange"))
                 }
+                .accessibilityElement(children: .combine)
             }
             Spacer()
         }
