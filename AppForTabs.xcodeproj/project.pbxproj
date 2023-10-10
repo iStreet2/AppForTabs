@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003479E42AD5CAC0001BF3B3 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = 003479E32AD5CAC0001BF3B3 /* Aptabase */; };
 		006006602AD4792400EF8858 /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060065F2AD4792400EF8858 /* TesteView.swift */; };
 		009862FE2ACCBAAC0065696C /* StageStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009862FD2ACCBAAC0065696C /* StageStringView.swift */; };
 		00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */; };
@@ -89,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				003479E42AD5CAC0001BF3B3 /* Aptabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +276,9 @@
 			dependencies = (
 			);
 			name = AppForTabs;
+			packageProductDependencies = (
+				003479E32AD5CAC0001BF3B3 /* Aptabase */,
+			);
 			productName = AppForTabs;
 			productReference = 3B1ACD942AC1F0D600240FA5 /* AppForTabs.app */;
 			productType = "com.apple.product-type.application";
@@ -303,6 +308,9 @@
 				"pt-BR",
 			);
 			mainGroup = 3B1ACD8B2AC1F0D600240FA5;
+			packageReferences = (
+				003479E22AD5CAC0001BF3B3 /* XCRemoteSwiftPackageReference "aptabase-swift" */,
+			);
 			productRefGroup = 3B1ACD952AC1F0D600240FA5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -571,6 +579,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		003479E22AD5CAC0001BF3B3 /* XCRemoteSwiftPackageReference "aptabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aptabase/aptabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		003479E32AD5CAC0001BF3B3 /* Aptabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 003479E22AD5CAC0001BF3B3 /* XCRemoteSwiftPackageReference "aptabase-swift" */;
+			productName = Aptabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3B21159A2AC5FC04005B796F /* Model.xcdatamodeld */ = {
