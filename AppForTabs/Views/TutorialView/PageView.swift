@@ -15,130 +15,146 @@ struct PageView: View, Identifiable {
     var body: some View {
         Group{
             if page == 0{
-                VStack{
-                    Group{
-                        Text("ISTO É UMA")
-                            .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
-                            .bold()
-                        Text("TABLATURA")
-                            .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
-                            .bold()
-                            .foregroundColor(.accentColor)
+                ScrollView{
+                    VStack{
+                        Group{
+                            Text("ISTO É UMA")
+                                .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
+                                .bold()
+                            Text("TABLATURA")
+                                .font(.custom("SofiaSans-Regular", size:40).weight(.heavy))
+                                .bold()
+                                .foregroundColor(.accentColor)
+                        }
+                        TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
+                            .cornerRadius(40)
+                            .shadow(radius:7, y:8)
+                            .padding()
+                            .accessibilityLabel(labels[0])
+                            .accessibilityAddTraits(.isImage)
                     }
-                    TablatureView(musicName:"Brilha, Brilha Estrelinha",tablature:"Tablature1")
-                        .cornerRadius(40)
-                        .shadow(radius:7, y:8)
-                        .padding()
-                        .accessibilityLabel(labels[0])
-                        .accessibilityAddTraits(.isImage)
+                    .accessibilityElement(children: .combine)
+                    .padding()
                 }
-                .accessibilityElement(children: .combine)
-                .padding()
             }
             if page == 1{
-                VStack{
-                    HStack{
-                        Text("VAMOS")
-                        Text("LER")
-                            .foregroundColor(.accentColor)
-                        Text("JUNTOS?")
+                ScrollView{
+                    VStack{
+                        HStack{
+                            Text("VAMOS")
+                            Text("LER")
+                                .foregroundColor(.accentColor)
+                            Text("JUNTOS?")
+                        }
+                        .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
+                        .padding(.bottom, 5)
+                        
+                        Text("A tablatura é composta\npor alguns elementos")
+                            .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                            .multilineTextAlignment(.center)
+                        TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature2")
+                            .cornerRadius(40)
+                            .shadow(radius: 10, y: 10)
+                            .padding()
+                            .accessibilityLabel(labels[1])
+                            .accessibilityAddTraits(.isImage)
                     }
-                    .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
-                    .padding(.bottom, 5)
-                    
-                    Text("A tablatura é composta\npor alguns elementos")
-                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
-                        .multilineTextAlignment(.center)
-                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature2")
-                        .cornerRadius(40)
-                        .shadow(radius: 10, y: 10)
-                        .padding()
-                        .accessibilityLabel(labels[1])
-                        .accessibilityAddTraits(.isImage)
+                  .accessibilityElement(children: .combine)
+                  .padding()
                 }
-                .accessibilityElement(children: .combine)
-                .padding()
+                
             }
             if page == 2{
-                VStack{
-                    Text("CORDAS")
-                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
-                        .foregroundColor(.blue)
-                        .padding(.bottom, 5)
-                    
-                    Text("Linhas que representam as\n cordas do instrumento")
-                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
-                        .multilineTextAlignment(.center)
-                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature3")
-                        .cornerRadius(40)
-                        .shadow(radius: 10, y: 10)
-                        .padding()
-                        .accessibilityLabel(labels[2])
-                        .accessibilityAddTraits(.isImage)
+
+                ScrollView{
+                    VStack{
+                        Text("CORDAS")
+                            .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                            .foregroundColor(.blue)
+                            .padding(.bottom, 5)
+                        
+                        Text("Linhas que representam as\n cordas do instrumento")
+                            .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                            .multilineTextAlignment(.center)
+                        TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature3")
+                            .cornerRadius(40)
+                            .shadow(radius: 10, y: 10)
+                            .padding()
+                            .accessibilityLabel(labels[2])
+                            .accessibilityAddTraits(.isImage)
+                    }
+                  .accessibilityElement(children: .combine)
+                  .padding()
                 }
-                .accessibilityElement(children: .combine)
-                .padding()
+                
             }
             if page == 3{
-                VStack{
-                    Text("CASAS")
-                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
-                        .foregroundColor(Color(red: 1, green: 0, blue: 0.31))
-                        .padding(.bottom, 5)
-                    
-                    Text("Números que correspondem às\n casas que devem ser tocadas")
-                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
-                        .multilineTextAlignment(.center)
-                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature4")
-                        .cornerRadius(40)
-                        .shadow(radius: 10, y: 10)
-                        .padding()
-                        .accessibilityLabel(labels[3])
-                        .accessibilityAddTraits(.isImage)
+                ScrollView{
+                    VStack{
+                        Text("CASAS")
+                            .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                            .foregroundColor(Color(red: 1, green: 0, blue: 0.31))
+                            .padding(.bottom, 5)
+                        
+                        Text("Números que correspondem às\n casas que devem ser tocadas")
+                            .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                            .multilineTextAlignment(.center)
+                        TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature4")
+                            .cornerRadius(40)
+                            .shadow(radius: 10, y: 10)
+                            .padding()
+                            .accessibilityLabel(labels[3])
+                            .accessibilityAddTraits(.isImage)
+                    }
+                    .accessibilityElement(children: .combine)
+                    .padding()
                 }
-                .accessibilityElement(children: .combine)
-                .padding()
             }
             if page == 4{
-                VStack{
-                    Text("AFINAÇÃO")
-                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
-                        .foregroundColor(.green)
-                        .padding(.bottom, 5)
-                    
-                    Text("Indica os sons emitidos pelas cordas,\n correspondendo a uma nota")
-                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
-                        .multilineTextAlignment(.center)
-                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature5")
-                        .cornerRadius(40)
-                        .shadow(radius: 10, y: 10)
-                        .padding()
-                        .accessibilityLabel(labels[4])
-                        .accessibilityAddTraits(.isImage)
+                ScrollView{
+                    VStack{
+                        Text("AFINAÇÃO")
+                            .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                            .foregroundColor(.green)
+                            .padding(.bottom, 5)
+                        
+                        Text("Indica os sons emitidos pelas cordas,\n correspondendo a uma nota")
+                            .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                            .multilineTextAlignment(.center)
+                        TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature5")
+                            .cornerRadius(40)
+                            .shadow(radius: 10, y: 10)
+                            .padding()
+                            .accessibilityLabel(labels[4])
+                            .accessibilityAddTraits(.isImage)
+                    }
+                    .accessibilityElement(children: .combine)
+                    .padding()
+                  
                 }
-                .accessibilityElement(children: .combine)
-                .padding()
             }
             if page == 5{
-                VStack{
-                    Text("TEMPO")
-                        .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
-                        .foregroundColor(Color(red: 0.45, green: 0.31, blue: 0.96))
-                        .padding(.bottom, 5)
-                    
-                    Text("Aponta quantas batidas ocorrem\n dentro de uma secção de música")
-                        .font(.custom("SofiaSans-Regular", size:16).weight(.light))
-                        .multilineTextAlignment(.center)
-                    TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature6")
-                        .cornerRadius(40)
-                        .shadow(radius: 10, y: 10)
-                        .padding()
-                        .accessibilityLabel(labels[5])
-                        .accessibilityAddTraits(.isImage)
-                }
-                .accessibilityElement(children: .combine)
-                .padding()
+                ScrollView{
+                    VStack{
+                        Text("TEMPO")
+                            .font(.custom("SofiaSans-Regular", size:32).weight(.heavy))
+                            .foregroundColor(Color(red: 0.45, green: 0.31, blue: 0.96))
+                            .padding(.bottom, 5)
+                        
+                        Text("Aponta quantas batidas ocorrem\n dentro de uma secção de música")
+                            .font(.custom("SofiaSans-Regular", size:16).weight(.light))
+                            .multilineTextAlignment(.center)
+                        TablatureView(musicName:"Brilha, Brilha Estrelinha", tablature: "Tablature6")
+                            .cornerRadius(40)
+                            .shadow(radius: 10, y: 10)
+                            .padding()
+                            .accessibilityLabel(labels[5])
+                            .accessibilityAddTraits(.isImage)
+                    }
+                      .accessibilityElement(children: .combine)
+                    .padding()
 
+                }
             }
             
         }

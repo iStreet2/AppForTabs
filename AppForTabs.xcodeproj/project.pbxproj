@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003479E42AD5CAC0001BF3B3 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = 003479E32AD5CAC0001BF3B3 /* Aptabase */; };
+		006006602AD4792400EF8858 /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060065F2AD4792400EF8858 /* TesteView.swift */; };
 		009862FE2ACCBAAC0065696C /* StageStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009862FD2ACCBAAC0065696C /* StageStringView.swift */; };
 		00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */; };
 		00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */; };
@@ -45,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0060065F2AD4792400EF8858 /* TesteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteView.swift; sourceTree = "<group>"; };
 		009862FD2ACCBAAC0065696C /* StageStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStringView.swift; sourceTree = "<group>"; };
 		00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectanglesModel.swift; sourceTree = "<group>"; };
 		00ECE4C42ACB417D0099E7D0 /* DraggableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableItem.swift; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 				3B1ACD992AC1F0D600240FA5 /* ContentView.swift */,
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
 				3BE885882ACB63CF008AA004 /* PopUpView.swift */,
+				0060065F2AD4792400EF8858 /* TesteView.swift */,
 				3B84B1322ACF452500072DF5 /* CongratularionsView */,
 				3B2C40D92ACF2E9F006F2428 /* ExaplanationView */,
 				3BE885872ACB6222008AA004 /* StringView */,
@@ -361,6 +365,7 @@
 				3BBAD6752AC367A10012B3C8 /* DataService.swift in Sources */,
 				3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */,
 				00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */,
+				006006602AD4792400EF8858 /* TesteView.swift in Sources */,
 				3BE885812AC74BCE008AA004 /* FretView.swift in Sources */,
 				3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */,
 				3BBAD6802AC3690D0012B3C8 /* TablatureView.swift in Sources */,
@@ -499,7 +504,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppForTabs/Preview Content\"";
-				DEVELOPMENT_TEAM = 6S6995TY46;
+				DEVELOPMENT_TEAM = 8T6XBC66CF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppForTabs/Info.plist;
@@ -533,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppForTabs/Preview Content\"";
-				DEVELOPMENT_TEAM = 6S6995TY46;
+				DEVELOPMENT_TEAM = 8T6XBC66CF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppForTabs/Info.plist;

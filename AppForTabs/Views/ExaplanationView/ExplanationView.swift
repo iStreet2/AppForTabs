@@ -18,7 +18,9 @@ struct ExplanationView: View {
     var body: some View {
         
         TabView(selection: $pageIndex){
+            
             ForEach(page, id: \.self){ page in
+                
                 VStack{
                     ZStack{
                         

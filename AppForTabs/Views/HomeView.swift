@@ -41,59 +41,64 @@ struct HomeView: View {
                     ZStack{
                         Circle()
                             .fill(Color("CircleHome"))
-                            .offset(x:-100, y: -380)
-                            .frame(width: 491, height: 491)
-                        VStack(alignment: .leading){
+                            .offset(x:-70, y: -300)
+//                            .frame(width: 491, height: 491)
+                        VStack(alignment: .leading, spacing: 0){
                             HStack(alignment: .center){
                                 Text("Olá, sou o Tabsy!")
-                                    .font(.system(size: 32))
+                                    .font(.title)
                                     .bold()
-                                    .padding(.bottom)
+                                    
                                     .padding(.leading)
                             }
-                            VStack(alignment: .leading) {
-                                VStack{
-                                    Text("Vamos ver o que são ")
-                                        .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
-                                        .foregroundStyle(Color("MediumOrange"))
-                                    Text("TABLATURAS?")
-                                        .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
-                                        .foregroundStyle(Color("MediumOrange"))
-                                }
-                                .accessibilityElement(children: .combine)
-                                
-                                
+            
                                 HStack{
-                                    NavigationLink(destination: {
-                                        ExplanationView(homeView: $homeView)
-                                    }, label: {
-                                        Text("Iniciar")
-                                            .bold()
-                                            .padding()
-                                            .foregroundStyle(Color("IniciarButton"))
-                                            .frame(width: 114 , height: 35)
-                                            .background(Color("MediumOrange"))
-                                            .cornerRadius(10)
-                                            .font(.custom("SofiaSans-Regular", size:14))
-                                            .accessibilityLabel("Iniciar explicação de Tablaturas")
-                                    })
-                                    .padding(.bottom, 100)
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text("Vamos ver o que são ")
+                                            .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
+                                            .foregroundStyle(Color("MediumOrange"))
+                                        Text("TABLATURAS?")
+                                            .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
+                                            .foregroundStyle(Color("StrongOrange"))
+                                        
+                                        NavigationLink(destination: {
+                                            ExplanationView(homeView: $homeView)
+                                        }, label: {
+                                            Text("Iniciar")
+                                                .bold()
+                                                .padding(.horizontal,25)
+                                                .padding(.vertical,8)
+                                                .foregroundStyle(Color("IniciarButton"))
+                                            //                                            .frame(width: 114 , height: 35)
+                                                .background(Color("MediumOrange"))
+                                                .cornerRadius(10)
+                                                .font(.custom("SofiaSans-Regular", size:14))
+                                        }).padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
+                                        //                                   .padding(.bottom, 150)
+                                                                          .padding()
+                                        
+                                        
+                                       
+                                        
+                                        
+                                    }
                                     Image("Tabsy")
-                                        .accessibilityLabel("Mascote Tabsy")
-                                }
+                                
                                 
                             }
                             .padding(.horizontal)
+                            .padding(.vertical,30 )
                             
                             
                             
                             Text("Atividades")
-                                .padding(.top)
+                                .padding(.vertical)
                                 .bold()
                                 .padding(.horizontal, 20)
-                                .font(.system(size:22))
+
+                                .font(.title2)
                                 .accessibilityLabel("Lista de Atividades")
-                            
+   
                             
                             VStack{
                                 VStack{
