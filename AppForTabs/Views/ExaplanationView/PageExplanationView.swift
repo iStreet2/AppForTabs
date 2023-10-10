@@ -51,6 +51,7 @@ struct PageExplanationView: View {
                             .foregroundStyle(Color("WeekOrange"))
                     }
                 }
+                .accessibilityElement(children: .combine)
                 
             }else if page == 1{
                 ScrollView{
@@ -84,6 +85,7 @@ struct PageExplanationView: View {
                             .foregroundStyle(Color("WeekOrange"))
                     }
                 }
+                .accessibilityElement(children: .combine)
                 
             }else if page == 2{
                 ScrollView{
@@ -126,6 +128,7 @@ struct PageExplanationView: View {
                             .foregroundStyle(Color("WeekOrange"))
                     }
                 }
+                .accessibilityElement(children: .combine)
             }
             Spacer()
         }

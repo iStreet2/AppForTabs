@@ -66,6 +66,7 @@ struct StageStringView: View {
                                 .weight(.heavy)
                         )
                         .multilineTextAlignment(.center)
+                        .accessibilityElement(children: .combine)
                         
                         VStack{
                             ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
@@ -81,9 +82,11 @@ struct StageStringView: View {
                                         }
                                         
                                     }
-                            }.padding(5)
+                            }
+                            .padding(5)
                         }
-                        
+                        .accessibilityAddTraits(.isImage)
+                        .accessibilityLabel("Espaço para os quadrados serem inseridos")
                         
                         HStack{
                             ForEach(0 ..< vm.retangulos.count/2, id: \.self){ i in
@@ -91,20 +94,24 @@ struct StageStringView: View {
                                     .onDrag{
                                         self.draggedItem = vm.retangulos[i]
                                         return NSItemProvider()
-                                    }.padding(20)
+                                    }
+                                    .padding(20)
+                                    .accessibilityLabel("Quadrado de numero \(i+1)")
                                 
                             }
                         }
                         .padding(.trailing,40)
                         
+                        
                         HStack{
                             ForEach(vm.retangulos.count/2 ..< vm.retangulos.count, id: \.self){ i in
                                 vm.retangulos[i].origin
-                                
                                     .onDrag{
                                         self.draggedItem = vm.retangulos[i]
                                         return NSItemProvider()
-                                    }.padding(20)
+                                    }
+                                    .padding(20)
+                                    .accessibilityLabel("Quadrado de numero \(i) para ser arrastado")
                                 
                                 
                             }
@@ -127,6 +134,7 @@ struct StageStringView: View {
                         pop.toggle()
                     }
                 }
+                
                 
             }
             
@@ -408,14 +416,17 @@ struct StageStringView: View {
             }
             
         }
+        
         .toolbar{
             Button(action: {
                 pop.toggle()
                 seeAgainController.enableSeeAgain(seeAgain: seeAgain)
             }, label: {
                 Image(systemName: "questionmark.circle")
+                    .accessibilityLabel("Rever tutorial de como realizar a ativiadade")
             })
         }
+        
         
     }
     

@@ -13,6 +13,8 @@ struct ExplanationView: View {
     private let page: [Int] = [0,1,2]
     @Binding var homeView: Bool
     @Environment(\.dismiss) var dismiss
+    
+    var labels = ["Uma imagem de uma mão segurando um braço de guitarra com cordas coloridas e com o mascote Tabsy em cima de seu pulso, sorrindo"," Uma imagem de varios intrumentos de cordas coloridos com varios Tabsy's sorrindo","Uma imaegm de uma guitarra azul de 6 cordas com fundo de multilplas quantidades de cordas diferente e o tabsy sorrindo"]
     var body: some View {
         
         TabView(selection: $pageIndex){
@@ -24,18 +26,16 @@ struct ExplanationView: View {
                         
                         Color("OrangeBackground")
                             .ignoresSafeArea()
-                        if page == 0{
-                            
-                            Image("Desenho\(page)")
-                                .resizable()
-                                .ignoresSafeArea()
-                        }else{
-                            Image("Desenho\(page)")
-                                .resizable()
-                                .ignoresSafeArea()
-                        }
                         
+                        Image("Desenho\(page)",label: Text(labels[0]))
+                            .resizable()
+                            .ignoresSafeArea()
+                            .accessibilityRemoveTraits(.isImage)
+                            .accessibilityLabel(labels[page])
+                            
                     }
+                    
+                    
                     
                     PageExplanationView(page: page)
                         .padding()
@@ -55,7 +55,7 @@ struct ExplanationView: View {
                             }
                             
                         })
-                        .padding(.bottom)
+                        .padding(.bottom,40)
                     }
                     else{
                         Button(
@@ -72,7 +72,7 @@ struct ExplanationView: View {
                                 }
                                 
                             })
-                            .padding(.bottom)
+                        .padding(.bottom,40)
                     }
                     Spacer()
                 }

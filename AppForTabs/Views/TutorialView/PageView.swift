@@ -11,6 +11,7 @@ struct PageView: View, Identifiable {
     var id = UUID()
     @State var page: Int
     @State var scale = 0.1
+    var labels = ["Imagem da tablatura da música Brilha Brilha Estrelinha","Imagem da tablatura da música Brilha Brilha Estrelinha","Imagem da tablatura da música Brilha Brilha Estrelinha com as cordas destacadas de azul,","Imagem da tablatura da música Brilha Brilha Estrelinha com as casas destacadas de rosa","Imagem da tablatura da música Brilha Brilha Estrelinha com a afinação destacada de verde","Imagem da tablatura da música Brilha Brilha Estrelinha com o tempo destacado de roxo"]
     var body: some View {
         Group{
             if page == 0{
@@ -29,6 +30,8 @@ struct PageView: View, Identifiable {
                             .cornerRadius(40)
                             .shadow(radius:7, y:8)
                             .padding()
+                            .accessibilityLabel(labels[0])
+                            .accessibilityAddTraits(.isImage)
                     }
                     .accessibilityElement(children: .combine)
                     .padding()
@@ -53,11 +56,16 @@ struct PageView: View, Identifiable {
                             .cornerRadius(40)
                             .shadow(radius: 10, y: 10)
                             .padding()
+                            .accessibilityLabel(labels[1])
+                            .accessibilityAddTraits(.isImage)
                     }
+                  .accessibilityElement(children: .combine)
+                  .padding()
                 }
-                .padding()
+                
             }
             if page == 2{
+
                 ScrollView{
                     VStack{
                         Text("CORDAS")
@@ -72,9 +80,13 @@ struct PageView: View, Identifiable {
                             .cornerRadius(40)
                             .shadow(radius: 10, y: 10)
                             .padding()
+                            .accessibilityLabel(labels[2])
+                            .accessibilityAddTraits(.isImage)
                     }
+                  .accessibilityElement(children: .combine)
+                  .padding()
                 }
-                .padding()
+                
             }
             if page == 3{
                 ScrollView{
@@ -91,7 +103,10 @@ struct PageView: View, Identifiable {
                             .cornerRadius(40)
                             .shadow(radius: 10, y: 10)
                             .padding()
+                            .accessibilityLabel(labels[3])
+                            .accessibilityAddTraits(.isImage)
                     }
+                    .accessibilityElement(children: .combine)
                     .padding()
                 }
             }
@@ -110,8 +125,12 @@ struct PageView: View, Identifiable {
                             .cornerRadius(40)
                             .shadow(radius: 10, y: 10)
                             .padding()
+                            .accessibilityLabel(labels[4])
+                            .accessibilityAddTraits(.isImage)
                     }
+                    .accessibilityElement(children: .combine)
                     .padding()
+                  
                 }
             }
             if page == 5{
@@ -129,9 +148,12 @@ struct PageView: View, Identifiable {
                             .cornerRadius(40)
                             .shadow(radius: 10, y: 10)
                             .padding()
+                            .accessibilityLabel(labels[5])
+                            .accessibilityAddTraits(.isImage)
                     }
+                      .accessibilityElement(children: .combine)
                     .padding()
-                    
+
                 }
             }
             
