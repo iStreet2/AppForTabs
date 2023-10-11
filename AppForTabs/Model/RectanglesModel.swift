@@ -31,8 +31,9 @@ struct RectanglesModel: View, Hashable{
                     .cornerRadius(10)
                 Text(numero)
                     .foregroundStyle(.white)
-                    .font(.custom("SofiaSans-Regular", size:30))
+                    .font(.system(size:30))
                     .bold()
+                
             }
         }
         else{
@@ -46,7 +47,7 @@ struct RectanglesModel: View, Hashable{
                             .cornerRadius(10)
                         Text(numero)
                             .foregroundColor(.white)
-                            .font(.custom("SofiaSans-Regular", size:30))
+                            .font(.system(size:30))
                             .bold()
                         
                     }
@@ -67,7 +68,7 @@ struct RectanglesModel: View, Hashable{
                         .cornerRadius(10)
                     Text(numero)
                         .foregroundColor(.white)
-                        .font(.custom("SofiaSans-Regular", size:30))
+                        .font(.system(size:30))
                         .bold()
                         
                 }

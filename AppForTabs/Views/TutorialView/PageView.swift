@@ -40,11 +40,11 @@ struct PageView: View, Identifiable {
             if page == 1{
                 ScrollView{
                     VStack{
-                        HStack{
-                            Text("VAMOS")
-                            Text("LER")
+                        Group{
+                            Text("VAMOS ") +
+                            Text("LER ")
                                 .foregroundColor(.accentColor)
-                            Text("JUNTOS?")
+                            + Text("JUNTOS?")
                         }
                         .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
                         .padding(.bottom, 5)
@@ -168,5 +168,5 @@ struct PageView: View, Identifiable {
 }
 
 #Preview {
-    PageView(page: 0)
+    PageView(page: 1)
 }

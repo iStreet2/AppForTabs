@@ -41,16 +41,11 @@ struct HomeView: View {
                     ZStack{
                         Circle()
                             .fill(Color("CircleHome"))
-                            .offset(x:-100, y: -380)
-                            .frame(width: 491, height: 491)
+                            .offset(x:-70, y: -115)
                         VStack(alignment: .leading){
-                            HStack(alignment: .center){
-                                Text("Olá, sou o Tabsy!")
-                                    .font(.system(size: 32))
-                                    .bold()
-                                    .padding(.bottom)
-                                    .padding(.leading)
-                            }
+                            Text("Olá, sou o Tabsy!")
+                                .font(.largeTitle)
+                                .bold()
                             VStack(alignment: .leading) {
                                 VStack{
                                     Text("Vamos ver o que são ")
@@ -62,84 +57,80 @@ struct HomeView: View {
                                 }
                                 .accessibilityElement(children: .combine)
                                 
-                                
                                 HStack{
                                     NavigationLink(destination: {
                                         ExplanationView(homeView: $homeView)
                                     }, label: {
                                         Text("Iniciar")
                                             .bold()
-                                            .padding()
                                             .foregroundStyle(Color("IniciarButton"))
-                                            .frame(width: 114 , height: 35)
+                                            .frame(minWidth: 114 , minHeight: 35)
                                             .background(Color("MediumOrange"))
                                             .cornerRadius(10)
                                             .font(.custom("SofiaSans-Regular", size:14))
                                             .accessibilityLabel("Iniciar explicação de Tablaturas")
                                     })
                                     .padding(.bottom, 100)
+                                    
                                     Image("Tabsy")
                                         .accessibilityLabel("Mascote Tabsy")
                                 }
-                                
                             }
-                            .padding(.horizontal)
-                            
-                            
-                            
-                            Text("Atividades")
-                                .padding(.top)
-                                .bold()
-                                .padding(.horizontal, 20)
-                                .font(.system(size:22))
-                                .accessibilityLabel("Lista de Atividades")
-                            
-                            
-                            VStack {
-                                VStack{
-                                    
-                                    //Atividade de Cordas
-                                    NavigationLink{
-                                        StringView(context: context, seeAgain: seeAgain)
-                                        
-                                    }label: {
-                                        ActivityLinkView(text: vm.cardsHome[0].nome, color: vm.cardsHome[0].cor, locked: false)
-                                    }
-                                    
-                                    //Atividade de Casas
-                                    NavigationLink{
-                                        FretView(frets: $frets, context: context, seeAgain: seeAgain)
-                                    }label: {
-                                        ActivityLinkView(text: vm.cardsHome[1].nome, color: vm.cardsHome[1].cor, locked: seeAgain.activitieDone < 1)
-                                    }
-                                    .disabled(seeAgain.activitieDone < 1)
-                                    
-                                    //Atividade de Afinação
-                                    NavigationLink{
-                                        //Banana
-                                    }label: {
-                                        ActivityLinkView(text: "Afinação (Sairá em Breve!)", color: vm.cardsHome[2].cor, locked: true)
-                                    }
-                                }
-                                .disabled(true)
-                                
-                            }
-                            
-                            
-                        }.padding([.trailing, .leading], 32)
+                        }
+                        .padding(.horizontal)
+                        
                     }
+                    VStack(alignment:.leading){
+                        Text("Atividades")
+                            .bold()
+                            .font(.title2)
+                            .accessibilityLabel("Lista de Atividades")
+                        
+                        
+                        VStack{
+                            
+                            //Atividade de Cordas
+                            NavigationLink{
+                                StringView(context: context, seeAgain: seeAgain)
+                                
+                            }label: {
+                                ActivityLinkView(text: vm.cardsHome[0].nome, color: vm.cardsHome[0].cor, locked: false)
+                                    .frame(minWidth: 321, minHeight: 115)
+                                
+                            }
+                            
+                            
+                            //Atividade de Casas
+                            NavigationLink{
+                                FretView(frets: $frets, context: context, seeAgain: seeAgain)
+                            }label: {
+                                ActivityLinkView(text: vm.cardsHome[1].nome, color: vm.cardsHome[1].cor, locked: seeAgain.activitieDone < 1)
+                                    .frame(minWidth: 321, minHeight: 115)
+                            }
+                            .disabled(seeAgain.activitieDone < 1)
+                            
+                            //Atividade de Afinação
+                            NavigationLink{
+                                //Banana
+                            }label: {
+                                ActivityLinkView(text: "Afinação (Sairá em Breve!)", color: vm.cardsHome[2].cor, locked: true)
+                                    .frame(minWidth: 321, minHeight: 115)
+                            }
+                            .disabled(true)
+                        }
+                        
+                    }
+                    .padding(.horizontal,30)
                 }
+                Spacer()
             }
-            Spacer()
-            
-        }
-        
-        .toolbar{
-            NavigationLink {
-                TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
-            } label: {
-                Image(systemName: "questionmark.circle")
-                    .accessibilityLabel("Rever tutorial inicial")
+            .toolbar{
+                NavigationLink {
+                    TutorialView(homeView: $homeView, context: context, tutorial: tutorial)
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                        .accessibilityLabel("Rever tutorial inicial")
+                }
             }
         }
         

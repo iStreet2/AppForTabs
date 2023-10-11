@@ -20,16 +20,18 @@ struct ActivityLinkView: View {
                     .cornerRadius(18)
                 HStack{
                     Text(text)
+                        .multilineTextAlignment(.leading)
                         .bold()
                         .foregroundStyle(.white)
-                        .font(.custom("SofiaSans-Regular", size:21))
+                        .font(.custom("SofiaSans-Regular", size:21).weight(.heavy))
                     Spacer()
                     Image(systemName: "lock.fill")
                         .font(.system(size:40))
                 }
                 .padding()
+                .padding(.horizontal)
             }
-            .frame(minWidth: 321, minHeight: 115)
+            .accessibilityLabel("Atividade de \(text) ainda bloqueada, realizar a atividade anterior")
         } else {
             ZStack{
                 Rectangle()
@@ -39,12 +41,12 @@ struct ActivityLinkView: View {
                     Text(text)
                         .bold()
                         .foregroundStyle(.white)
-                        .font(.custom("SofiaSans-Regular", size:21))
+                        .font(.custom("SofiaSans-Regular", size:21).weight(.heavy))
                     Spacer()
                 }
                 .padding()
+                .padding(.horizontal)
             }
-            .frame(minWidth: 321, minHeight: 115)
             .accessibilityLabel("Atividade de \(text)")
         }
     }
@@ -54,6 +56,6 @@ struct ActivityLinkView: View {
     VStack {
         ActivityLinkView(text: "CORDAS", color: .blue, locked: false)
         ActivityLinkView(text: "CASAS", color: .pink, locked: false)
-        ActivityLinkView(text: "AFINAçÃO", color: .red, locked: true)
+        ActivityLinkView(text: "AFINAçÃO (Sairá em Breve)", color: .red, locked: true)
     }
 }
