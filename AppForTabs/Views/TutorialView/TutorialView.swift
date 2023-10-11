@@ -46,6 +46,7 @@ struct TutorialView: View {
                             }
                         })
                         .padding()
+                        .padding(.bottom,30)
                     }
                     else{
                         Button(
@@ -60,8 +61,9 @@ struct TutorialView: View {
                                     Text("PRÓXIMO")
                                         .font(.custom("SofiaSans-Regular", size:20))
                                 }
-                            })
+                        })
                         .padding()
+                        .padding(.bottom,30)
                     }
                     Spacer()
                 }
@@ -88,6 +90,6 @@ struct TutorialView: View {
 //#Preview {
 //    TutorialView(homeView: .constant(false))
 //    TutorialView(homeView: .constant(false),
-//                 context: <#T##NSManagedObjectContext#>,
+//                 context: T##NSManagedObjectContext,
 //                 tutorial: Tutorial())
 //}

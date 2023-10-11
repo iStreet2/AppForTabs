@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		003479E42AD5CAC0001BF3B3 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = 003479E32AD5CAC0001BF3B3 /* Aptabase */; };
 		006006602AD4792400EF8858 /* TesteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060065F2AD4792400EF8858 /* TesteView.swift */; };
 		009862FE2ACCBAAC0065696C /* StageStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009862FD2ACCBAAC0065696C /* StageStringView.swift */; };
 		00ECE4C32ACB3E610099E7D0 /* RectanglesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE4C22ACB3E610099E7D0 /* RectanglesModel.swift */; };
@@ -24,6 +23,7 @@
 		3B2C40D82ACF2C52006F2428 /* ExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C40D72ACF2C52006F2428 /* ExplanationView.swift */; };
 		3B2C40DB2ACF2EB8006F2428 /* PageExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C40DA2ACF2EB8006F2428 /* PageExplanationView.swift */; };
 		3B46F0A02ACDDBC500744A70 /* FretActivitieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46F09F2ACDDBC500744A70 /* FretActivitieView.swift */; };
+		3B59C0AC2AD5ED7E006C86CF /* ActivityLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59C0AB2AD5ED7E006C86CF /* ActivityLinkView.swift */; };
 		3B81D4AF2AC3549600EE61BC /* SofiaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */; };
 		3B84B12A2ACF404C00072DF5 /* 0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B84B1242ACF404C00072DF5 /* 0.mp3 */; };
 		3B84B12B2ACF404C00072DF5 /* 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B84B1252ACF404C00072DF5 /* 3.mp3 */; };
@@ -63,6 +63,7 @@
 		3B2C40D72ACF2C52006F2428 /* ExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationView.swift; sourceTree = "<group>"; };
 		3B2C40DA2ACF2EB8006F2428 /* PageExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageExplanationView.swift; sourceTree = "<group>"; };
 		3B46F09F2ACDDBC500744A70 /* FretActivitieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretActivitieView.swift; sourceTree = "<group>"; };
+		3B59C0AB2AD5ED7E006C86CF /* ActivityLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLinkView.swift; sourceTree = "<group>"; };
 		3B81D4AE2AC3549600EE61BC /* SofiaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaSans.ttf; sourceTree = "<group>"; };
 		3B84B1242ACF404C00072DF5 /* 0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 0.mp3; sourceTree = "<group>"; };
 		3B84B1252ACF404C00072DF5 /* 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 3.mp3; sourceTree = "<group>"; };
@@ -73,7 +74,7 @@
 		3B84B1302ACF451D00072DF5 /* CongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsView.swift; sourceTree = "<group>"; };
 		3BA977BB2AC3530E0062ADD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BBAD6742AC367A10012B3C8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		3BBAD6782AC368A90012B3C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3BBAD6782AC368A90012B3C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		3BBAD67C2AC368E10012B3C8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		3BBAD67F2AC3690D0012B3C8 /* TablatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablatureView.swift; sourceTree = "<group>"; };
 		3BBAD6812AC3691B0012B3C8 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
@@ -160,6 +161,14 @@
 			path = ExaplanationView;
 			sourceTree = "<group>";
 		};
+		3B59C0AA2AD5ED5D006C86CF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3B59C0AB2AD5ED7E006C86CF /* ActivityLinkView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		3B84B1172ACF3F9700072DF5 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +220,7 @@
 		3BBAD6852AC369DF0012B3C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3B59C0AA2AD5ED5D006C86CF /* Components */,
 				3B1ACD992AC1F0D600240FA5 /* ContentView.swift */,
 				3BBAD6782AC368A90012B3C8 /* HomeView.swift */,
 				3BE885882ACB63CF008AA004 /* PopUpView.swift */,
@@ -365,6 +375,7 @@
 				3BBAD6752AC367A10012B3C8 /* DataService.swift in Sources */,
 				3BBAD6822AC3691B0012B3C8 /* TutorialView.swift in Sources */,
 				00ECE4C52ACB417D0099E7D0 /* DraggableItem.swift in Sources */,
+				3B59C0AC2AD5ED7E006C86CF /* ActivityLinkView.swift in Sources */,
 				006006602AD4792400EF8858 /* TesteView.swift in Sources */,
 				3BE885812AC74BCE008AA004 /* FretView.swift in Sources */,
 				3B21159C2AC5FC04005B796F /* Model.xcdatamodeld in Sources */,
@@ -504,7 +515,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppForTabs/Preview Content\"";
-				DEVELOPMENT_TEAM = 8T6XBC66CF;
+				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppForTabs/Info.plist;
@@ -526,7 +537,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -538,7 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppForTabs/Preview Content\"";
-				DEVELOPMENT_TEAM = 8T6XBC66CF;
+				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppForTabs/Info.plist;
@@ -560,7 +571,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

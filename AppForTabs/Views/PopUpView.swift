@@ -105,7 +105,7 @@ struct PopUpView: View {
                                             Text("NÃO VER \n NOVAMENTE")
                                                 .bold()
                                                 .foregroundStyle(Color("Text"))
-                                                .frame(width: 144 , height: 54)
+                                                .frame(minWidth: 144 , minHeight: 54)
                                                 .background(Color("Background"))
                                                 .cornerRadius(32)
                                             

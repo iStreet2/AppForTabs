@@ -25,24 +25,24 @@ struct PageExplanationView: View {
                             .fontWeight(.heavy)
                         
                         
-                        HStack {
-                            Text("Tablaturas indicam")
+                        Group {
+                            Text("Tablaturas indicam ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
                                 .foregroundStyle(Color("WeekOrange"))
                                 .bold()
-                            Text("QUANDO")
+                            + Text("QUANDO ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color(.accent))
-                            Text("e")
+                            + Text("e")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
                                 .foregroundStyle(Color("WeekOrange"))
                             
                         }
-                        HStack{
-                            Text("ONDE")
+                        Group{
+                            Text("ONDE ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color(.accent))
-                            Text("colocar os dedos para")
+                            + Text("colocar os dedos para")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
                                 .foregroundStyle(Color("WeekOrange"))
                         }
@@ -72,11 +72,11 @@ struct PageExplanationView: View {
                         Text("INSTRUMENTOS DE CORDAS")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                             .foregroundStyle(Color(.accent))
-                        HStack{
-                            Text("TRASTEADOS,")
+                        Group{
+                            Text("TRASTEADOS, ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color(.accent))
-                            Text("como o violão e a")
+                            + Text("como o violão e a")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color("WeekOrange"))
                         }
@@ -101,25 +101,25 @@ struct PageExplanationView: View {
                                 .foregroundStyle(Color("WeekOrange"))
                             
                         }
-                        HStack {
-                            Text("sendo tocado, o")
+                        Group {
+                            Text("sendo tocado, o ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color("WeekOrange"))
-                            Text("NÚMERO DE")
+                            + Text("NÚMERO DE ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color(.accent))
                         }
-                        HStack{
-                            Text("LINHAS")
+                        Group{
+                            Text("LINHAS ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color(.accent))
-                            Text("ou")
+                            + Text("ou ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color("WeekOrange"))
-                            Text("CORDAS")
+                            + Text("CORDAS ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color(.accent))
-                            Text("da tablatura")
+                            + Text("da tablatura ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                                 .foregroundStyle(Color("WeekOrange"))
                         }
@@ -136,5 +136,5 @@ struct PageExplanationView: View {
 }
 
 #Preview {
-    PageExplanationView(page: 2)
+    PageExplanationView(page: 0)
 }

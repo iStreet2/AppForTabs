@@ -16,12 +16,10 @@ struct FretActivitieView: View {
     @Binding var attempts: Int
     
     var body: some View {
-        
-        
         VStack{
-            HStack{
-                Text("Toque na")
-                Text("\(fret)ª CASA")
+            Group{
+                Text("Toque na ")
+                + Text("\(fret)ª CASA")
                     .foregroundStyle(.accent)
             }
             .font(
@@ -57,7 +55,7 @@ struct FretActivitieView: View {
                                         .background(Color("Rectangle\(vm.retangulosCasas.count - i)"))
                                         .cornerRadius(10)
                                     Text("\(vm.retangulosCasas.count - i)")
-                                        .font(.custom("SofiaSans-Regular", size:30))
+                                        .font(.system( size:30))
                                         .foregroundStyle(.white)
                                         .bold()
                                 }
@@ -78,13 +76,14 @@ struct FretActivitieView: View {
                 .padding(.bottom,20)
             }
             Spacer()
+            
         }
     }
     func simpleSuccess() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
-
+    
 }
 
 //#Preview {

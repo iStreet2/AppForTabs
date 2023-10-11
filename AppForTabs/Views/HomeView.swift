@@ -41,201 +41,86 @@ struct HomeView: View {
                     ZStack{
                         Circle()
                             .fill(Color("CircleHome"))
-                            .offset(x:-70, y: -300)
-//                            .frame(width: 491, height: 491)
-                        VStack(alignment: .leading, spacing: 0){
-                            HStack(alignment: .center){
-                                Text("Olá, sou o Tabsy!")
-                                    .font(.title)
-                                    .bold()
-                                    
-                                    .padding(.leading)
-                            }
-            
-                                HStack{
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        Text("Vamos ver o que são ")
-                                            .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
-                                            .foregroundStyle(Color("MediumOrange"))
-                                        Text("TABLATURAS?")
-                                            .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
-                                            .foregroundStyle(Color("StrongOrange"))
-                                        
-                                        NavigationLink(destination: {
-                                            ExplanationView(homeView: $homeView)
-                                        }, label: {
-                                            Text("Iniciar")
-                                                .bold()
-                                                .padding(.horizontal,25)
-                                                .padding(.vertical,8)
-                                                .foregroundStyle(Color("IniciarButton"))
-                                            //                                            .frame(width: 114 , height: 35)
-                                                .background(Color("MediumOrange"))
-                                                .cornerRadius(10)
-                                                .font(.custom("SofiaSans-Regular", size:14))
-                                        }).padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
-                                        //                                   .padding(.bottom, 150)
-                                                                          .padding()
-                                        
-                                        
-                                       
-                                        
-                                        
-                                    }
-                                    Image("Tabsy")
-                                
-                                
-                            }
-                            .padding(.horizontal)
-                            .padding(.vertical,30 )
-                            
-                            
-                            
-                            Text("Atividades")
-                                .padding(.vertical)
+                            .offset(x:-70, y: -115)
+                        VStack(alignment: .leading){
+                            Text("Olá, sou o Tabsy!")
+                                .font(.largeTitle)
                                 .bold()
-                                .padding(.horizontal, 20)
-
-                                .font(.title2)
-                                .accessibilityLabel("Lista de Atividades")
-   
-                            
-                            VStack{
+                            VStack(alignment: .leading) {
                                 VStack{
-                                    NavigationLink{
-                                        StringView(context: context, seeAgain: seeAgain)
-                                        
-                                    }label: {
-                                        ZStack{
-                                            Rectangle()
-                                                .fill(vm.cardsHome[0].cor)
-                                                .cornerRadius(18)
-                                            HStack{
-                                                Text("\(vm.cardsHome[0].nome)")
-                                                    .bold()
-                                                    .foregroundStyle(.white)
-                                                    .font(.custom("SofiaSans-Regular", size:21))
-                                                Spacer()
-                                            }
-                                            .padding()
-                                            .padding(.horizontal,30)
-                                        }
-                                        .frame(width: 321, height: 115)
-                                        .padding(.leading)
-                                        .padding(.top,5)
-                                        .accessibilityLabel("Atividade de cordas")
-                                    }
-                                    
-                                    NavigationLink{
-                                        FretView(frets: $frets, context: context, seeAgain: seeAgain)
-                                    }label: {
-                                        if seeAgain.activitieDone < 1{
-                                            ZStack{
-                                                Rectangle()
-                                                    .fill(Color("BlockedRectangle"))
-                                                    .cornerRadius(18)
-                                                HStack{
-                                                    Text("\(vm.cardsHome[1].nome)")
-                                                        .bold()
-                                                        .foregroundStyle(.white)
-                                                        .font(.custom("SofiaSans-Regular", size:21))
-                                                    Spacer()
-                                                    Image(systemName: "lock.fill")
-                                                        .font(.system(size:40))
-                                                }
-                                                .padding()
-                                                .padding(.horizontal,30)
-                                            }
-                                            .frame(width: 321, height: 115)
-                                            .padding(.leading)
-                                            .padding(.top,5)
-                                            .accessibilityLabel("Atividade de Casas bloqueada, complete a de Cordas primeiro")
-                                        }
-                                        else{
-                                            ZStack{
-                                                Rectangle()
-                                                    .fill(vm.cardsHome[1].cor)
-                                                    .cornerRadius(18)
-                                                HStack{
-                                                    Text("\(vm.cardsHome[1].nome)")
-                                                        .bold()
-                                                        .foregroundStyle(.white)
-                                                        .font(.custom("SofiaSans-Regular", size:21))
-                                                    Spacer()
-                                                }
-                                                .padding()
-                                                .padding(.horizontal,30)
-                                            }
-                                            .frame(width: 321, height: 115)
-                                            .padding(.leading)
-                                            .padding(.top,5)
-                                            .accessibilityLabel("Atividade de casas")
-                                        }
-                                    }
-                                    .disabled(seeAgain.activitieDone < 1)
-                                    
-                                    
-                                    NavigationLink{
-                                        //Banana
-                                    }label: {
-//                                        if seeAgain.activitieDone < 2{
-                                            ZStack{
-                                                Rectangle()
-                                                    .fill(Color("BlockedRectangle"))
-                                                    .cornerRadius(18)
-                                                HStack{
-                                                    Text("\(vm.cardsHome[2].nome) (Em Breve!)")
-                                                        .bold()
-                                                        .foregroundStyle(.white)
-                                                        .font(.custom("SofiaSans-Regular", size:21))
-                                                    Spacer()
-                                                    
-                                                    Image(systemName: "lock.fill")
-                                                        .font(.system(size:40))
-                                                    
-                                                    
-                                                }
-                                                .padding()
-                                                .padding(.horizontal,30)
-                                            }
-                                            .frame(width: 321, height: 115)
-                                            .padding(.leading)
-                                            .padding(.top,5)
-                                            .accessibilityLabel("Atividade de Afinação, sairá em breve!")
-//                                        }
-//                                        else{
-//                                            ZStack{
-//                                                Rectangle()
-//                                                    .fill(Color("BlockedRectangle"))
-//                                                    .cornerRadius(18)
-//                                                HStack{
-//                                                    Text("\(vm.cardsHome[2].nome) (Em Breve!)")
-//                                                        .bold()
-//                                                        .foregroundStyle(.white)
-//                                                        .font(.custom("SofiaSans-Regular", size:21))
-//                                                    Spacer()
-//                                                    Image(systemName: "lock.fill")
-//                                                        .font(.system(size:40))
-//                                                    
-//                                                }
-//                                                .padding()
-//                                                .padding(.horizontal,30)
-//                                            }
-//                                            .frame(width: 321, height: 115)
-//                                            .padding(.leading)
-//                                            .padding(.top,5)
-//                                            .accessibilityLabel("Atividade de Afinação, sairá em breve!")
-//                                            
-//                                        }
-                                    }
-                                    .disabled(true)
-                                    
+                                    Text("Vamos ver o que são ")
+                                        .font(.custom("SofiaSans-Regular", size:20).weight(.heavy))
+                                        .foregroundStyle(Color("MediumOrange"))
+                                    Text("TABLATURAS?")
+                                        .font(.custom("SofiaSans-Regular", size:28).weight(.heavy))
+                                        .foregroundStyle(Color("MediumOrange"))
                                 }
+                                .accessibilityElement(children: .combine)
                                 
-                                
+                                HStack{
+                                    NavigationLink(destination: {
+                                        ExplanationView(homeView: $homeView)
+                                    }, label: {
+                                        Text("Iniciar")
+                                            .bold()
+                                            .foregroundStyle(Color("IniciarButton"))
+                                            .frame(minWidth: 114 , minHeight: 35)
+                                            .background(Color("MediumOrange"))
+                                            .cornerRadius(10)
+                                            .font(.custom("SofiaSans-Regular", size:14))
+                                            .accessibilityLabel("Iniciar explicação de Tablaturas")
+                                    })
+                                    .padding(.bottom, 100)
+                                    
+                                    Image("Tabsy")
+                                        .accessibilityLabel("Mascote Tabsy")
+                                }
                             }
                         }
+                        .padding(.horizontal)
+                        
                     }
+                    VStack(alignment:.leading){
+                        Text("Atividades")
+                            .bold()
+                            .font(.title2)
+                            .accessibilityLabel("Lista de Atividades")
+                        
+                        
+                        VStack{
+                            
+                            //Atividade de Cordas
+                            NavigationLink{
+                                StringView(context: context, seeAgain: seeAgain)
+                                
+                            }label: {
+                                ActivityLinkView(text: vm.cardsHome[0].nome, color: vm.cardsHome[0].cor, locked: false)
+                                    .frame(minWidth: 321, minHeight: 115)
+                                
+                            }
+                            
+                            
+                            //Atividade de Casas
+                            NavigationLink{
+                                FretView(frets: $frets, context: context, seeAgain: seeAgain)
+                            }label: {
+                                ActivityLinkView(text: vm.cardsHome[1].nome, color: vm.cardsHome[1].cor, locked: seeAgain.activitieDone < 1)
+                                    .frame(minWidth: 321, minHeight: 115)
+                            }
+                            .disabled(seeAgain.activitieDone < 1)
+                            
+                            //Atividade de Afinação
+                            NavigationLink{
+                                //Banana
+                            }label: {
+                                ActivityLinkView(text: "Afinação (Sairá em Breve!)", color: vm.cardsHome[2].cor, locked: true)
+                                    .frame(minWidth: 321, minHeight: 115)
+                            }
+                            .disabled(true)
+                        }
+                        
+                    }
+                    .padding(.horizontal,30)
                 }
                 Spacer()
             }
@@ -247,8 +132,8 @@ struct HomeView: View {
                         .accessibilityLabel("Rever tutorial inicial")
                 }
             }
-            
         }
+        
     }
 }
 
