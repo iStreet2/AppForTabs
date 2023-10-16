@@ -23,6 +23,10 @@ struct StageStringView: View {
     @State private var draggedItem: DraggableItem?
     
     @EnvironmentObject var vm: ViewModel
+    
+    @State var drop = [true,true,true,true,true,true]
+    @State var drop1 = [true,true,true,true,true,true]
+    @State var drop2 = [true,true,true,true,true]
         
     @State var player: AVAudioPlayer?
 //    @State var progressBarValue: Float = 0.0
@@ -40,6 +44,7 @@ struct StageStringView: View {
     }
     
     var body: some View {
+        
         ZStack{
             Color("Background")
                 .ignoresSafeArea()
@@ -67,9 +72,11 @@ struct StageStringView: View {
                                         .onChange(of:vm.retangulos[i].destination.color){
                                             vm.allTrueString += 1
                                             playSound(sound: "\(i)")
+                                            drop[i].toggle()
                                             if vm.allTrueString == vm.retangulos.count{
                                                 sheetView.toggle()
                                                 vm.allTrueString = 0
+                                                
                                                 //                                            progressBarValue += 0.25
                                             }
                                             
@@ -82,13 +89,20 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(0 ..< vm.retangulos.count/2, id: \.self){ i in
-                                    vm.retangulos[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulos[i]
-                                            return NSItemProvider()
-                                        }
-                                        .padding(20)
-                                        .accessibilityLabel("Quadrado de numero \(i+1)")
+                                    if drop[i]{
+                                        vm.retangulos[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulos[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .padding(20)
+                                            .accessibilityLabel("Quadrado de numero \(i+1)")
+                                    }else{
+                                        vm.retangulos[i].origin
+                                            .padding(20)
+                                    }
                                     
                                 }
                             }
@@ -97,14 +111,21 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(vm.retangulos.count/2 ..< vm.retangulos.count, id: \.self){ i in
-                                    vm.retangulos[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulos[i]
-                                            return NSItemProvider()
-                                        }
-                                        .padding(20)
-                                        .accessibilityLabel("Quadrado de numero \(i) para ser arrastado")
-                                    
+                                    if drop[i]{
+                                        vm.retangulos[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulos[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .padding(20)
+                                            .accessibilityLabel("Quadrado de numero \(i) para ser arrastado")
+                                    }
+                                    else{
+                                        vm.retangulos[i].origin
+                                            .padding(20)
+                                    }
                                     
                                 }
                             }
@@ -185,6 +206,7 @@ struct StageStringView: View {
                                             withAnimation(.easeIn){
                                                 playSound(sound: "\(i)")
                                                 vm.allTrueString += 1
+                                                drop1[i].toggle()
                                                 if vm.allTrueString == 5{
                                                     sheetView.toggle()
                                                     vm.allTrueString = 0
@@ -199,11 +221,18 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(1 ..< vm.retangulosII.count, id: \.self){ i in
-                                    vm.retangulosII[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulosII[i]
-                                            return NSItemProvider()
-                                        }
+                                    if drop1[i]{
+                                        vm.retangulosII[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulosII[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                    }
+                                    else{
+                                        vm.retangulosII[i].origin
+                                    }
                                 }.padding( 1)
                             }
                             
@@ -305,11 +334,11 @@ struct StageStringView: View {
                                             vm.retangulosIII[vm.retangulosIII.count-1-i].destination
                                                 .padding(.bottom, 3)
                                                 .padding(.leading, 60)
-                                            
                                                 .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                                 .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
                                                     vm.allTrueString += 1
                                                     playSound(sound: "\(vm.retangulosIII.count-1-i)")
+                                                    drop2[vm.retangulosIII.count-1-i] = false
                                                     if vm.allTrueString == 5{
                                                         sheetView.toggle()
                                                         vm.allTrueString = 0
@@ -327,19 +356,21 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(0 ..< vm.retangulosIII.count-1, id: \.self){ i in
-                                    vm.retangulosIII[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulosIII[i]
-                                            return NSItemProvider()
-                                        }
+                                    if drop2[i]{
+                                        vm.retangulosIII[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulosIII[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                    }else{
+                                        vm.retangulosIII[i].origin
+                                    }
                                 }.padding( 1)
                             }
                             Spacer()
                         }
-                        //                    if pop{
-                        //                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                        //                    }
-                        
                     }
                 }
                 .toolbar{
