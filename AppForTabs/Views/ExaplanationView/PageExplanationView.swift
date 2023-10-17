@@ -17,107 +17,118 @@ struct PageExplanationView: View {
         VStack{
             
             if page == 0{
-                VStack(alignment: .leading){
-                    Text("O que são?")
-                        .font(.system(size: 32))
-                        .frame(width: 300, height: 54, alignment: .topLeading)
-                        .bold()
-                    
-                    
-                    HStack {
-                        Text("Tablaturas indicam")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
-                        Text("QUANDO")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color(.accent))
-                        Text("e")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                ScrollView{
+                    VStack(alignment: .leading){
+                        Text("O que são?")
+                            .font(.system(size: 32))
+                            .frame(width: 300, height: 54, alignment: .topLeading)
+                            .fontWeight(.heavy)
+                        
+                        
+                        Group {
+                            Text("Tablaturas indicam ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
+                                .foregroundStyle(Color("WeekOrange"))
+                                .bold()
+                            + Text("QUANDO ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color(.accent))
+                            + Text("e")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
+                                .foregroundStyle(Color("WeekOrange"))
+                            
+                        }
+                        Group{
+                            Text("ONDE ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color(.accent))
+                            + Text("colocar os dedos para")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
+                                .foregroundStyle(Color("WeekOrange"))
+                        }
+                        Text("gerar uma nota no instrumento.")
+                            .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
                             .foregroundStyle(Color("WeekOrange"))
                     }
-                    HStack{
-                        Text("ONDE")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color(.accent))
-                        Text("colocar os dedos para")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
-                    }
-                    Text("gerar uma nota no instrumento.")
-                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                        .foregroundStyle(Color("WeekOrange"))
                 }
+                .accessibilityElement(children: .combine)
                 
             }else if page == 1{
-                VStack(alignment: .leading){
-                    Text("Instrumentos")
-                        .font(.system(size: 32))
-                        .frame(width: 300, height: 54, alignment: .topLeading)
-                        .bold()
-                    
-                    
-                    HStack {
-                        Text("Geralmente são tocados")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
+                ScrollView{
+                    VStack(alignment: .leading){
+                        Text("Instrumentos")
+                            .font(.system(size: 32))
+                            .frame(width: 300, height: 54, alignment: .topLeading)
+                            .bold()
                         
                         
-                    }
-                    Text("INSTRUMENTOS DE CORDAS")
-                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                        .foregroundStyle(Color(.accent))
-                    HStack{
-                        Text("TRASTEADOS,")
+                        HStack {
+                            Text("Geralmente são tocados")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
+                            
+                            
+                        }
+                        Text("INSTRUMENTOS DE CORDAS")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                             .foregroundStyle(Color(.accent))
-                        Text("como o violão e a")
+                        Group{
+                            Text("TRASTEADOS, ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color(.accent))
+                            + Text("como o violão e a")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
+                        }
+                        Text("guitarra elétrica.")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                             .foregroundStyle(Color("WeekOrange"))
                     }
-                    Text("guitarra elétrica.")
-                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                        .foregroundStyle(Color("WeekOrange"))
                 }
+                .accessibilityElement(children: .combine)
                 
             }else if page == 2{
-                VStack(alignment: .leading){
-                    Text("Variações")
-                        .font(.system(size: 32))
-                        .frame(width: 300, height: 54, alignment: .topLeading)
-                        .bold()
-                
-                    HStack {
-                        Text("Dependendo do instrumento")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
+                ScrollView{
+                    VStack(alignment: .leading){
+                        Text("Variações")
+                            .font(.system(size: 32))
+                            .frame(width: 300, height: 54, alignment: .topLeading)
+                            .bold()
                         
-                    }
-                    HStack {
-                        Text("sendo tocado, o")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                        .foregroundStyle(Color("WeekOrange"))
-                        Text("NÚMERO DE")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                        .foregroundStyle(Color(.accent))
-                    }
-                    HStack{
-                        Text("LINHAS")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color(.accent))
-                        Text("ou")
+                        HStack {
+                            Text("Dependendo do instrumento")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
+                            
+                        }
+                        Group {
+                            Text("sendo tocado, o ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
+                            + Text("NÚMERO DE ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color(.accent))
+                        }
+                        Group{
+                            Text("LINHAS ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color(.accent))
+                            + Text("ou ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
+                            + Text("CORDAS ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color(.accent))
+                            + Text("da tablatura ")
+                                .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
+                                .foregroundStyle(Color("WeekOrange"))
+                        }
+                        Text("pode variar.")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
                             .foregroundStyle(Color("WeekOrange"))
-                        Text("CORDAS")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color(.accent))
-                        Text("da tablatura")
-                            .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
                     }
-                    Text("pode variar.")
-                        .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                        .foregroundStyle(Color("WeekOrange"))
                 }
+                .accessibilityElement(children: .combine)
             }
             Spacer()
         }
@@ -125,5 +136,5 @@ struct PageExplanationView: View {
 }
 
 #Preview {
-    PageExplanationView(page: 2)
+    PageExplanationView(page: 0)
 }

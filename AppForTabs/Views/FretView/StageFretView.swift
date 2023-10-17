@@ -38,72 +38,78 @@ struct StageFretView: View, Identifiable {
     var body: some View {
         ZStack{
             Color("Background")
-                .ignoresSafeArea()
-            
-            
+                .ignoresSafeArea()            
             //PAGINA 1 COM A PRIMEIRA ATIVIDADE
             if seeAgain.fretActivitie == 1{
-                VStack{
-                    HStack{
-                        Text("Toque nas")
-                        Text("CASAS")
-                            .foregroundStyle(.accent)
-                    }
-                    .font(
-                        Font.custom("SofiaSans-Regular", size: 24)
-                            .weight(.heavy)
-                    )
-                    .multilineTextAlignment(.center)
-                    Spacer()
-                    ZStack{
-                        Image("NoHouse")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width:390)
-                        HStack(spacing: 0){
-                            Button(action: {
-                                withAnimation(.easeInOut){
-                                    pinkHouse.toggle()
-                                    if pinkHouse == false && blueHouse == false{
-                                        sheetView.toggle()
-                                    }
-                                }
-                            }, label: {
-                                if pinkHouse{
-                                    Image("PinkHouse")
-                                        .padding(.leading)
-                                    
-                                }
-                                else{
-                                    Image("PinkRectangle")
-                                        .padding(.leading,30)
-                                        .padding(.top,10)
-                                }
-                            })
-                            .frame(width:200)
-                            Button(action: {
-                                withAnimation(.easeInOut){
-                                    blueHouse.toggle()
-                                    if pinkHouse == false && blueHouse == false{
-                                        sheetView.toggle()
-                                    }
-                                }
-                            }, label: {
-                                if blueHouse{
-                                    Image("BlueHouse")
-                                        .padding(.trailing)
-                                }else{
-                                    Image("BlueRectangle")
-                                        .padding(.trailing,30)
-                                        .padding(.top,10)
-                                }
-                                
-                            })
-                            .frame(width:200)
-                            
+                ScrollView{
+                    VStack{
+                        Group{
+                            Text("Toque nas ")
+                            + Text("CASAS")
+                                .foregroundStyle(.accent)
                         }
+                        .font(
+                            Font.custom("SofiaSans-Regular", size: 24)
+                                .weight(.heavy)
+                        )
+                        .multilineTextAlignment(.center)
+                        Spacer()
+                        ZStack{
+                            Image("NoHouse")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:390)
+                                .accessibilityLabel("Braço de um violão")
+                            
+                            HStack(spacing: 0){
+                                Button(action: {
+                                    withAnimation(.easeInOut){
+                                        pinkHouse.toggle()
+                                        if pinkHouse == false && blueHouse == false{
+                                            sheetView.toggle()
+                                        }
+                                    }
+                                }, label: {
+                                    if pinkHouse{
+                                        Image("PinkHouse")
+                                            .padding(.leading)
+                                            .accessibilityLabel("Casa Rosa")
+                                        
+                                    }
+                                    else{
+                                        Image("PinkRectangle")
+                                            .padding(.leading,30)
+                                            .padding(.top,10)
+                                            .accessibilityLabel("Espaço Rosa")
+                                    }
+                                })
+                                .frame(width:200)
+                                Button(action: {
+                                    withAnimation(.easeInOut){
+                                        blueHouse.toggle()
+                                        if pinkHouse == false && blueHouse == false{
+                                            sheetView.toggle()
+                                        }
+                                    }
+                                }, label: {
+                                    if blueHouse{
+                                        Image("BlueHouse")
+                                            .padding(.trailing)
+                                            .accessibilityLabel("Casa Azul")
+                                    }else{
+                                        Image("BlueRectangle")
+                                            .padding(.trailing,30)
+                                            .padding(.top,10)
+                                            .accessibilityLabel("Espaço Azul")
+                                    }
+                                    
+                                })
+                                .frame(width:200)
+                                
+                            }
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
                 .sheet(isPresented: $sheetView) {
                     CongratulationsSheetView(text1: "Boa!",text2:"O espaço entre dois trastes é chamado de Casa.",type: "Fret", context: context, seeAgain: seeAgain)
@@ -118,106 +124,106 @@ struct StageFretView: View, Identifiable {
             
             //PAGINA 2 COM A 2 ATIVIDADE
             else if seeAgain.fretActivitie == 2{
-                ZStack{
-                    
-                    VStack{
+                ScrollView{
+                    ZStack{
                         VStack{
-                            HStack{
-                                Text("Numere as")
-                                Text("CASAS")
-                                    .foregroundStyle(.accent)
-                            }
-                        }
-                        .font(
-                            Font.custom("SofiaSans-Regular", size: 24)
-                                .weight(.heavy)
-                        )
-                        .multilineTextAlignment(.center)
-                        Spacer()
-                        
-                        ZStack{
-                            Image("GuitarArm")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width:390)
-                            HStack(spacing: 0){
-                                ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
-                                    vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination
-                                        .padding(.horizontal,4)
-                                        .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
-                                        .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
-                                            vm.allTrueFret += 1
-                                            if vm.allTrueFret == 4{
-                                                sheetView.toggle()
-                                            }
-                                        }
-                                }
-                                
-                            }
-                            .padding(.trailing,13)
-                            .padding(.bottom,20)
-                            
-                        }
-                        VStack{
-                            HStack{
-                                ForEach(0 ..< vm.retangulosCasas.count/2, id: \.self){ i in
-                                    vm.retangulosCasas[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulosCasas[i]
-                                            return NSItemProvider()
-                                        }.padding()
-                                    
+                            VStack{
+                                Group{
+                                    Text("Numere as ")
+                                    + Text("CASAS")
+                                        .foregroundStyle(.accent)
                                 }
                             }
-                            .padding(.trailing,30)
-                            
-                            HStack{
-                                ForEach(vm.retangulosCasas.count/2 ..< vm.retangulosCasas.count, id: \.self){ i in
-                                    vm.retangulosCasas[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulosCasas[i]
-                                            return NSItemProvider()
-                                        }.padding()
-                                }
-                            }
-                            .padding(.leading,30)
-                            
+                            .font(
+                                Font.custom("SofiaSans-Regular", size: 24)
+                                    .weight(.heavy)
+                            )
+                            .multilineTextAlignment(.center)
                             Spacer()
                             
-                            
+                            ZStack{
+                                Image("GuitarArm")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(minWidth:410)
+                                    .accessibilityLabel("Braço de um violão")
+                                
+                                HStack(spacing: 0){
+                                    ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
+                                        vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination
+                                            .accessibilityLabel("Casa de número \(vm.retangulosCasas.count - i)")
+                                            .padding(.horizontal,6)
+                                            .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
+                                            .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
+                                                vm.allTrueFret += 1
+                                                if vm.allTrueFret == 4{
+                                                    sheetView.toggle()
+                                                }
+                                            }
+                                    }
+                                }
+                                .padding(.trailing,13)
+                                .padding(.bottom,20)
+                                
+                            }
+                            VStack{
+                                HStack{
+                                    ForEach(0 ..< vm.retangulosCasas.count/2, id: \.self){ i in
+                                        vm.retangulosCasas[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulosCasas[i]
+                                                self.attempts += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .padding()
+                                            .accessibilityLabel("Casa de número \(i+1)")
+                                        
+                                    }
+                                }
+                                .padding(.trailing,30)
+                                
+                                HStack{
+                                    ForEach(vm.retangulosCasas.count/2 ..< vm.retangulosCasas.count, id: \.self){ i in
+                                        vm.retangulosCasas[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulosCasas[i]
+                                                self.attempts += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .padding()
+                                            .accessibilityLabel("Casa de número \(i+1)")
+                                    }
+                                }
+                                .padding(.leading,30)
+                                Spacer()
+                            }
+                            Spacer()
                         }
-                        Spacer()
-                        
-                    }
-                    .sheet(isPresented: $sheetView) {
-                        CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
-                            .presentationDetents([.fraction(0.286),.large])
-                            .interactiveDismissDisabled()
-                            .presentationDragIndicator(.hidden)
-                    }
-                    .padding()
-                    .onAppear{
-                        if seeAgain.enabled{
-                            pop.toggle()
+                        .sheet(isPresented: $sheetView) {
+                            CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
+                                .presentationDetents([.fraction(0.286),.large])
+                                .interactiveDismissDisabled()
+                                .presentationDragIndicator(.hidden)
                         }
-                    }
-                    .toolbar{
-                        Button(action: {
-                            pop.toggle()
-                            seeAgainController.enableSeeAgain(seeAgain: seeAgain)
-                        }, label: {
-                            Image(systemName: "questionmark.circle")
-                        })
+                        .padding()
+                        .onAppear{
+                            if seeAgain.enabled{
+                                pop.toggle()
+                            }
+                        }
+                        .toolbar{
+                            Button(action: {
+                                pop.toggle()
+                                seeAgainController.enableSeeAgain(seeAgain: seeAgain)
+                            }, label: {
+                                Image(systemName: "questionmark.circle")
+                            })
+                        }
                     }
                     
-                    if pop{
-                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                            .ignoresSafeArea()
-                            .frame(maxHeight:.infinity)
-                    }
                 }
-                
-                
                 //PAGINA 3 COM 3 ATIVIDADE
             }else if seeAgain.fretActivitie == 3{
                 
@@ -263,65 +269,71 @@ struct StageFretView: View, Identifiable {
                         }
                 }
             }else if seeAgain.fretActivitie == 4{
-                VStack{
-                    Group{
-                        HStack{
-                            Text("Toque no violão a")
-                            Text("CASA")
-                                .foregroundStyle(.accent)
-                            
+                ScrollView{
+                    VStack{
+                        VStack{
+                            Group{
+                                Group{
+                                    Text("Toque no violão a ")
+                                    + Text("CASA")
+                                        .foregroundStyle(.accent)
+                                }
+                                Text("indicada na tablatura")
+                            }
+                            .font(
+                                Font.custom("Sofia Sans", size: 24)
+                                    .weight(.heavy)
+                            )
+                            .multilineTextAlignment(.center)
                         }
-                        Text("indicada na tablatura")
-                    }
-                    .font(
-                        Font.custom("Sofia Sans", size: 24)
-                            .weight(.heavy)
-                    )
-                    .multilineTextAlignment(.center)
-                    Spacer()
-                    ZStack{
-                        Image("GuitarArm2")
-                        HStack{
-                            ForEach(0 ..< 3, id: \.self) { i in
-                                Button(action: {
-                                    if i == 2{
-                                        withAnimation(.easeIn){
-                                            fretOnTablature = true
-                                            sheetView.toggle()
+                        .accessibilityElement(children:.combine)
+                        Spacer()
+                        ZStack{
+                            Image("GuitarArm2")
+                                .accessibilityLabel("Braço de violão")
+                            HStack{
+                                ForEach(0 ..< 3, id: \.self) { i in
+                                    Button(action: {
+                                        if i == 2{
+                                            withAnimation(.easeIn){
+                                                fretOnTablature = true
+                                                sheetView.toggle()
+                                            }
+                                        }else{
+                                            withAnimation(.default){
+                                                self.attempts+=1
+                                                simpleSuccess()
+                                            }
                                         }
-                                    }else{
-                                        withAnimation(.default){
-                                            self.attempts+=1
-                                            simpleSuccess()
-                                        }
-                                    }
-                                }, label: {
-                                    if fretOnTablature && i == 2{
-                                        ZStack{
-                                            Rectangle()
-                                                .foregroundColor(.clear)
-                                                .frame(width: 95, height: 109)
-                                                .background(.pink)
-                                                .cornerRadius(10)
-                                            Text("1")
-                                                .foregroundStyle(.white)
-                                                .font(.custom("SofiaSans-Regular", size:30))
-                                                .bold()
+                                    }, label: {
+                                        if fretOnTablature && i == 2{
+                                            ZStack{
+                                                Rectangle()
+                                                    .foregroundColor(.clear)
+                                                    .frame(width: 95, height: 109)
+                                                    .background(.pink)
+                                                    .cornerRadius(10)
+                                                Text("1")
+                                                    .foregroundStyle(.white)
+                                                    .font(.custom("SofiaSans-Regular", size:30))
+                                                    .bold()
+                                            }
+                                            
+                                        }else{
+                                            Image("Pontilhado")
+                                                .accessibilityLabel("Casa de número \(3 - i)")
                                         }
                                         
-                                    }else{
-                                        Image("Pontilhado")
-                                    }
-                                    
-                                })
+                                    })
+                                }
+                                .padding(.top)
                             }
-                            .padding(.top)
+                            .padding(.trailing,60)
                         }
-                        .padding(.trailing,60)
+                        Image("TablatureActivity")
+                            .padding(.bottom,100)
+                        
                     }
-                    Image("TablatureActivity")
-                        .padding(.bottom,100)
-                    
                 }
                 .sheet(isPresented: $sheetView) {
                     CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
@@ -333,31 +345,12 @@ struct StageFretView: View, Identifiable {
             }
             else if seeAgain.fretActivitie == 5{
                 CongratulationsView(context: context, seeAgain: seeAgain, type: "Fret")
-                //                ZStack{
-                //                    Color.gray
-                //                        .ignoresSafeArea()
-                //                        .opacity(0.6)
-                //
-                //                    Rectangle()
-                //                    .foregroundColor(.clear)
-                //                    .frame(width: 323, height: 294)
-                //                    .background(Color("WeekOrange"))
-                //                    .cornerRadius(30)
-                //
-                //                    Text("Agora vamos\n revisar o conteúdo e ver\n como isso se aplica com a\n tablatura ?")
-                //                        .font(
-                //                        Font.custom("SofiaSans-Regular", size: 24)
-                //                        .weight(.heavy)
-                //                        )
-                //                        .multilineTextAlignment(.center)
-                //                        .foregroundStyle(Color("StrongOrange"))
-                //                }
-                //                .onAppear{
-                //                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
-                //                }
             }
-            
-            
+            if pop{
+                PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
+                    .ignoresSafeArea()
+                    .frame(maxHeight:.infinity)
+            }
         }
     }
     
