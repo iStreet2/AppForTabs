@@ -36,17 +36,20 @@ struct PopUpView: View {
             ScrollView{
                 VStack() {
                     VStack{
-                        Text("SEGURE E ARRASTE")
-                            .foregroundStyle(Color("StrongOrange"))
-                        Text("OS ELEMENTOS")
-                    }
-                    .padding(.top, 60)
-                    .fontWeight(.heavy)
-                    .font(.custom("SofiaSans-Regular", size:20))
-                    Text("ATÉ O SOMBREADO")
+                        VStack{
+                            Text("SEGURE E ARRASTE")
+                                .foregroundStyle(Color("StrongOrange"))
+                            Text("OS ELEMENTOS")
+                        }
+                        .padding(.top, 60)
                         .fontWeight(.heavy)
                         .font(.custom("SofiaSans-Regular", size:20))
-                        .multilineTextAlignment(.center)
+                        Text("ATÉ O SOMBREADO")
+                            .fontWeight(.heavy)
+                            .font(.custom("SofiaSans-Regular", size:20))
+                            .multilineTextAlignment(.center)
+                    }
+                    .accessibilityElement(children: .combine)
                     VStack{
                         ZStack{
                             Group{
@@ -74,8 +77,8 @@ struct PopUpView: View {
                                         .offset(y:-40)
                                         .offset(y: moving ? 0 : 55)
                                         .padding(.leading, 53)
-                                    
                                         .animation(.spring(response: 4.5, dampingFraction: 0, blendDuration: 0.0).repeatForever(autoreverses: false), value: moving)
+                                        .accessibilityLabel("Animação que mostra uma mão arrastando o retângulo ate um espaço cinza")
                                     
                                 }
                                 .onAppear{
