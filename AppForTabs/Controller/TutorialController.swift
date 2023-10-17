@@ -34,9 +34,7 @@ class TutorialController: ObservableObject {
             return
         }
         let tutorial = Tutorial(context: context)
-        tutorial.enabled = true
-        
-        saveContext()
+        enableTutorial(tutorial: tutorial)
     }
     
     func disableTutorial(tutorial: Tutorial){

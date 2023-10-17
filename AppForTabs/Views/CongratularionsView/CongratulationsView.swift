@@ -34,6 +34,7 @@ struct CongratulationsView: View {
                 ScrollView{
                 VStack{
                     Image("stars")
+                        .accessibilityLabel("Estrelas")
                     Text("PARABÉNS!")
                         .font(
                             Font.custom("Sofia Sans", size: 40)
@@ -46,6 +47,7 @@ struct CongratulationsView: View {
                         .foregroundColor(.white)
                     ZStack{
                         Image("TabsyCongratulations")
+                            .accessibilityLabel("Tabsy Sorrindo")
                     }
                     Spacer()
                 }
@@ -79,6 +81,7 @@ struct CongratulationsView: View {
                         
                     })
                     .padding(.trailing)
+                    .accessibilityLabel("Jogar Novamente!")
                     Button(action: {
                         dismiss()
                     }, label: {
@@ -92,6 +95,7 @@ struct CongratulationsView: View {
                                 .foregroundColor(Color("StrongOrange"))
                         }
                     })
+                    .accessibilityLabel("Voltar para o início!")
                 }
                 .padding()
             }

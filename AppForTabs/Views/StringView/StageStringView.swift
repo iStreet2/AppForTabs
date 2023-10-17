@@ -23,10 +23,12 @@ struct StageStringView: View {
     @State private var draggedItem: DraggableItem?
     
     @EnvironmentObject var vm: ViewModel
-        
-    @State var player: AVAudioPlayer?
-//    @State var progressBarValue: Float = 0.0
     
+    @State var drop = [true,true,true,true,true,true]
+    @State var drop1 = [true,true,true,true,true,true]
+    @State var drop2 = [true,true,true,true,true]
+        
+    @State var player: AVAudioPlayer!    
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context
@@ -40,6 +42,7 @@ struct StageStringView: View {
     }
     
     var body: some View {
+        
         ZStack{
             Color("Background")
                 .ignoresSafeArea()
@@ -67,9 +70,11 @@ struct StageStringView: View {
                                         .onChange(of:vm.retangulos[i].destination.color){
                                             vm.allTrueString += 1
                                             playSound(sound: "\(i)")
+                                            drop[i].toggle()
                                             if vm.allTrueString == vm.retangulos.count{
                                                 sheetView.toggle()
                                                 vm.allTrueString = 0
+                                                
                                                 //                                            progressBarValue += 0.25
                                             }
                                             
@@ -82,14 +87,17 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(0 ..< vm.retangulos.count/2, id: \.self){ i in
-                                    vm.retangulos[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulos[i]
-                                            return NSItemProvider()
-                                        }
-                                        .padding(20)
-                                        .accessibilityLabel("Quadrado de numero \(i+1)")
-                                    
+                                    if drop[i]{
+                                        vm.retangulos[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulos[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .padding(20)
+                                            .accessibilityLabel("Quadrado de numero \(i+1)")
+                                    }
                                 }
                             }
                             .padding(.trailing,40)
@@ -97,14 +105,17 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(vm.retangulos.count/2 ..< vm.retangulos.count, id: \.self){ i in
-                                    vm.retangulos[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulos[i]
-                                            return NSItemProvider()
-                                        }
-                                        .padding(20)
-                                        .accessibilityLabel("Quadrado de numero \(i) para ser arrastado")
-                                    
+                                    if drop[i]{
+                                        vm.retangulos[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulos[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .padding(20)
+                                            .accessibilityLabel("Quadrado de numero \(i+1)")
+                                    }
                                     
                                 }
                             }
@@ -144,35 +155,36 @@ struct StageStringView: View {
             {
                 ScrollView{
                     ZStack{
-                        
-                        
                         VStack{
-                            //                        ProgressBar(value: $progressBarValue, maxValue: 1)
-                            Group{
-                                Text("Numere as ")
-                                + Text("LINHAS")
-                                    .foregroundColor(.orange)
-                            }.font(.custom("SofiaSans-Regular", size:24))
+                            VStack{
+                                Group{
+                                    Text("Numere as ")
+                                    + Text("LINHAS")
+                                        .foregroundColor(.orange)
+                                }
+                                .font(.custom("SofiaSans-Regular", size:24))
                                 .bold()
+                            }
+                            .accessibilityElement(children: .combine)
                             ZStack{
                                 Image ("CordaViolao")
                                     .frame(width: 394, height: 108)
                                     .padding()
+                                    .accessibilityLabel("Braço de violão com cordas")
                                 VStack{
-                                    
                                     ForEach(0 ..< vm.retangulosII.count-1, id: \.self){ i in
                                         Rectangle()
                                             .frame(width: 390, height: 4)
                                             .foregroundColor(vm.retangulosII[vm.retangulosII.count-1-i].destination.color)
                                             .padding(.bottom, 4)
                                         
-                                        
                                     }
                                     Rectangle()
                                         .frame(width: 390, height: 4)
                                         .foregroundColor(vm.retangulosII[0].origin.color)
                                         .padding(.bottom, 4)
-                                }.padding(.bottom, 3)
+                                }
+                                .padding(.bottom, 3)
                             }
                             
                             VStack{
@@ -185,6 +197,7 @@ struct StageStringView: View {
                                             withAnimation(.easeIn){
                                                 playSound(sound: "\(i)")
                                                 vm.allTrueString += 1
+                                                drop1[i].toggle()
                                                 if vm.allTrueString == 5{
                                                     sheetView.toggle()
                                                     vm.allTrueString = 0
@@ -193,30 +206,29 @@ struct StageStringView: View {
                                         }
                                     
                                     
-                                }.padding(1)
-                            }.padding()
+                                }
+                                .padding(1)
+                            }
+                            .padding()
                             
                             
                             HStack{
                                 ForEach(1 ..< vm.retangulosII.count, id: \.self){ i in
-                                    vm.retangulosII[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulosII[i]
-                                            return NSItemProvider()
-                                        }
-                                }.padding( 1)
+                                    if drop1[i]{
+                                        vm.retangulosII[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulosII[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .accessibilityLabel("Quadrado de numero \(i+1)")
+                                    }
+                                }
+                                .padding( 1)
                             }
-                            
-                            
                             Spacer()
-                            
-                            
-                            
                         }
-                        //                    if pop{
-                        //                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                        //                    }
-                        
                     }
                 }
                 .toolbar{
@@ -249,11 +261,15 @@ struct StageStringView: View {
                                 Text("Numere as ")
                                 + Text("CORDAS")
                                     .foregroundStyle(.accent)
-                            }.font(.custom("SofiaSans-Regular", size:24))
-                                .bold()
-                                .padding()
+                            }
+                            .font(.custom("SofiaSans-Regular", size:24))
+                            .bold()
+                            .padding()
+                            
                             ZStack{
                                 Image("CordasTabs")
+                                    .accessibilityLabel("Imagem de linhas de uma tablatura")
+                                    .accessibilityRemoveTraits(.isImage)
                                 VStack(spacing: 0){
                                     ForEach (0 ..< vm.retangulosIII.count-1, id: \.self){ i in
                                         HStack{
@@ -261,30 +277,37 @@ struct StageStringView: View {
                                                 .padding(.top, -20)
                                                 .foregroundColor(vm.retangulosIII[i].destination.color)
                                                 .font(.system(size:22))
+                                                .accessibilityLabel("Linha de número \(i+1)")
                                             Rectangle()
                                                 .foregroundColor(.clear)
                                                 .frame(width: 245, height: 4)
                                                 .background(Color(vm.retangulosIII[i].destination.color))
                                                 .padding(.bottom, 21)
                                                 .padding(.trailing, 3)
-                                        }.padding(.trailing, 15)
+                                        }
+                                        .padding(.trailing, 15)
                                     }
                                     HStack{
                                         Text(vm.retangulosIII[5].origin.numero)
                                             .padding(.top, -20)
                                             .foregroundColor(vm.retangulosIII[5].origin.color)
                                             .font(.system(size:22))
+                                            .accessibilityLabel("Linha de número 6")
                                         Rectangle()
                                             .foregroundColor(.clear)
                                             .frame(width: 245, height: 4)
                                             .background(Color(vm.retangulosIII[5].origin.color))
                                             .padding(.bottom, 20)
                                             .padding(.trailing, 3)
-                                    }.padding(.trailing, 15)
-                                }.padding(.top, 21.5)
+                                    }
+                                    .padding(.trailing, 15)
+                                }
+                                .padding(.top, 21.5)
                             }
                             ZStack{
                                 Image("PedacoCorda")
+                                    .accessibilityLabel("Imagem de cordas de um violão")
+                                    .accessibilityRemoveTraits(.isImage)
                                     .frame(width: 417, height: 318)
                                 
                                 VStack(spacing: 0){
@@ -296,6 +319,7 @@ struct StageStringView: View {
                                             .padding(.bottom, 3)
                                             .padding(.leading, 60)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                            .accessibilityLabel("Quadrado de número 6")
                                     }
                                     ForEach(1 ..< vm.retangulosIII.count, id: \.self){ i in
                                         ZStack{
@@ -305,11 +329,11 @@ struct StageStringView: View {
                                             vm.retangulosIII[vm.retangulosIII.count-1-i].destination
                                                 .padding(.bottom, 3)
                                                 .padding(.leading, 60)
-                                            
                                                 .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
                                                 .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
                                                     vm.allTrueString += 1
                                                     playSound(sound: "\(vm.retangulosIII.count-1-i)")
+                                                    drop2[vm.retangulosIII.count-1-i] = false
                                                     if vm.allTrueString == 5{
                                                         sheetView.toggle()
                                                         vm.allTrueString = 0
@@ -327,19 +351,20 @@ struct StageStringView: View {
                             
                             HStack{
                                 ForEach(0 ..< vm.retangulosIII.count-1, id: \.self){ i in
-                                    vm.retangulosIII[i].origin
-                                        .onDrag{
-                                            self.draggedItem = vm.retangulosIII[i]
-                                            return NSItemProvider()
-                                        }
+                                    if drop2[i]{
+                                        vm.retangulosIII[i].origin
+                                            .onDrag{
+                                                self.draggedItem = vm.retangulosIII[i]
+                                                self.attempts2 += 1
+                                                simpleSuccess()
+                                                return NSItemProvider()
+                                            }
+                                            .accessibilityLabel("Quadrado de numero \(i+1)")
+                                    }
                                 }.padding( 1)
                             }
                             Spacer()
                         }
-                        //                    if pop{
-                        //                        PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                        //                    }
-                        
                     }
                 }
                 .toolbar{
@@ -378,10 +403,12 @@ struct StageStringView: View {
                         .font(.custom("SofiaSans-Regular", size:24))
                         .bold()
                         .padding(25)
+                        .accessibilityElement(children: .combine)
                         
                         
                         ZStack{
                             Image("ViolaoBraco")
+                                .accessibilityLabel("Braço do violão")
                             VStack{
                                 ForEach(0 ..< 6, id: \.self){ i in
                                     Button {
@@ -415,12 +442,12 @@ struct StageStringView: View {
                                                 .foregroundStyle(.clear)
                                         }
                                     }
-                                    
+                                    .accessibilityLabel("Corda de número \(6-i)")
                                 }
                             }
                         }
                         Image("TabLaranja")
-                        
+                            .accessibilityLabel("Tablatura com a corda de número 2")
                     }
                 }
                 .toolbar{
@@ -453,11 +480,7 @@ struct StageStringView: View {
             if pop{
                 PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
             }
-            
         }
-        
-        
-        
     }
     
     func simpleSuccess() {

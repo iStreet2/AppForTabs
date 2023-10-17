@@ -38,9 +38,7 @@ struct StageFretView: View, Identifiable {
     var body: some View {
         ZStack{
             Color("Background")
-                .ignoresSafeArea()
-            
-            
+                .ignoresSafeArea()            
             //PAGINA 1 COM A PRIMEIRA ATIVIDADE
             if seeAgain.fretActivitie == 1{
                 ScrollView{
@@ -61,6 +59,8 @@ struct StageFretView: View, Identifiable {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width:390)
+                                .accessibilityLabel("Braço de um violão")
+                            
                             HStack(spacing: 0){
                                 Button(action: {
                                     withAnimation(.easeInOut){
@@ -73,12 +73,14 @@ struct StageFretView: View, Identifiable {
                                     if pinkHouse{
                                         Image("PinkHouse")
                                             .padding(.leading)
+                                            .accessibilityLabel("Casa Rosa")
                                         
                                     }
                                     else{
                                         Image("PinkRectangle")
                                             .padding(.leading,30)
                                             .padding(.top,10)
+                                            .accessibilityLabel("Espaço Rosa")
                                     }
                                 })
                                 .frame(width:200)
@@ -93,10 +95,12 @@ struct StageFretView: View, Identifiable {
                                     if blueHouse{
                                         Image("BlueHouse")
                                             .padding(.trailing)
+                                            .accessibilityLabel("Casa Azul")
                                     }else{
                                         Image("BlueRectangle")
                                             .padding(.trailing,30)
                                             .padding(.top,10)
+                                            .accessibilityLabel("Espaço Azul")
                                     }
                                     
                                 })
@@ -142,11 +146,13 @@ struct StageFretView: View, Identifiable {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(minWidth:410)
+                                    .accessibilityLabel("Braço de um violão")
                                 
                                 HStack(spacing: 0){
                                     ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
                                         vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination
-                                            .padding(.horizontal,4)
+                                            .accessibilityLabel("Casa de número \(vm.retangulosCasas.count - i)")
+                                            .padding(.horizontal,6)
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
                                             .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
                                                 vm.allTrueFret += 1
@@ -166,8 +172,12 @@ struct StageFretView: View, Identifiable {
                                         vm.retangulosCasas[i].origin
                                             .onDrag{
                                                 self.draggedItem = vm.retangulosCasas[i]
+                                                self.attempts += 1
+                                                simpleSuccess()
                                                 return NSItemProvider()
-                                            }.padding()
+                                            }
+                                            .padding()
+                                            .accessibilityLabel("Casa de número \(i+1)")
                                         
                                     }
                                 }
@@ -178,18 +188,18 @@ struct StageFretView: View, Identifiable {
                                         vm.retangulosCasas[i].origin
                                             .onDrag{
                                                 self.draggedItem = vm.retangulosCasas[i]
+                                                self.attempts += 1
+                                                simpleSuccess()
                                                 return NSItemProvider()
-                                            }.padding()
+                                            }
+                                            .padding()
+                                            .accessibilityLabel("Casa de número \(i+1)")
                                     }
                                 }
                                 .padding(.leading,30)
-                                
                                 Spacer()
-                                
-                                
                             }
                             Spacer()
-                            
                         }
                         .sheet(isPresented: $sheetView) {
                             CongratulationsSheetView(text1: "Boa!",text2:"As casas são contadas a partir da cabeça do violão.",type: "Fret", context: context, seeAgain: seeAgain)
@@ -210,12 +220,6 @@ struct StageFretView: View, Identifiable {
                             }, label: {
                                 Image(systemName: "questionmark.circle")
                             })
-                        }
-                        
-                        if pop{
-                            PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
-                                .ignoresSafeArea()
-                                .frame(maxHeight:.infinity)
                         }
                     }
                     
@@ -267,22 +271,26 @@ struct StageFretView: View, Identifiable {
             }else if seeAgain.fretActivitie == 4{
                 ScrollView{
                     VStack{
-                        Group{
+                        VStack{
                             Group{
-                                Text("Toque no violão a ")
-                                + Text("CASA")
-                                    .foregroundStyle(.accent)
+                                Group{
+                                    Text("Toque no violão a ")
+                                    + Text("CASA")
+                                        .foregroundStyle(.accent)
+                                }
+                                Text("indicada na tablatura")
                             }
-                            Text("indicada na tablatura")
+                            .font(
+                                Font.custom("Sofia Sans", size: 24)
+                                    .weight(.heavy)
+                            )
+                            .multilineTextAlignment(.center)
                         }
-                        .font(
-                            Font.custom("Sofia Sans", size: 24)
-                                .weight(.heavy)
-                        )
-                        .multilineTextAlignment(.center)
+                        .accessibilityElement(children:.combine)
                         Spacer()
                         ZStack{
                             Image("GuitarArm2")
+                                .accessibilityLabel("Braço de violão")
                             HStack{
                                 ForEach(0 ..< 3, id: \.self) { i in
                                     Button(action: {
@@ -313,6 +321,7 @@ struct StageFretView: View, Identifiable {
                                             
                                         }else{
                                             Image("Pontilhado")
+                                                .accessibilityLabel("Casa de número \(3 - i)")
                                         }
                                         
                                     })
@@ -336,31 +345,12 @@ struct StageFretView: View, Identifiable {
             }
             else if seeAgain.fretActivitie == 5{
                 CongratulationsView(context: context, seeAgain: seeAgain, type: "Fret")
-                //                ZStack{
-                //                    Color.gray
-                //                        .ignoresSafeArea()
-                //                        .opacity(0.6)
-                //
-                //                    Rectangle()
-                //                    .foregroundColor(.clear)
-                //                    .frame(width: 323, height: 294)
-                //                    .background(Color("WeekOrange"))
-                //                    .cornerRadius(30)
-                //
-                //                    Text("Agora vamos\n revisar o conteúdo e ver\n como isso se aplica com a\n tablatura ?")
-                //                        .font(
-                //                        Font.custom("SofiaSans-Regular", size: 24)
-                //                        .weight(.heavy)
-                //                        )
-                //                        .multilineTextAlignment(.center)
-                //                        .foregroundStyle(Color("StrongOrange"))
-                //                }
-                //                .onAppear{
-                //                    seeAgainController.increaseOneActivitie(seeAgain: seeAgain)
-                //                }
             }
-            
-            
+            if pop{
+                PopUpView(pop:$pop,context:context,seeAgain:seeAgain)
+                    .ignoresSafeArea()
+                    .frame(maxHeight:.infinity)
+            }
         }
     }
     
