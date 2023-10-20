@@ -46,7 +46,7 @@ struct StageFretView: View, Identifiable {
                         Group{
                             Text("Toque nas ")
                             + Text("CASAS")
-                                .foregroundStyle(.accent)
+                                .foregroundColor(.accent)
                         }
                         .font(
                             Font.custom("SofiaSans-Regular", size: 24)
@@ -131,7 +131,7 @@ struct StageFretView: View, Identifiable {
                                 Group{
                                     Text("Numere as ")
                                     + Text("CASAS")
-                                        .foregroundStyle(.accent)
+                                        .foregroundColor(.accent)
                                 }
                             }
                             .font(
@@ -154,7 +154,7 @@ struct StageFretView: View, Identifiable {
                                             .accessibilityLabel("Casa de número \(vm.retangulosCasas.count - i)")
                                             .padding(.horizontal,6)
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
-                                            .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){
+                                            .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){ color in
                                                 vm.allTrueFret += 1
                                                 if vm.allTrueFret == 4{
                                                     sheetView.toggle()
@@ -276,7 +276,7 @@ struct StageFretView: View, Identifiable {
                                 Group{
                                     Text("Toque no violão a ")
                                     + Text("CASA")
-                                        .foregroundStyle(.accent)
+                                        .foregroundColor(.accent)
                                 }
                                 Text("indicada na tablatura")
                             }

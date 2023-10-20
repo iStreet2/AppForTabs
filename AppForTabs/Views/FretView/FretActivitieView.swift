@@ -20,7 +20,7 @@ struct FretActivitieView: View {
             Group{
                 Text("Toque na ")
                 + Text("\(fret)ª CASA")
-                    .foregroundStyle(.accent)
+                    .foregroundColor(.accent)
             }
             .font(
                 Font.custom("Sofia Sans", size: 24)
@@ -51,12 +51,12 @@ struct FretActivitieView: View {
                             if frets[vm.retangulosCasas.count - i - 1]{
                                 ZStack{
                                     Rectangle()
-                                        .foregroundStyle(.clear)
+                                        .foregroundColor(.clear)
                                         .background(Color("Rectangle\(vm.retangulosCasas.count - i)"))
                                         .cornerRadius(10)
                                     Text("\(vm.retangulosCasas.count - i)")
                                         .font(.system( size:30))
-                                        .foregroundStyle(.white)
+                                        .foregroundColor(.white)
                                         .bold()
                                 }
                             }
