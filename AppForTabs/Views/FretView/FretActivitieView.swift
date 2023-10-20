@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FretActivitieView: View {
     
-    @Binding var frets: [Bool]
     @EnvironmentObject var vm: ViewModel
     var fret: Int
     @Binding var sheetView: Bool
@@ -38,7 +37,7 @@ struct FretActivitieView: View {
                     ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
                         Button {
                             if i == vm.retangulosCasas.count-fret{
-                                frets[vm.retangulosCasas.count - i - 1].toggle()
+                                vm.frets[vm.retangulosCasas.count - i - 1].toggle()
                                 sheetView.toggle()
                             }
                             else{
@@ -48,7 +47,7 @@ struct FretActivitieView: View {
                                 }
                             }
                         } label: {
-                            if frets[vm.retangulosCasas.count - i - 1]{
+                            if vm.frets[vm.retangulosCasas.count - i - 1]{
                                 ZStack{
                                     Rectangle()
                                         .foregroundColor(.clear)
