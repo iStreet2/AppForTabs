@@ -53,7 +53,7 @@ struct StageStringView: View {
                             Group{
                                 Text("Numere as ")
                                 + Text("LINHAS")
-                                    .foregroundStyle(.accent)
+                                    .foregroundColor(.accent)
                             }
                             .font(
                                 Font.custom("SofiaSans-Regular", size: 24)
@@ -67,7 +67,7 @@ struct StageStringView: View {
                                 ForEach(0 ..< vm.retangulos.count, id: \.self){ i in
                                     vm.retangulos[i].destination
                                         .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulos[i]))
-                                        .onChange(of:vm.retangulos[i].destination.color){
+                                        .onChange(of:vm.retangulos[i].destination.color){ j in
                                             vm.allTrueString += 1
                                             playSound(sound: "\(i)")
                                             drop[i].toggle()
@@ -193,7 +193,7 @@ struct StageStringView: View {
                                 ForEach(1 ..< vm.retangulosII.count, id: \.self){ i in
                                     vm.retangulosII[i].destination
                                         .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosII[i]))
-                                        .onChange(of:vm.retangulosII[i].destination.color){
+                                        .onChange(of:vm.retangulosII[i].destination.color){ j in
                                             withAnimation(.easeIn){
                                                 playSound(sound: "\(i)")
                                                 vm.allTrueString += 1
@@ -260,7 +260,7 @@ struct StageStringView: View {
                             Group{
                                 Text("Numere as ")
                                 + Text("CORDAS")
-                                    .foregroundStyle(.accent)
+                                    .foregroundColor(.accent)
                             }
                             .font(.custom("SofiaSans-Regular", size:24))
                             .bold()
@@ -281,7 +281,7 @@ struct StageStringView: View {
                                             Rectangle()
                                                 .foregroundColor(.clear)
                                                 .frame(width: 245, height: 4)
-                                                .background(Color(vm.retangulosIII[i].destination.color))
+                                                .background(vm.retangulosIII[i].destination.color)
                                                 .padding(.bottom, 21)
                                                 .padding(.trailing, 3)
                                         }
@@ -296,7 +296,7 @@ struct StageStringView: View {
                                         Rectangle()
                                             .foregroundColor(.clear)
                                             .frame(width: 245, height: 4)
-                                            .background(Color(vm.retangulosIII[5].origin.color))
+                                            .background(vm.retangulosIII[5].origin.color)
                                             .padding(.bottom, 20)
                                             .padding(.trailing, 3)
                                     }
@@ -330,7 +330,7 @@ struct StageStringView: View {
                                                 .padding(.bottom, 3)
                                                 .padding(.leading, 60)
                                                 .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosIII[vm.retangulosIII.count-1-i]))
-                                                .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){
+                                                .onChange(of:vm.retangulosIII[vm.retangulosIII.count-1-i].destination.color){ j in
                                                     vm.allTrueString += 1
                                                     playSound(sound: "\(vm.retangulosIII.count-1-i)")
                                                     drop2[vm.retangulosIII.count-1-i] = false
@@ -396,7 +396,7 @@ struct StageStringView: View {
                             Group{
                                 Text("Toque na ")
                                 + Text("CORDA DO VIOLÃO ")
-                                    .foregroundStyle(.accent)
+                                    .foregroundColor(.accent)
                             }
                             Text("indicada na tablatura")
                         }

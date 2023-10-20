@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FretActivitieView: View {
     
-    @Binding var frets: [Bool]
     @EnvironmentObject var vm: ViewModel
     var fret: Int
     @Binding var sheetView: Bool
@@ -20,7 +19,7 @@ struct FretActivitieView: View {
             Group{
                 Text("Toque na ")
                 + Text("\(fret)ª CASA")
-                    .foregroundStyle(.accent)
+                    .foregroundColor(.accent)
             }
             .font(
                 Font.custom("Sofia Sans", size: 24)
@@ -38,7 +37,7 @@ struct FretActivitieView: View {
                     ForEach(0 ..< vm.retangulosCasas.count, id: \.self){ i in
                         Button {
                             if i == vm.retangulosCasas.count-fret{
-                                frets[vm.retangulosCasas.count - i - 1].toggle()
+                                vm.frets[vm.retangulosCasas.count - i - 1].toggle()
                                 sheetView.toggle()
                             }
                             else{
@@ -48,15 +47,15 @@ struct FretActivitieView: View {
                                 }
                             }
                         } label: {
-                            if frets[vm.retangulosCasas.count - i - 1]{
+                            if vm.frets[vm.retangulosCasas.count - i - 1]{
                                 ZStack{
                                     Rectangle()
-                                        .foregroundStyle(.clear)
+                                        .foregroundColor(.clear)
                                         .background(Color("Rectangle\(vm.retangulosCasas.count - i)"))
                                         .cornerRadius(10)
                                     Text("\(vm.retangulosCasas.count - i)")
                                         .font(.system( size:30))
-                                        .foregroundStyle(.white)
+                                        .foregroundColor(.white)
                                         .bold()
                                 }
                             }

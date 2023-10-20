@@ -17,6 +17,7 @@ class ViewModel: ObservableObject{
     @Published var allTrueString: Int
     @Published var allTrueFret: Int
     @Published var page3: Int
+    @Published var frets: [Bool]
     
     init(){
         self.cardsHome = DataService.cardsHome
@@ -27,6 +28,7 @@ class ViewModel: ObservableObject{
         self.allTrueString = 0
         self.allTrueFret = 0
         self.page3 = 1
+        self.frets = [false,false,false,false,false]
         
     }
     func resetRetangulos(){
@@ -38,6 +40,7 @@ class ViewModel: ObservableObject{
             self.retangulosII[i] = DraggableItem(origin: RectanglesModel(color: Color("Rectangle\(i+1)"), numero: "\(i+1)", id: i+1,x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: .gray, numero: "", id: i+1, x:54,y:54, linha: true, casa: false))
         }
         self.retangulosII[0] = DraggableItem(origin: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1,x:54,y:54, linha: false, casa: false), destination: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1, x:54,y:54, linha: true, casa: false))
+        self.allTrueString = 0
     }
     
     func resetRetangulosCasas(){
@@ -45,6 +48,9 @@ class ViewModel: ObservableObject{
             self.retangulosCasas[i] = DraggableItem(origin: RectanglesModel(color: Color("Rectangle\(i+1)"), numero: "\(i+1)", id: i+1, x:59,y:100, linha: false, casa: true), destination: RectanglesModel(color: .gray, numero: "", id: i+1, x:59,y:100 , linha: true,casa: true))
         }
         self.retangulosCasas[0] = DraggableItem(origin: RectanglesModel(color: Color("Background"), numero: "", id: 1, x:59,y:100, linha: false, casa: true), destination: RectanglesModel(color: Color("Rectangle1"), numero: "1", id: 1, x:59,y:100 , linha: true,casa: true))
+        self.allTrueFret = 0
+        self.page3 = 1
+        self.frets = [false,false,false,false,false]
     }
     
 }

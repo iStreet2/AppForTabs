@@ -12,7 +12,6 @@ struct HomeView: View {
     
     @EnvironmentObject var vm: ViewModel
     @Binding var homeView: Bool
-    @State var frets = [false,false,false,false,false]
     
     //Coisas do CoreData
     @Environment(\.managedObjectContext) var context //Data Controller
@@ -102,7 +101,7 @@ struct HomeView: View {
                             
                             //Atividade de Casas
                             NavigationLink{
-                                FretView(frets: $frets, context: context, seeAgain: seeAgain)
+                                FretView(context: context, seeAgain: seeAgain)
                             }label: {
                                 ActivityLinkView(text: vm.cardsHome[1].nome, color: vm.cardsHome[1].cor, locked: seeAgain.activitieDone < 1)
                                     .frame(minWidth: 321, minHeight: 115)

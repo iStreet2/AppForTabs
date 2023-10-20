@@ -28,27 +28,27 @@ struct PageExplanationView: View {
                         Group {
                             Text("Tablaturas indicam ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                                 .bold()
                             + Text("QUANDO ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color(.accent))
+                                .foregroundColor(Color(.accent))
                             + Text("e")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                             
                         }
                         Group{
                             Text("ONDE ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color(.accent))
+                                .foregroundColor(Color(.accent))
                             + Text("colocar os dedos para")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                         }
                         Text("gerar uma nota no instrumento.")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.bold))
-                            .foregroundStyle(Color("WeekOrange"))
+                            .foregroundColor(Color("WeekOrange"))
                     }
                 }
                 .accessibilityElement(children: .combine)
@@ -65,24 +65,24 @@ struct PageExplanationView: View {
                         HStack {
                             Text("Geralmente são tocados")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                             
                             
                         }
                         Text("INSTRUMENTOS DE CORDAS")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color(.accent))
+                            .foregroundColor(Color(.accent))
                         Group{
                             Text("TRASTEADOS, ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color(.accent))
+                                .foregroundColor(Color(.accent))
                             + Text("como o violão e a")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                         }
                         Text("guitarra elétrica.")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
+                            .foregroundColor(Color("WeekOrange"))
                     }
                 }
                 .accessibilityElement(children: .combine)
@@ -98,43 +98,42 @@ struct PageExplanationView: View {
                         HStack {
                             Text("Dependendo do instrumento")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                             
                         }
                         Group {
                             Text("sendo tocado, o ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                             + Text("NÚMERO DE ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color(.accent))
+                                .foregroundColor(Color(.accent))
                         }
                         Group{
                             Text("LINHAS ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color(.accent))
+                                .foregroundColor(Color(.accent))
                             + Text("ou ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                             + Text("CORDAS ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color(.accent))
+                                .foregroundColor(Color(.accent))
                             + Text("da tablatura ")
                                 .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                                .foregroundStyle(Color("WeekOrange"))
+                                .foregroundColor(Color("WeekOrange"))
                         }
                         Text("pode variar.")
                             .font(.custom("SofiaSans-Regular", size:24) .weight(.heavy))
-                            .foregroundStyle(Color("WeekOrange"))
+                            .foregroundColor(Color("WeekOrange"))
                     }
                 }
                 .accessibilityElement(children: .combine)
             }
-            Spacer()
         }
     }
 }
 
-#Preview {
-    PageExplanationView(page: 0)
-}
+//#Preview {
+//    PageExplanationView(page: 0)
+//}
