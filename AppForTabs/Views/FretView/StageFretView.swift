@@ -18,6 +18,7 @@ struct StageFretView: View, Identifiable {
     @EnvironmentObject var vm: ViewModel
     @State var fretOnTablature = false
     
+    @State var drop = [true,true,true,true,true]
     
     @State var attempts: Int = 0 //Para animação de tremer
     
@@ -154,6 +155,7 @@ struct StageFretView: View, Identifiable {
                                             .onDrop(of: [.text], delegate: DropViewDelegate(draggedItem: $draggedItem, destinationItem: $vm.retangulosCasas[vm.retangulosCasas.count - 1 - i]))
                                             .onChange(of:vm.retangulosCasas[vm.retangulosCasas.count - 1 - i].destination.color){ color in
                                                 vm.allTrueFret += 1
+                                                drop[vm.retangulosCasas.count - 1 - i].toggle()
                                                 if vm.allTrueFret == 4{
                                                     sheetView.toggle()
                                                 }
@@ -166,16 +168,18 @@ struct StageFretView: View, Identifiable {
                             }
                             VStack{
                                 HStack{
-                                    ForEach(0 ..< vm.retangulosCasas.count/2, id: \.self){ i in
-                                        vm.retangulosCasas[i].origin
-                                            .onDrag{
-                                                self.draggedItem = vm.retangulosCasas[i]
-                                                self.attempts += 1
-                                                simpleSuccess()
-                                                return NSItemProvider()
-                                            }
-                                            .padding()
-                                            .accessibilityLabel("Casa de número \(i+1)")
+                                    ForEach(1 ..< vm.retangulosCasas.count/2, id: \.self){ i in
+                                        if drop[i]{
+                                            vm.retangulosCasas[i].origin
+                                                .onDrag{
+                                                    self.draggedItem = vm.retangulosCasas[i]
+                                                    self.attempts += 1
+                                                    simpleSuccess()
+                                                    return NSItemProvider()
+                                                }
+                                                .padding()
+                                                .accessibilityLabel("Casa de número \(i+1)")
+                                        }
                                         
                                     }
                                 }
@@ -183,15 +187,17 @@ struct StageFretView: View, Identifiable {
                                 
                                 HStack{
                                     ForEach(vm.retangulosCasas.count/2 ..< vm.retangulosCasas.count, id: \.self){ i in
-                                        vm.retangulosCasas[i].origin
-                                            .onDrag{
-                                                self.draggedItem = vm.retangulosCasas[i]
-                                                self.attempts += 1
-                                                simpleSuccess()
-                                                return NSItemProvider()
-                                            }
-                                            .padding()
-                                            .accessibilityLabel("Casa de número \(i+1)")
+                                        if drop[i]{
+                                            vm.retangulosCasas[i].origin
+                                                .onDrag{
+                                                    self.draggedItem = vm.retangulosCasas[i]
+                                                    self.attempts += 1
+                                                    simpleSuccess()
+                                                    return NSItemProvider()
+                                                }
+                                                .padding()
+                                                .accessibilityLabel("Casa de número \(i+1)")
+                                        }
                                     }
                                 }
                                 .padding(.leading,30)

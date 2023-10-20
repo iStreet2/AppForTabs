@@ -46,6 +46,7 @@ struct CongratulationsSheetView: View {
                         seeAgainController.saveStageString(seeAgain: seeAgain)
                     }else{
                         if seeAgain.fretActivitie == 3{
+                            
                             vm.page3+=1
                             if vm.page3 == 6{
                                 seeAgainController.saveStageFret(seeAgain: seeAgain)
@@ -55,6 +56,8 @@ struct CongratulationsSheetView: View {
                         }
                     }
                     dismiss()
+                    
+                    
                     
                     
                 },label: {
